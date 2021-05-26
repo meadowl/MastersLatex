@@ -13,32 +13,32 @@
 \usepackage{booktabs}
 
 % Set the title and author info
-\title{Please Read the Abstract}
-\author{Abstract Writer}
+\title{Remote Lensing}
+\author{Lyndon P. Meadow}
 
 % Following is OPTIONAL list of previous degrees earned. 
 % If there are more than 5 or so, then title pagelayout may become too crowded,
 % depending on the number of committee members. 
-\priorcreds{B.A. Philosophy, Harvard, 1999}{M.A. English, Oxford 2000}{M.A. History, Johnson County Community College, 2005}
+\priorcreds{B.S. Mathematics, University of Kansas, 2018}
 % It is acceptable to delete \priorcreds if it is not desired on title page
 
 
-\dept{Department of People who read Abstracts}
-\degreetitle{Doctor of Philosophy}
-\papertype{Dissertation} %or Thesis (Choose whatever word you want to put on p.2)
+\dept{Department of Electrical Engineering and Computer Science}
+\degreetitle{Master of Computer Science}
+\papertype{Thesis} %or Thesis (Choose whatever word you want to put on p.2)
 
 %% Committee member names are required for the title page. We make space
 %% for as many as 7 members, with various roles/titles.
 %% It is required to have 7 entries, even if some are empty for committee and role
-\committee{Member Name 1}{Member Name 2}{Member Name 3}{Member Name 4}{Member 5 has a long name}{Member 6}{}
-\role{Chairperson}{Co-Chair}{}{The One Who Never Answers Email}{}{External Reviewer}{}
+\committee{Matthew Moore}{Perry Alexander}{Prasad Kulkarni}{}{}{}{}
+\role{Chair}{Member}{Member}{}{}{}{}
 %At Most 7 members allowed, last here is blank on purpose to demonstrate
 %flexibility
 
 %%BOTH dates must be included. 
 \@printd@testrue
-\datedefended{July 02, 2019}
-\dateapproved{August 06, 2019}
+\datedefended{July ??, 2021}
+\dateapproved{July ??, 2021}
 
 %% These settings are now in the kuthesis.cls file, but users are free
 % to customize. listings has great documentation online
@@ -2045,17 +2045,7 @@ end{romanpages}
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "Chapter1/Ordinal-1.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter2/Regression-1-guide-1.0.lyx"
+filename "ScratchDraft/Draft-0.1.lyx"
 
 \end_inset
 

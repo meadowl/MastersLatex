@@ -198,20 +198,6 @@ ku-thesis.pdf
 \end_inset
 
 .
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textbf{Step 1.
- Study the features in this document.}
-\end_layout
-
-\end_inset
-
  If you are reading a file with some other name, then there's been a goof
  up.
  This document is produced by the LaTeX compiler 
@@ -2059,17 +2045,7 @@ end{romanpages}
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "Chapter1/Ordinal-1.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "Chapter2/Regression-1-guide-1.0.lyx"
+filename "ScratchDraft/Draft-0.1.lyx"
 
 \end_inset
 
