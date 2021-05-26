@@ -132,7 +132,111 @@ Draft
 \end_layout
 
 \begin_layout Standard
-Some Text.
+This story begins with looking for overall abstractions between remote object
+ systems and being curious as to seeing if adding an ordered lens-like structure
+ was possible between multiple systems.
+ Even if the abstraction is nothing more than a wrapper or boilerplate for
+ existing code, it sparked my curiosity if these remote systems could stimulate
+ or in fact provide the simplicity of lenses to an end user.
+ And that these abstractions were representable of total systems in existence,
+ due to their popularity with classical lenses.
+ As well as the fact that several online server applications attempt to
+ bring this boilerplate into their own code with different levels of effectivene
+ss across their own systems.
+\end_layout
+
+\begin_layout Standard
+This led to some initial questions and concerns, mainly what a lens is,
+ what a lens is in a programing language – specifically Haskell, and what
+ are the existing standards for what constitutes the different categories
+ of lenses that exist in the broad community.
+\end_layout
+
+\begin_layout Standard
+Keep in mind that Lenses are about solving a bijective dictionary problem,
+ as so far as to provide convenience to the end user.
+ Most commonly in the functional community lenses are abstractions that
+ are popular to provide an object-oriented accessor notation to an object’s
+ elements.
+ In the sense that the functions that wrap data into record structures are
+ able to be acted on by functions that unwrap or rewrap data in a convenient
+ way.
+ There are extensional ideas that relate to this such as Traversable structures
+ and those should be representable as well.
+ But that is not the primary focus of this research, although in the case
+ of Remote Monad, the Traversable is very much implementable abet with some
+ extra efforts.
+\end_layout
+
+\begin_layout Standard
+Lenses are in briefest summary a mathematical tool to manipulate dictionaries
+ and nested dictionaries.
+ They came as an expansion to the mostly solved bijective dictionary space
+ and an attempt to further expand out the work with new levels of abstractions.
+ Every lens has a set and a get function that it bundles together, and are
+ molded after object-class accessors.
+ And essentially accomplish the goal of retrieving or mutating values inside
+ of those kinds of objects.
+ As to what the community considers a well-behaved lens, this in itself
+ can be varied and ends up becoming unclear based on who’s implementation
+ and rationalization you read on.
+ Much like much of computer science terms end up thrown around interchangeably,
+ meanings are lost and altered for established words, and so therefore it
+ becomes important to establish what each body of work considers to be a
+ lens and a well-defined lens.
+\end_layout
+
+\begin_layout Standard
+For starters what separates well-defined from not? A well-defined function
+ follows what are generally expected rules and results that the average
+ user might expect.
+ And a function that is not well-defined will possibly posses unexpected
+ behaviors that the user doesn’t intend to occur.
+ A clever way to imagine this is to imagine the standards in place for the
+ C++ compiler.
+ There are well-defined and expected results if one were to define a simple
+ addition function.
+ However, there are no defined results as to what should happen if your
+ main function does not have a return statement embedded at the end.
+ So in this way a well-defined lens has some expected behaviors that will
+ always hold true if it follows a communities prescribed expectations.
+ But unfortunately, the manual itself is ill-defined based on the source
+ that you prescribe, therefore it is important that in this body of work
+ the manual for a well-defined lens is included.
+ So that it becomes possible to judge in this body of work if the lens fits
+ what we wished from its behaviors.
+ And ultimately anything that isn’t defined should be disregarded in the
+ same way that one might disregard the C++ compilers handling of no return
+ statement in main.
+ We are ultimately concerned with defined behaviors as they relate to defined
+ expectations.
+\end_layout
+
+\begin_layout Standard
+Speaking in layman’s terms: Get-Put Law: Putting back what you Get results
+ in the same object.
+ Put( Get (s ) s ) = s Put-Put Law: How one Put will Override a previous
+ Put.
+ Put( Put( a v) s ) = Put( a s) Put-Get Law: Getting back what you Put results
+ in the new object.
+ Get( Put( a s) ) = a 
+\end_layout
+
+\begin_layout Standard
+Are usually what are discussed when referencing classical lens implementations
+ in computing languages for well-defined behaviors.
+ Removing laws or altering them varies based on sources of work read.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\strikeout on
+Mandatory Citation So Bibliotex Doesn't Complain 
+\emph default
+\strikeout default
+
 \begin_inset CommandInset citation
 LatexCommand citet
 key "gelman_bayesian_2003,pinheiro_mixed-effects_2000"
@@ -141,14 +245,140 @@ literal "false"
 \end_inset
 
 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "gelman_bayesian_2003,pinheiro_mixed-effects_2000"
-literal "false"
+\end_layout
 
-\end_inset
+\begin_layout Standard
+Compare and Contrast.
+ 
+\end_layout
 
+\begin_layout Standard
+Describe Remote-Monad: 
+\end_layout
 
+\begin_layout Standard
+view2 :: (FromJSON b) => (String -> String) -> (RemoteValue a) -> (RemoteMonad
+ b) 
+\end_layout
+
+\begin_layout Standard
+set2 :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad (RemoteVa
+lue a) 
+\end_layout
+
+\begin_layout Standard
+over2 :: (FromJSON t, Show a) => (String -> String) -> (t -> a) -> (RemoteValue
+ a) -> RemoteMonad (RemoteValue a)
+\end_layout
+
+\begin_layout Standard
+These are the types for the set of functions that seek to emulate the Get
+ and Put laws that lenses experience.
+ And show that although they do not share the same internal structure at
+ their locally implemented counterparts, that they will share a similar
+ external behavior.
+\end_layout
+
+\begin_layout Standard
+Such that as in the abstract syntax that: 
+\end_layout
+
+\begin_layout Standard
+Set2 ( View2 (s ) s ) = s 
+\end_layout
+
+\begin_layout Standard
+Set2( Set2( a v) s ) = Put( a s) 
+\end_layout
+
+\begin_layout Standard
+View2( Set2( a s) ) = a 
+\end_layout
+
+\begin_layout Standard
+Is a similar result, however it is worth noting, that due to the fact that
+ we are dealing with a remote connection that the connection must be passed
+ around – in addition to the object you want to manipulate, where inside
+ the object you wish to lens to, and a value if using the Put function.
+\end_layout
+
+\begin_layout Standard
+Now, one more important thing to note, is while in Haskell you normally
+ are manipulating and creating new objects every time you run a function
+ or assign it to a value.
+ When manipulating Javascript, you are never creating a new object on the
+ other side.
+ So, any code you’d want to write with these methods on the Haskell-side,
+ would need to keep in mind that you never are dealing with a fresh object.
+ The connection will always make sure you are pointing to the one and only
+ original Javascript object you are trying to manipulate.
+\end_layout
+
+\begin_layout Standard
+A key distinction on the improvements is that this removes any sort of backend
+ coding, where the user is directly manipulating the delicate remote monad
+ commands.
+ And instead has a predefined way of accessing, editing, and setting values
+ with minimal contact to the ideas and command structure beneath.
+\end_layout
+
+\begin_layout Standard
+So much like lenses were used to re-solve the local dictionary problem.
+\end_layout
+
+\begin_layout Standard
+Remote lenses here are used to re-solve the remote dictionary problem.
+\end_layout
+
+\begin_layout Standard
+And this is a clear method that shows how it can be solved.
+\end_layout
+
+\begin_layout Standard
+You get abstraction and type safety on every component of the command, and
+ modularity that clearly expresses your intent to the reader of your code.
+\end_layout
+
+\begin_layout Standard
+Example:
+\end_layout
+
+\begin_layout Standard
+With basic syntactical sugar, with view2 as ^.
+ And composition of remote lens fields as >>> … you get a clear expression
+ that shows to anyone else on your coding team what you were doing.
+ 
+\end_layout
+
+\begin_layout Standard
+f :: Double <- person ^.
+ nest >>> nest2 >>> extra3
+\end_layout
+
+\begin_layout Standard
+Where for the remote-object of person, I am accessing 2 layers into it’s
+ fields to retrieve a double value from extra3.
+\end_layout
+
+\begin_layout Standard
+The normal syntax for this would be represented as:
+\end_layout
+
+\begin_layout Standard
+view2 (extra3(nest2(nest))) person
+\end_layout
+
+\begin_layout Standard
+Which expands out to in the weeds as:
+\end_layout
+
+\begin_layout Standard
+g <- constructor $ JavaScript $ pack $ (extra3(nest2(nest))) (var_text person)
+ procedure $ var g 
+\end_layout
+
+\begin_layout Standard
+Repeat this for Set, Over, and for the examples of Lens Laws? (Yes) 
 \end_layout
 
 \end_body
