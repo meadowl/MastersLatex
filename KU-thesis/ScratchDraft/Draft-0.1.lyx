@@ -16,6 +16,10 @@
 \usepackage{ragged2e}
 \RaggedRight
 %\setlength{\parindent}{1.5 em}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\newcommand{\ignore}[1]{}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -85,6 +89,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\listings_params "frame=none,xleftmargin=2pt,stepnumber=1,numbers=left,numbersep=5pt,numberstyle={\ttfamily\tiny\color[gray]{0.3}},belowcaptionskip={\bigskipamount},captionpos=b,escapeinside={*'}{'*},language=Haskell,tabsize=2,emphstyle={\bf},commentstyle={\it},stringstyle={\mdseries\rmfamily},showspaces=false,keywordstyle={\bfseries\rmfamily},columns=flexible,basicstyle={\small\sffamily},showstringspaces=false,morecomment={[l]\%}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -351,8 +356,79 @@ With basic syntactical sugar, with view2 as ^.
 \end_layout
 
 \begin_layout Standard
+\begin_inset listings
+lstparams "language=Haskell"
+inline false
+status open
+
+\begin_layout Plain Layout
+
 f :: Double <- person ^.
  nest >>> nest2 >>> extra3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+f :: Double <- person ^.
+ nest >>> nest2 >>> extra3
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+-- This is visible in the paper and to the Haskell implementation.
+\end_layout
+
+\begin_layout Plain Layout
+
+f :: Double <- person ^.
+ nest >>> nest2 >>> extra3
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+f :: Double <- person ^.
+ nest >>> nest2 >>> extra3
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -365,11 +441,22 @@ The normal syntax for this would be represented as:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\[
+Set_{2}\left(View_{2}\left(s\right)\:s\right)=s
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 view2 (extra3(nest2(nest))) person
 \end_layout
 
 \begin_layout Standard
-Which expands out to in the weeds as:
+Which expands out to in the weeds as: —
 \end_layout
 
 \begin_layout Standard

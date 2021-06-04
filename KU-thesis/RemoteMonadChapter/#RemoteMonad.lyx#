@@ -20,6 +20,7 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+\usepackage{haskell}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -100,7 +101,7 @@
 \begin_body
 
 \begin_layout Chapter
-The Only Chapter
+Remote Monad
 \end_layout
 
 \begin_layout Standard
@@ -116,8 +117,8 @@ begin{chapterabstract}
 
 \begin_layout Plain Layout
 
-Initial Attempt at Using University Package to Write my Initial Drafted
- Documentation from Microsoft Word.
+Initial draft to describe and write about the remote monad and the remote
+ lens.
 \end_layout
 
 \begin_layout Plain Layout
@@ -132,120 +133,123 @@ end{chapterabstract}
 
 \end_layout
 
-\begin_layout Section
-Draft
-\end_layout
-
 \begin_layout Standard
-This story begins with looking for overall abstractions between remote object
- systems and being curious as to seeing if adding an ordered lens-like structure
- was possible between multiple systems.
- Even if the abstraction is nothing more than a wrapper or boilerplate for
- existing code, it sparked my curiosity if these remote systems could stimulate
- or in fact provide the simplicity of lenses to an end user.
- And that these abstractions were representable of total systems in existence,
- due to their popularity with classical lenses.
- As well as the fact that several online server applications attempt to
- bring this boilerplate into their own code with different levels of effectivene
-ss across their own systems.
-\end_layout
-
-\begin_layout Standard
-This led to some initial questions and concerns, mainly what a lens is,
- what a lens is in a programing language – specifically Haskell, and what
- are the existing standards for what constitutes the different categories
- of lenses that exist in the broad community.
-\end_layout
-
-\begin_layout Standard
-Keep in mind that Lenses are about solving a bijective dictionary problem,
- as so far as to provide convenience to the end user.
- Most commonly in the functional community lenses are abstractions that
- are popular to provide an object-oriented accessor notation to an object’s
- elements.
- In the sense that the functions that wrap data into record structures are
- able to be acted on by functions that unwrap or rewrap data in a convenient
- way.
- There are extensional ideas that relate to this such as Traversable structures
- and those should be representable as well.
- But that is not the primary focus of this research, although in the case
- of Remote Monad, the Traversable is very much implementable abet with some
- extra efforts.
-\end_layout
-
-\begin_layout Standard
-Lenses are in briefest summary a mathematical tool to manipulate dictionaries
- and nested dictionaries.
- They came as an expansion to the mostly solved bijective dictionary space
- and an attempt to further expand out the work with new levels of abstractions.
- Every lens has a set and a get function that it bundles together, and are
- molded after object-class accessors.
- And essentially accomplish the goal of retrieving or mutating values inside
- of those kinds of objects.
- As to what the community considers a well-behaved lens, this in itself
- can be varied and ends up becoming unclear based on who’s implementation
- and rationalization you read on.
- Much like much of computer science terms end up thrown around interchangeably,
- meanings are lost and altered for established words, and so therefore it
- becomes important to establish what each body of work considers to be a
- lens and a well-defined lens.
-\end_layout
-
-\begin_layout Standard
-For starters what separates well-defined from not? A well-defined function
- follows what are generally expected rules and results that the average
- user might expect.
- And a function that is not well-defined will possibly posses unexpected
- behaviors that the user doesn’t intend to occur.
- A clever way to imagine this is to imagine the standards in place for the
- C++ compiler.
- There are well-defined and expected results if one were to define a simple
- addition function.
- However, there are no defined results as to what should happen if your
- main function does not have a return statement embedded at the end.
- So in this way a well-defined lens has some expected behaviors that will
- always hold true if it follows a communities prescribed expectations.
- But unfortunately, the manual itself is ill-defined based on the source
- that you prescribe, therefore it is important that in this body of work
- the manual for a well-defined lens is included.
- So that it becomes possible to judge in this body of work if the lens fits
- what we wished from its behaviors.
- And ultimately anything that isn’t defined should be disregarded in the
- same way that one might disregard the C++ compilers handling of no return
- statement in main.
- We are ultimately concerned with defined behaviors as they relate to defined
- expectations.
-\end_layout
-
-\begin_layout Standard
-Speaking in layman’s terms: Get-Put Law: Putting back what you Get results
- in the same object.
- Put( Get (s ) s ) = s Put-Put Law: How one Put will Override a previous
- Put.
- Put( Put( a v) s ) = Put( a s) Put-Get Law: Getting back what you Put results
- in the new object.
- Get( Put( a s) ) = a 
-\end_layout
-
-\begin_layout Standard
-Are usually what are discussed when referencing classical lens implementations
- in computing languages for well-defined behaviors.
- Removing laws or altering them varies based on sources of work read.
- 
-\end_layout
-
-\begin_layout Standard
-
+As has been established in the earlier chapter, covering the mathematical
+ background and the historical Haskell programming context, this primary
+ article will show both an introduction to remote lenses as well as their
+ implementation with the remote monad.
+ As described the two primary components of both programmatic and mathematical
+ lenses are the 
 \emph on
-\strikeout on
-Mandatory Citation So Bibliotex Doesn't Complain 
+Set
 \emph default
-\strikeout default
+ and 
+\emph on
+View 
+\emph default
+which produce as a result of applying them both at the same time a command
+ referenced as 
+\emph on
+Over
+\emph default
+.
+ Which now allows us to describe a variation that copies on the structure
+ and intent of these operators over a remote connection between a client
+ and a host device, the host running Haskell and the client running some
+ other language.
+ This variation which is the main subject of study of this paper will be
+ referred to as the 
+\emph on
+Remote Lens
+\emph default
+ and will be fleshed out starting now and until the end of this manuscript.
+\end_layout
 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "gelman_bayesian_2003,pinheiro_mixed-effects_2000"
-literal "false"
+\begin_layout Standard
+To start defining the individual components of 
+\emph on
+Remote Lenses
+\emph default
+, we must begin with an abstract type definition which will prove useful
+ in guiding through more concrete implementations that will be brought forward
+ later on.
+ They are provided below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteView &::& (String 
+\backslash
+to String) 
+\backslash
+to (Wrapped a) 
+\backslash
+to (ReturnType b)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteSet &::& (String 
+\backslash
+to String) 
+\backslash
+to String 
+\backslash
+to (Wrapped a) 
+\backslash
+to ReturnType (Wrapped a)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteOver &::& (String 
+\backslash
+to String) 
+\backslash
+to (t 
+\backslash
+to a) 
+\backslash
+to (Wrapped a) 
+\backslash
+to ReturnType (Wrapped a)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
 
 \end_inset
 
@@ -253,12 +257,100 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Compare and Contrast.
- 
+The essentials of what is required is aptly similar to the definitions seen
+ in the elementary Prelude construction of Haskell lenses.
+ With that in mind, the first argument typically taken by any lens operator
+ is a function that will access a deep rooted parameter inside of a structure.
+ And the Remote Lens variant accomplishes the same with an abstraction of
+ the Remote Object's nested fields.
+ Another shared argument is the structure that will be accessed by the lens
+ operator.
 \end_layout
 
 \begin_layout Standard
-Describe Remote-Monad: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteView &::& (FromJSON b) 
+\backslash
+Rightarrow (String 
+\backslash
+to String) 
+\backslash
+to (RemoteValue a) 
+\backslash
+to (RemoteMonad b)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteSet &::& (String 
+\backslash
+to String) 
+\backslash
+to String 
+\backslash
+to (RemoteValue a) 
+\backslash
+to RemoteMonad (RemoteValue a)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteOver &::&  
+\backslash
+hsbody{%(FromJSON t, Show a) 
+\backslash
+Rightarrow (String 
+\backslash
+to String) 
+\backslash
+to (t 
+\backslash
+to a) 
+\backslash
+to (RemoteValue a) 
+\backslash
+to RemoteMonad (RemoteValue a)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -456,8 +548,7 @@ view2 (extra3(nest2(nest))) person
 \end_layout
 
 \begin_layout Standard
-Which expands out to in the weeds as: \SpecialChar nobreakdash
-‑-
+Which expands out to in the weeds as: —
 \end_layout
 
 \begin_layout Standard
