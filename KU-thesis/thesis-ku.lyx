@@ -49,6 +49,11 @@
  %    breakatwhitespace=true,  % sets if automatic breaks should
  %   breakautoindent=true
 %}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\newcommand{\ignore}[1]{}
+\usepackage{haskell}
 \end_preamble
 \options letterpaper
 \use_default_options true
@@ -364,6 +369,16 @@ end{romanpages}
 \begin_inset CommandInset include
 LatexCommand include
 filename "ScratchDraft/Draft-0.1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "RemoteMonadChapter/RemoteMonad.lyx"
 
 \end_inset
 

@@ -1,0 +1,26 @@
+--- for a proper dash
+/texttt for the function words
+
+Well-defined function, definition is wrong.
+
+Defined, defined symantics.
+
+Well-defined, a function when given equal inputs gives equal outputs.
+
+Well-behaved should be used over well-defined.
+
+And-But-So likely should be removed if possible.
+
+Expand and be more clear.
+
+Mathamatical Definition, Contrasted with Haskell.
+
+That one vs that you perscribes.
+
+Avoid You and Our, but We is acceptable.
+
+this manuscript(text) over this body of work, when refering to my own document.
+
+remove "layman's terms" for 
+Put the math on it's own display.
+Putting back what what you gets back the same object.
