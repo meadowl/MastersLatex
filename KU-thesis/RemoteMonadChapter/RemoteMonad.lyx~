@@ -172,8 +172,7 @@ Remote Lenses
 \emph default
 , we must begin with an abstract type definition which will prove useful
  in guiding through more concrete implementations that will be brought forward
- later on.
- They are provided below.
+ later on:
 \end_layout
 
 \begin_layout Standard
@@ -261,10 +260,98 @@ The essentials of what is required is aptly similar to the definitions seen
  in the elementary Prelude construction of Haskell lenses.
  With that in mind, the first argument typically taken by any lens operator
  is a function that will access a deep rooted parameter inside of a structure.
- And the Remote Lens variant accomplishes the same with an abstraction of
- the Remote Object's nested fields.
- Another shared argument is the structure that will be accessed by the lens
+ Along the same vein, the
+\emph on
+ Remote Lens
+\emph default
+ variant accomplishes the same with an abstraction of the 
+\emph on
+Remote Object's
+\emph default
+ nested fields that are to be queried into once the command is sent from
+ host to client.
+ The primary difference in how this is handled by Haskell, is that rather
+ than simply pattern matching into the already existing structure — a completely
+ different approach is needed instead.
+ This will involve internally concatenating a conjointment of the parameter.
+ Where each of the parameters that normally would be accessed with a composition
+ of pattern matching functions, must instead be accessed with a composition
+ of the 
+\emph on
+Remote Object's
+\emph default
+ internal parameters.
+ It is a fair and equally valid to imagine representing the target object
+ as a remote record with the means to access the contents completely dependent
+ on how that record was implemented inside of the client's language.
+\end_layout
+
+\begin_layout Standard
+Another shared argument is the structure that will be accessed by the lens
  operator.
+ Similarly, what is passed around in the 
+\emph on
+Remote Lens
+\emph default
+ is a reference to the location of what is be accessed upon sending the
+ constructed command.
+ Which is why directly accessing the information is not possible, since
+ one is manipulating only a reference to the actual object in the client's
+ side.
+ And that the careful composition method mentioned in the former paragraph
+ was needed.
+ As bundling the reference to the 
+\emph on
+Remote Object
+\emph default
+ along with the preformed command to operate on the 
+\emph on
+Remote Object
+\emph default
+ are absolutely necessary, otherwise none of the methods to view or alter
+ the contents of that structure are at all possible to create.
+ 
+\end_layout
+
+\begin_layout Standard
+The final shared parameter is the return type from the result of applying
+ the lens operator to the structure that one is inspecting.
+ This is also represented by the 
+\emph on
+Remote Lens's
+\emph default
+ return type, where for a 
+\noun on
+RemoteView
+\noun default
+ the return type will be the desired queried item wrapped in the remote
+ operator that allowed for the operation to take place and for 
+\noun on
+RemoteSet
+\noun default
+/
+\noun on
+RemoteOver
+\noun default
+ the return type will be the reference to the altered structure wrapped
+ up in the same remote operator.
+ The only major consideration when manipulating the returned structure,
+ is that one must assign the type of the expected viewed parameter or trust
+ that there is sufficient information that Haskell can self-interpret the
+ type for itself.
+\end_layout
+
+\begin_layout Standard
+Now it becomes possible to introduce the primary example that this manuscript
+ will cover, specifically the 
+\emph on
+Remote Lens
+\emph default
+ as it relates to the 
+\emph on
+Remote Monad 
+\emph default
+the construction of it's key functions represented by the following types:
 \end_layout
 
 \begin_layout Standard
@@ -373,26 +460,253 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-view2 :: (FromJSON b) => (String -> String) -> (RemoteValue a) -> (RemoteMonad
- b) 
+These are the types for the set of functions that seek to emulate the methods
+ of 
+\emph on
+View
+\emph default
+, 
+\emph on
+Set
+\emph default
+, and 
+\emph on
+Over
+\emph default
+ that have been instantiated specifically for a 
+\emph on
+Remote Lens
+\emph default
+ based on using the 
+\emph on
+Remote Monad
+\emph default
+.
+ Despite that they do not share the same internal structure of their locally
+ implemented counterparts, that in their behavior they will accomplish the
+ same goal, which is to resolve standard dictionary manipulation.
+ This wrapper style may not have been used by others, but it is specifically
+ implemented to show that it can be viewed as a universal design pattern.
+ Rather an attempt to show that for any client host system in which there
+ is a an interaction between a host language, client language, and a remote
+ structure — that a fully formed method of communicating between the two
+ is presentable in this way.
 \end_layout
 
 \begin_layout Standard
-set2 :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad (RemoteVa
-lue a) 
+Which can be viewed as the followed implementations:
 \end_layout
 
 \begin_layout Standard
-over2 :: (FromJSON t, Show a) => (String -> String) -> (t -> a) -> (RemoteValue
- a) -> RemoteMonad (RemoteValue a)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
 \end_layout
 
-\begin_layout Standard
-These are the types for the set of functions that seek to emulate the Get
- and Put laws that lenses experience.
- And show that although they do not share the same internal structure at
- their locally implemented counterparts, that they will share a similar
- external behavior.
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteView accessor object = 
+\backslash
+hsdo{
+\end_layout
+
+\begin_layout Plain Layout
+
+g 
+\backslash
+hsfrom constructor 
+\backslash
+$ JavaScript 
+\backslash
+$ pack 
+\backslash
+$ accessor (var
+\backslash
+_text object)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure 
+\backslash
+$ var g
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteSet accessor new
+\backslash
+_item object = constructor 
+\backslash
+$ JavaScript 
+\backslash
+$ pack 
+\backslash
+$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad
+\backslash
+qquad(accessor (var
+\backslash
+_text objectName)) 
+\backslash
+hsapp " = " 
+\backslash
+hsapp new
+\backslash
+_item
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteOver accessor my
+\backslash
+_function object = 
+\backslash
+hsdo{
+\end_layout
+
+\begin_layout Plain Layout
+
+item 
+\backslash
+hsfrom RemoteView accessor object
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+let new
+\backslash
+_item = show 
+\backslash
+$ my
+\backslash
+_function item
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteSet accessor new
+\backslash
+_item object
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -486,60 +800,6 @@ f :: Double <- person ^.
 \begin_layout Standard
 f :: Double <- person ^.
  nest >>> nest2 >>> extra3
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{code}
-\end_layout
-
-\begin_layout Plain Layout
-
--- This is visible in the paper and to the Haskell implementation.
-\end_layout
-
-\begin_layout Plain Layout
-
-f :: Double <- person ^.
- nest >>> nest2 >>> extra3
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{code}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{lstlisting}
-\end_layout
-
-\begin_layout Plain Layout
-
-f :: Double <- person ^.
- nest >>> nest2 >>> extra3
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{lstlisting}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
