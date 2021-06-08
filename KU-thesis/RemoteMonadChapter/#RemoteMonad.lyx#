@@ -137,7 +137,11 @@ end{chapterabstract}
 As has been established in the earlier chapter, covering the mathematical
  background and the historical Haskell programming context, this primary
  article will show both an introduction to remote lenses as well as their
- implementation with the remote monad.
+ implementation with the 
+\emph on
+Remote Monad
+\emph default
+.
  As described the two primary components of both programmatic and mathematical
  lenses are the 
 \emph on
@@ -172,8 +176,7 @@ Remote Lenses
 \emph default
 , we must begin with an abstract type definition which will prove useful
  in guiding through more concrete implementations that will be brought forward
- later on.
- They are provided below.
+ later on:
 \end_layout
 
 \begin_layout Standard
@@ -254,6 +257,122 @@ end{haskell*}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Such that as in the abstract syntax these modifications to the original
+ well-formed lens rules: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather*}
+RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
+RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\\
+RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $;$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the sequence of operation and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes congruence but not equality.
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+acc
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the accessor to the structure, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+obj
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the structure, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+item
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes some substructure.
+\end_layout
+
+\begin_layout Standard
+Where these laws show the View-Set (Modifying a subpart such that it is
+ the same as it was before), Set-Set (Modifying a subpart with 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+, then with 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+ will be the same as if you just modified with 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+), Set-View (Modifying a subpart, then viewing will be the same as just
+ viewing the modification itself).
 \end_layout
 
 \begin_layout Standard
@@ -462,10 +581,36 @@ end{haskell*}
 
 \begin_layout Standard
 These are the types for the set of functions that seek to emulate the methods
- of View, Set, and Over that have been instantiated specifically for a Remote
- Lens based on using the Remote Monad.
- Sthat although they do not share the same internal structure at their locally
- implemented counterparts, that they will share a similar external behavior.
+ of 
+\emph on
+View
+\emph default
+, 
+\emph on
+Set
+\emph default
+, and 
+\emph on
+Over
+\emph default
+ that have been instantiated specifically for a 
+\emph on
+Remote Lens
+\emph default
+ based on using the 
+\emph on
+Remote Monad
+\emph default
+.
+ Despite that they do not share the same internal structure of their locally
+ implemented counterparts, that in their behavior they will accomplish the
+ same goal, which is to resolve standard dictionary manipulation.
+ This wrapper style may not have been used by others, but it is specifically
+ implemented to show that it can be viewed as a universal design pattern.
+ Rather an attempt to show that for any client host system in which there
+ is a an interaction between a host language, client language, and a remote
+ structure — that a fully formed method of communicating between the two
+ is presentable in this way.
 \end_layout
 
 \begin_layout Standard
@@ -685,26 +830,10 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-Such that as in the abstract syntax that: 
-\end_layout
-
-\begin_layout Standard
-Set2 ( View2 (s ) s ) = s 
-\end_layout
-
-\begin_layout Standard
-Set2( Set2( a v) s ) = Put( a s) 
-\end_layout
-
-\begin_layout Standard
-View2( Set2( a s) ) = a 
-\end_layout
-
-\begin_layout Standard
-Is a similar result, however it is worth noting, that due to the fact that
- we are dealing with a remote connection that the connection must be passed
- around – in addition to the object you want to manipulate, where inside
- the object you wish to lens to, and a value if using the Put function.
+As a reminder, it is worth noting that due to the fact that we are dealing
+ with a remote connection that the connection must be passed around — in
+ addition to the structure you want to manipulate, where inside the structure
+ one wishes to lens to, and a value if using the Set function.
 \end_layout
 
 \begin_layout Standard
@@ -725,56 +854,73 @@ A key distinction on the improvements is that this removes any sort of backend
  commands.
  And instead has a predefined way of accessing, editing, and setting values
  with minimal contact to the ideas and command structure beneath.
+ One gets an abstraction and type safety on every component of the command,
+ and modularity that clearly expresses your intent to the reader of your
+ code.
 \end_layout
 
 \begin_layout Standard
-So much like lenses were used to re-solve the local dictionary problem.
+Examples:
 \end_layout
 
 \begin_layout Standard
-Remote lenses here are used to re-solve the remote dictionary problem.
-\end_layout
+With basic syntactical sugar, with 
+\emph on
+RemoteView
+\emph default
+ as
+\emph on
+ ^.
 
-\begin_layout Standard
-And this is a clear method that shows how it can be solved.
-\end_layout
-
-\begin_layout Standard
-You get abstraction and type safety on every component of the command, and
- modularity that clearly expresses your intent to the reader of your code.
-\end_layout
-
-\begin_layout Standard
-Example:
-\end_layout
-
-\begin_layout Standard
-With basic syntactical sugar, with view2 as ^.
- And composition of remote lens fields as >>> … you get a clear expression
- that shows to anyone else on your coding team what you were doing.
+\emph default
+ And composition of remote lens fields as 
+\emph on
+>>>
+\emph default
+ … one gets a clear expression that shows to anyone else on ones coding
+ team what one was doing.
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset listings
-lstparams "language=Haskell"
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-f :: Double <- person ^.
- nest >>> nest2 >>> extra3
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f &::& Double 
+\backslash
+hsfrom person ^.
+ nest >>> nest2 >> extra2
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-f :: Double <- person ^.
- nest >>> nest2 >>> extra3
 \end_layout
 
 \begin_layout Standard
@@ -787,10 +933,37 @@ The normal syntax for this would be represented as:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-Set_{2}\left(View_{2}\left(s\right)\:s\right)=s
-\]
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteView (extra3(nest2(nest))) person
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
 
 \end_inset
 
@@ -798,20 +971,80 @@ Set_{2}\left(View_{2}\left(s\right)\:s\right)=s
 \end_layout
 
 \begin_layout Standard
-view2 (extra3(nest2(nest))) person
+Which expands out to in the weeds as:
 \end_layout
 
 \begin_layout Standard
-Which expands out to in the weeds as: —
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+g 
+\backslash
+hsfrom constructor 
+\backslash
+$ JavaScript 
+\backslash
+$ pack 
+\backslash
+$ (extra3(nest2(nest))) (var
+\backslash
+_text person)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+procedure 
+\backslash
+$ var g
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-g <- constructor $ JavaScript $ pack $ (extra3(nest2(nest))) (var_text person)
- procedure $ var g 
-\end_layout
-
-\begin_layout Standard
-Repeat this for Set, Over, and for the examples of Lens Laws? (Yes) 
+Which shows the virtualization of machinery from each layer to the next
+ in this system, and that whilst the syntactical sugar for 
+\emph on
+RemoteSet
+\emph default
+ and 
+\emph on
+RemoteOver
+\emph default
+ has not been shown, these share the same levels of abstractions.
+ 
 \end_layout
 
 \end_body
