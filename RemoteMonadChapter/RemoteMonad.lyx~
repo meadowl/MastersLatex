@@ -101,43 +101,14 @@
 \begin_body
 
 \begin_layout Chapter
-Remote Monad
+The Remote Monad
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{chapterabstract}
-\end_layout
-
-\begin_layout Plain Layout
-
-Initial draft to describe and write about the remote monad and the remote
- lens.
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{chapterabstract}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As has been established in the earlier chapter, covering the mathematical
- background and the historical Haskell programming context, this primary
- article will show both an introduction to remote lenses as well as their
- implementation with the 
+The purpose of this chapter is to expand past covering the mathematical
+ background and the historical Haskell programming context.
+ In this primary article will show both an introduction to remote lenses
+ as well as their implementation with the 
 \emph on
 Remote Monad
 \emph default
@@ -171,14 +142,11 @@ Remote Lens
 \end_layout
 
 \begin_layout Standard
-To start defining the individual components of 
+To define the individual components of 
 \emph on
 Remote Lenses
 \emph default
-, we must begin with an abstract type definition which will prove useful
- in guiding through more concrete implementations that will be brought forward
- later on: (We begin by providing the relevant abstract type definitions
- below.)
+, we begin by providing the relevant abstract type definitions below.
 \end_layout
 
 \begin_layout Standard
@@ -194,61 +162,31 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteView &::& (String 
-\backslash
-to String) 
-\backslash
-to (Wrapped a) 
-\backslash
-to (ReturnType b)
-\backslash
-
-\backslash
-
+RemoteView :: (String -> String) -> (Wrapped a) -> (ReturnType b)
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteSet &::& (String 
-\backslash
-to String) 
-\backslash
-to String 
-\backslash
-to (Wrapped a) 
-\backslash
-to ReturnType (Wrapped a)
-\backslash
-
-\backslash
-
+RemoteSet :: (String -> String) -> String -> (Wrapped a) -> ReturnType (Wrapped
+ a)
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteOver &::& (String 
-\backslash
-to String) 
-\backslash
-to (t 
-\backslash
-to a) 
-\backslash
-to (Wrapped a) 
-\backslash
-to ReturnType (Wrapped a)
+RemoteOver :: (String -> String) -> (t -> a) -> (Wrapped a) -> ReturnType
+ (Wrapped a)
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -262,8 +200,8 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-(We extend the )Such that as in the abstract syntax these modifications
- to the original well-formed lens rules: 
+We extend the abstract syntax these modifications to the original well-formed
+ lens rules.
 \end_layout
 
 \begin_layout Standard
@@ -280,9 +218,10 @@ RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
 \end_layout
 
 \begin_layout Standard
-(
-\backslash
-no indent)Where 
+\paragraph_spacing single
+\noindent
+\align center
+Where 
 \begin_inset Quotes eld
 \end_inset
 
@@ -307,10 +246,13 @@ no indent)Where
 \end_inset
 
  denotes congruence but not equality.
- (Align/Center these 3 Where's)
+ 
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing single
+\noindent
+\align center
 Where 
 \begin_inset Quotes eld
 \end_inset
@@ -335,7 +277,7 @@ obj
 \begin_inset Quotes erd
 \end_inset
 
- is the structure, 
+ is the structure, and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -351,6 +293,9 @@ item
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing single
+\noindent
+\align center
 Where these laws show the View-Set (Modifying a subpart such that it is
  the same as it was before), Set-Set (Modifying a subpart with 
 \begin_inset Quotes eld
@@ -484,7 +429,7 @@ Remote Lens
 \emph on
 Remote Monad 
 \emph default
-the construction of it's key functions represented by the following types:
+the construction of it's key functions represented by the following types.
 \end_layout
 
 \begin_layout Standard
@@ -500,86 +445,37 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteView &::& (FromJSON b) 
-\backslash
-Rightarrow (String 
-\backslash
-to String) 
-\backslash
-to (RemoteValue a) 
-\backslash
-to (RemoteMonad b)
-\backslash
-
-\backslash
-
+RemoteView :: (FromJSON b) => (String -> String) -> (RemoteValue a) -> (RemoteMo
+nad b)
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteSet &::& (String 
-\backslash
-to String) 
-\backslash
-to String 
-\backslash
-to (RemoteValue a) 
-\backslash
-to RemoteMonad (RemoteValue a)
-\backslash
-
-\backslash
-
+RemoteSet :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad
+ (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteOver &::& (FromJSON t, Show a) 
-\backslash
-Rightarrow (String 
-\backslash
-to String) 
-\backslash
-to (t 
-\backslash
-to a) 
-\backslash
-to (RemoteValue a)
-\backslash
-
-\backslash
-
+RemoteOver :: (FromJSON t, Show a) => (String -> String) -> (t -> a) ->
+ (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
 
- && 
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad 
-\backslash
-to RemoteMonad (RemoteValue a)
+ 					 -> RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -627,7 +523,7 @@ Remote Monad
 \end_layout
 
 \begin_layout Standard
-Which can be viewed as the followed implementations:
+Which can be viewed as the following implementations.
 \end_layout
 
 \begin_layout Standard
@@ -643,40 +539,22 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteView accessor object = 
-\backslash
-hsdo{
+RemoteView accessor object = do{
 \end_layout
 
 \begin_layout Plain Layout
 
-g 
-\backslash
-hsfrom constructor 
-\backslash
-$ JavaScript 
-\backslash
-$ pack 
-\backslash
-$ accessor (var
-\backslash
-_text object)
-\backslash
-
-\backslash
-
+	g <- constructor $ JavaScript $ pack $ accessor (var_text object)
 \end_layout
 
 \begin_layout Plain Layout
 
-procedure 
-\backslash
-$ var g
+	procedure $ var g
 \end_layout
 
 \begin_layout Plain Layout
@@ -688,7 +566,7 @@ $ var g
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -705,60 +583,26 @@ end{haskell*}
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteSet accessor new
-\backslash
-_item object = constructor 
-\backslash
-$ JavaScript 
-\backslash
-$ pack 
-\backslash
-$ 
-\backslash
+RemoteSet accessor new_item object = constructor $ JavaScript $ pack $
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
+		(accessor (var
+\backslash
+_text objectName)) ++ " = " ++ new_item
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad
-\backslash
-qquad(accessor (var
-\backslash
-_text objectName)) 
-\backslash
-hsapp " = " 
-\backslash
-hsapp new
-\backslash
-_item
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -775,49 +619,27 @@ end{haskell*}
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteOver accessor my
-\backslash
-_function object = 
-\backslash
-hsdo{
+RemoteOver accessor my_function object = do{
 \end_layout
 
 \begin_layout Plain Layout
 
-item 
-\backslash
-hsfrom RemoteView accessor object
-\backslash
-
-\backslash
-
+	item <- RemoteView accessor object
 \end_layout
 
 \begin_layout Plain Layout
 
-let new
-\backslash
-_item = show 
-\backslash
-$ my
-\backslash
-_function item
-\backslash
-
-\backslash
-
+	let new_item = show $ my_function item
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteSet accessor new
-\backslash
-_item object
+	RemoteSet accessor new_item object
 \end_layout
 
 \begin_layout Plain Layout
@@ -829,7 +651,7 @@ _item object
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -908,14 +730,12 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-f &::& Double 
-\backslash
-hsfrom person ^.
+f :: Double <- person ^.
  nest >>> nest2 >> extra2
 \end_layout
 
@@ -923,7 +743,7 @@ hsfrom person ^.
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -942,7 +762,7 @@ Where for the remote-object of person, I am accessing 2 layers into it’s
 \end_layout
 
 \begin_layout Standard
-The normal syntax for this would be represented as:
+The normal syntax for this would be represented as.
 \end_layout
 
 \begin_layout Standard
@@ -958,7 +778,7 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -970,7 +790,7 @@ RemoteView (extra3(nest2(nest))) person
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -984,7 +804,7 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-Which expands out to in the weeds as:
+Which expands out to in the weeds as.
 \end_layout
 
 \begin_layout Standard
@@ -1000,40 +820,24 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-g 
-\backslash
-hsfrom constructor 
-\backslash
-$ JavaScript 
-\backslash
-$ pack 
-\backslash
-$ (extra3(nest2(nest))) (var
-\backslash
-_text person)
-\backslash
-
-\backslash
-
+g <- constructor $ JavaScript $ pack $ (extra3(nest2(nest))) (var_text person)
 \end_layout
 
 \begin_layout Plain Layout
 
-procedure 
-\backslash
-$ var g
+procedure $ var g
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1057,7 +861,7 @@ RemoteSet
 RemoteOver
 \emph default
  has not been shown, these share the same levels of abstractions.
- For completeness, examples of their basic calling is provided now:
+ For completeness, examples of their basic calling is provided now.
 \end_layout
 
 \begin_layout Standard
@@ -1073,7 +877,7 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1087,20 +891,9 @@ RemoteSet (extra3(nest2(nest)))
 \end_inset
 
  person
-\backslash
-
-\backslash
-
 \end_layout
 
 \begin_layout Plain Layout
-
-
-\backslash
-! 
-\backslash
-
-\backslash
 
 \end_layout
 
@@ -1108,18 +901,14 @@ RemoteSet (extra3(nest2(nest)))
 
 RemoteOver (extra3(nest2(nest))) (
 \backslash
-backslash x -> (x + 1::Double)) person
-\backslash
-
-\backslash
-
+ x -> (x + 1::Double)) person
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1139,17 +928,7 @@ RemoteMonad
 \emph default
  And 
 \emph on
-Remote Lens
-\emph default
-:
-\end_layout
-
-\begin_layout Standard
-– Change Title to: Thee Remote Monad
-\end_layout
-
-\begin_layout Standard
-– Get Rid of Abstract Portion
+Remote Lens.
 \end_layout
 
 \begin_layout Standard
@@ -1170,7 +949,7 @@ texttt{blah}
 \end_layout
 
 \begin_layout Standard
-– For Code Words 
+– For Code Words like RemoteView 
 \backslash
 texttt{blah} 
 \end_layout
@@ -1219,360 +998,172 @@ status open
 
 
 \backslash
-begin{haskell*}
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
 
-address objectName = objectName 
-\backslash
-hsapp ".address"
-\backslash
-
-\backslash
-
+address objectName = objectName ++ ".address"
 \end_layout
 
 \begin_layout Plain Layout
 
-street objectName = objectName 
-\backslash
-hsapp ".street"
-\backslash
-
-\backslash
-
+street objectName = objectName ++ ".street"
 \end_layout
 
 \begin_layout Plain Layout
 
-city objectName = objectName 
-\backslash
-hsapp ".city"
-\backslash
-
-\backslash
-
+city objectName = objectName ++ ".city"
 \end_layout
 
 \begin_layout Plain Layout
 
-name objectName = objectName 
-\backslash
-hsapp ".name"
-\backslash
+name objectName = objectName ++ ".name"
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
+
+age objectName = objectName ++ ".age" 
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-age objectName = objectName 
-\backslash
-hsapp ".age" 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-! 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-wilshire :: String 
-\backslash
-
-\backslash
-
+wilshire :: String
 \end_layout
 
 \begin_layout Plain Layout
 
 wilshire = "
 \backslash
-backslash"Wilshire Blvd
+"Wilshire Blvd
 \backslash
-backslash""
-\backslash
+""
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-aliceWilshire :: RemoteValue a 
-\backslash
-to RemoteMonad (RemoteValue a)
-\backslash
-
-\backslash
-
+aliceWilshire :: RemoteValue a -> RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
 
 aliceWilshire newperson = RemoteSet (address >>> street) wilshire newperson
-\backslash
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-getStreet :: RemoteValue a 
-\backslash
-to (RemoteMonad String)
-\backslash
-
-\backslash
-
+getStreet :: RemoteValue a -> (RemoteMonad String)
 \end_layout
 
 \begin_layout Plain Layout
 
 getStreet newperson = RemoteView (address >>> street) newperson
-\backslash
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-birthday :: RemoteValue Int 
-\backslash
-to RemoteMonad (RemoteValue Int)
-\backslash
-
-\backslash
-
+birthday :: RemoteValue Int -> RemoteMonad (RemoteValue Int)
 \end_layout
 
 \begin_layout Plain Layout
 
 birthday newperson = RemoteOver age (
 \backslash
-backslash x 
-\backslash
-to (x + 1::Int)) newperson
-\backslash
+ x -> (x + 1::Int)) newperson
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-getAge :: RemoteValue a 
-\backslash
-to (RemoteMonad Int)
-\backslash
-
-\backslash
-
+getAge :: RemoteValue a -> (RemoteMonad Int)
 \end_layout
 
 \begin_layout Plain Layout
 
 getAge newperson = RemoteView age newperson
-\backslash
+\end_layout
 
-\backslash
+\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
+exercise1 :: Engine -> IO ()
 \end_layout
 
 \begin_layout Plain Layout
 
-exercise1 :: Engine 
-\backslash
-to IO ()
-\backslash
-
-\backslash
-
+exercise1 eng = do{
 \end_layout
 
 \begin_layout Plain Layout
 
-exercise1 eng = 
-\backslash
-hsdo{
+	send eng $ do{
 \end_layout
 
 \begin_layout Plain Layout
 
-send eng 
-\backslash
-$ 
-\backslash
-hsdo{
+		command $ call "console.log" [string "starting..."]
 \end_layout
 
 \begin_layout Plain Layout
 
-command 
-\backslash
-$ call "console.log" [string "starting..."]
-\backslash
-
-\backslash
-
+		render $ "Exercise1"
 \end_layout
 
 \begin_layout Plain Layout
 
-render 
-\backslash
-$ "Exercise1"
-\backslash
-
-\backslash
-
+		newperson <- initializeObjectAbstraction2 "alice" alice
 \end_layout
 
 \begin_layout Plain Layout
 
-newperson 
-\backslash
-hsfrom initializeObjectAbstraction2 "alice" alice
-\backslash
-
-\backslash
-
+		aliceWilshire newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-aliceWilshire newperson
-\backslash
-
-\backslash
-
+		mystreet_person <- getStreet newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-mystreet_person 
-\backslash
-hsfrom getStreet newperson
-\backslash
-
-\backslash
-
+		birthday newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-birthday newperson
-\backslash
-
-\backslash
-
+		herNewAge <- getAge newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-herNewAge 
-\backslash
-hsfrom getAge newperson
-\backslash
-
-\backslash
-
+		render $ "mystreet_person: " ++ mystreet_person
 \end_layout
 
 \begin_layout Plain Layout
 
-render 
-\backslash
-$ "mystreet
-\backslash
-_person: " 
-\backslash
-hsapp mystreet
-\backslash
-_person
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-render 
-\backslash
-$ "herNewAge: " 
-\backslash
-hsapp show herNewAge
+		render $ "herNewAge: " ++ show herNewAge
 \end_layout
 
 \begin_layout Plain Layout
@@ -1589,7 +1180,7 @@ hsapp show herNewAge
 
 
 \backslash
-end{haskell*}
+end{code}
 \end_layout
 
 \begin_layout Plain Layout
