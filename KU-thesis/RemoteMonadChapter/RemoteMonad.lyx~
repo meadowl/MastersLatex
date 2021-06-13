@@ -1085,7 +1085,7 @@ birthday :: RemoteValue Int -> RemoteMonad (RemoteValue Int)
 
 birthday newperson = RemoteOver age (
 \backslash
-backslash x -> (x + 1::Int)) newperson
+ x -> (x + 1::Int)) newperson
 \end_layout
 
 \begin_layout Plain Layout
@@ -1104,13 +1104,6 @@ getAge newperson = RemoteView age newperson
 
 \begin_layout Plain Layout
 
-
-\backslash
-! 
-\backslash
-
-\backslash
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -1120,61 +1113,57 @@ exercise1 :: Engine -> IO ()
 
 \begin_layout Plain Layout
 
-exercise1 eng = 
-\backslash
-hsdo{
+exercise1 eng = do{
 \end_layout
 
 \begin_layout Plain Layout
 
-send eng $ 
-\backslash
-hsdo{
+	send eng $ do{
 \end_layout
 
 \begin_layout Plain Layout
 
-command $ call "console.log" [string "starting..."]
+		command $ call "console.log" [string "starting..."]
 \end_layout
 
 \begin_layout Plain Layout
 
-render $ "Exercise1"
+		render $ "Exercise1"
 \end_layout
 
 \begin_layout Plain Layout
 
-newperson <- initializeObjectAbstraction2 "alice" alice
+		newperson <- initializeObjectAbstraction2 "alice" alice
 \end_layout
 
 \begin_layout Plain Layout
 
-aliceWilshire newperson
+		aliceWilshire newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-mystreet_person <- getStreet newperson
+		mystreet_person <- getStreet newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-birthday newperson
+		birthday newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-herNewAge <- getAge newperson
+		herNewAge <- getAge newperson
 \end_layout
 
 \begin_layout Plain Layout
 
-render $ "mystreet_person: " ++ mystreet_person
+		render $ "mystreet_person: " ++ mystreet_person
 \end_layout
 
 \begin_layout Plain Layout
 
-render $ "herNewAge: " ++ show herNewAge
+		render $ "herNewAge: " ++ show herNewAge
 \end_layout
 
 \begin_layout Plain Layout
