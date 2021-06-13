@@ -101,43 +101,14 @@
 \begin_body
 
 \begin_layout Chapter
-Remote Monad
+The Remote Monad
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{chapterabstract}
-\end_layout
-
-\begin_layout Plain Layout
-
-Initial draft to describe and write about the remote monad and the remote
- lens.
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{chapterabstract}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As has been established in the earlier chapter, covering the mathematical
- background and the historical Haskell programming context, this primary
- article will show both an introduction to remote lenses as well as their
- implementation with the 
+The purpose of this chapter is to expand past covering the mathematical
+ background and the historical Haskell programming context.
+ In this primary article will show both an introduction to remote lenses
+ as well as their implementation with the 
 \emph on
 Remote Monad
 \emph default
@@ -157,7 +128,7 @@ which produce as a result of applying them both at the same time a command
 Over
 \emph default
 .
- Which now allows us to describe a variation that copies on the structure
+ This now allows us to describe a variation that copies on the structure
  and intent of these operators over a remote connection between a client
  and a host device, the host running Haskell and the client running some
  other language.
@@ -167,16 +138,15 @@ Over
 Remote Lens
 \emph default
  and will be fleshed out starting now and until the end of this manuscript.
+ (Clean up this sentence structure)
 \end_layout
 
 \begin_layout Standard
-To start defining the individual components of 
+To define the individual components of 
 \emph on
 Remote Lenses
 \emph default
-, we must begin with an abstract type definition which will prove useful
- in guiding through more concrete implementations that will be brought forward
- later on:
+, we begin by providing the relevant abstract type definitions below.
 \end_layout
 
 \begin_layout Standard
@@ -260,8 +230,8 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-Such that as in the abstract syntax these modifications to the original
- well-formed lens rules: 
+We extend the abstract syntax these modifications to the original well-formed
+ lens rules.
 \end_layout
 
 \begin_layout Standard
@@ -278,6 +248,30 @@ RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
 \end_layout
 
 \begin_layout Standard
+\noindent
+(
+\backslash
+no indent)
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
 Where 
 \begin_inset Quotes eld
 \end_inset
@@ -303,9 +297,41 @@ Where
 \end_inset
 
  denotes congruence but not equality.
+ (Align/Center these 3 Where's)
+\end_layout
+
+\end_inset
+
+Where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $;$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the sequence of operation and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes congruence but not equality.
+ (Align/Center these 3 Where's)
 \end_layout
 
 \begin_layout Standard
+\noindent
 Where 
 \begin_inset Quotes eld
 \end_inset
@@ -318,7 +344,7 @@ acc
 \begin_inset Quotes erd
 \end_inset
 
- denotes the accessor to the structure, 
+ is the accessor to the structure, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -330,7 +356,7 @@ obj
 \begin_inset Quotes erd
 \end_inset
 
- denotes the structure, 
+ is the structure, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -342,10 +368,11 @@ item
 \begin_inset Quotes erd
 \end_inset
 
- denotes some substructure.
+ is some substructure.
 \end_layout
 
 \begin_layout Standard
+\noindent
 Where these laws show the View-Set (Modifying a subpart such that it is
  the same as it was before), Set-Set (Modifying a subpart with 
 \begin_inset Quotes eld
@@ -373,6 +400,10 @@ b
 
 ), Set-View (Modifying a subpart, then viewing will be the same as just
  viewing the modification itself).
+ (These are the analogs, get rid of parenthesis.
+ Represent these extended to a remote setting.
+ More detailed explanation in previous chapter with equations, and reference
+ those here TO DO) 
 \end_layout
 
 \begin_layout Standard
@@ -380,28 +411,32 @@ The essentials of what is required is aptly similar to the definitions seen
  in the elementary Prelude construction of Haskell lenses.
  With that in mind, the first argument typically taken by any lens operator
  is a function that will access a deep rooted parameter inside of a structure.
- Along the same vein, the
+ In the same vein, the
 \emph on
  Remote Lens
 \emph default
- variant accomplishes the same with an abstraction of the 
+ variant accomplishes this with an abstraction of the 
 \emph on
 Remote Object's
 \emph default
  nested fields that are to be queried into once the command is sent from
  host to client.
  The primary difference in how this is handled by Haskell, is that rather
- than simply pattern matching into the already existing structure — a completely
+ than simply pattern matching into the already existing structure, a completely
  different approach is needed instead.
- This will involve internally concatenating a conjointment of the parameter.
- Where each of the parameters that normally would be accessed with a composition
+ (Write here more information why a different approach is needed.)
+\end_layout
+
+\begin_layout Standard
+This will involve internally concatenating a conjointment of the parameter.
+ Each of the parameters that normally would be accessed with a composition
  of pattern matching functions, must instead be accessed with a composition
  of the 
 \emph on
 Remote Object's
 \emph default
  internal parameters.
- It is a fair and equally valid to imagine representing the target object
+ It is fair and equally valid to imagine representing the target object
  as a remote record with the means to access the contents completely dependent
  on how that record was implemented inside of the client's language.
 \end_layout
@@ -413,14 +448,14 @@ Another shared argument is the structure that will be accessed by the lens
 \emph on
 Remote Lens
 \emph default
- is a reference to the location of what is be accessed upon sending the
+ is a reference to the location of what is to be accessed upon sending the
  constructed command.
- Which is why directly accessing the information is not possible, since
- one is manipulating only a reference to the actual object in the client's
+ For these reasons directly accessing the information is not possible, since
+ one is manipulating only a reference to the actual object on the client's
  side.
- And that the careful composition method mentioned in the former paragraph
- was needed.
- As bundling the reference to the 
+ That the careful composition method mentioned in the former paragraph was
+ needed.
+ Given that bundling the reference to the 
 \emph on
 Remote Object
 \emph default
@@ -430,7 +465,7 @@ Remote Object
 \emph default
  are absolutely necessary, otherwise none of the methods to view or alter
  the contents of that structure are at all possible to create.
- 
+ (Try to rewrite these sentences to flow better)
 \end_layout
 
 \begin_layout Standard
@@ -471,7 +506,7 @@ Remote Lens
 \emph on
 Remote Monad 
 \emph default
-the construction of it's key functions represented by the following types:
+the construction of it's key functions represented by the following types.
 \end_layout
 
 \begin_layout Standard
@@ -614,7 +649,7 @@ Remote Monad
 \end_layout
 
 \begin_layout Standard
-Which can be viewed as the followed implementations:
+Which can be viewed as the following implementations.
 \end_layout
 
 \begin_layout Standard
@@ -929,7 +964,7 @@ Where for the remote-object of person, I am accessing 2 layers into it’s
 \end_layout
 
 \begin_layout Standard
-The normal syntax for this would be represented as:
+The normal syntax for this would be represented as.
 \end_layout
 
 \begin_layout Standard
@@ -971,7 +1006,7 @@ end{haskell*}
 \end_layout
 
 \begin_layout Standard
-Which expands out to in the weeds as:
+Which expands out to in the weeds as.
 \end_layout
 
 \begin_layout Standard
@@ -1044,7 +1079,539 @@ RemoteSet
 RemoteOver
 \emph default
  has not been shown, these share the same levels of abstractions.
- 
+ For completeness, examples of their basic calling is provided now.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteSet (extra3(nest2(nest))) 
+\begin_inset Quotes eld
+\end_inset
+
+4
+\begin_inset Quotes erd
+\end_inset
+
+ person
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteOver (extra3(nest2(nest))) (
+\backslash
+backslash x -> (x + 1::Double)) person
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+FP Complete Lens Exercise Adapated To 
+\emph on
+RemoteMonad
+\emph default
+ And 
+\emph on
+Remote Lens.
+\end_layout
+
+\begin_layout Standard
+– Avoid, previous chapter mentions.
+ The purpose of this chapter is ++ BLANK, In this chapter we will cover
+ the historical programming context and their impelementaiton in the remote
+ monad.
+\end_layout
+
+\begin_layout Standard
+– Not as described, 
+\end_layout
+
+\begin_layout Standard
+– Operations, /imp but more defined 
+\backslash
+texttt{blah} 
+\end_layout
+
+\begin_layout Standard
+– For Code Words like RemoteView 
+\backslash
+texttt{blah} 
+\end_layout
+
+\begin_layout Standard
+– View and Set sequenced.
+\end_layout
+
+\begin_layout Standard
+– Minted Package try again, and force it into Verbatism if I can't.
+\end_layout
+
+\begin_layout Standard
+– Not applying them both at the same time.
+\end_layout
+
+\begin_layout Standard
+– Over is a derived operation.
+\end_layout
+
+\begin_layout Standard
+– Colon to introduce text is bad.
+ End the previous sentence with a period.
+\end_layout
+
+\begin_layout Standard
+– Talk about why these are congruent but not equal, in original math they
+ are equal.
+\end_layout
+
+\begin_layout Standard
+– Write more information why a different approach is needed.
+\end_layout
+
+\begin_layout Standard
+– Where is needed less often, try deleting them.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+address objectName = objectName 
+\backslash
+hsapp ".address"
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+street objectName = objectName 
+\backslash
+hsapp ".street"
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+city objectName = objectName 
+\backslash
+hsapp ".city"
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+name objectName = objectName 
+\backslash
+hsapp ".name"
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+age objectName = objectName 
+\backslash
+hsapp ".age" 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+wilshire :: String 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+wilshire = "
+\backslash
+backslash"Wilshire Blvd
+\backslash
+backslash""
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+aliceWilshire :: RemoteValue a 
+\backslash
+to RemoteMonad (RemoteValue a)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+aliceWilshire newperson = RemoteSet (address >>> street) wilshire newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+getStreet :: RemoteValue a 
+\backslash
+to (RemoteMonad String)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+getStreet newperson = RemoteView (address >>> street) newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+birthday :: RemoteValue Int 
+\backslash
+to RemoteMonad (RemoteValue Int)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+birthday newperson = RemoteOver age (
+\backslash
+backslash x 
+\backslash
+to (x + 1::Int)) newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+getAge :: RemoteValue a 
+\backslash
+to (RemoteMonad Int)
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+getAge newperson = RemoteView age newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+! 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+exercise1 :: Engine 
+\backslash
+to IO ()
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+exercise1 eng = 
+\backslash
+hsdo{
+\end_layout
+
+\begin_layout Plain Layout
+
+send eng 
+\backslash
+$ 
+\backslash
+hsdo{
+\end_layout
+
+\begin_layout Plain Layout
+
+command 
+\backslash
+$ call "console.log" [string "starting..."]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+render 
+\backslash
+$ "Exercise1"
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+newperson 
+\backslash
+hsfrom initializeObjectAbstraction2 "alice" alice
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+aliceWilshire newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+mystreet_person 
+\backslash
+hsfrom getStreet newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+birthday newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+herNewAge 
+\backslash
+hsfrom getAge newperson
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+render 
+\backslash
+$ "mystreet
+\backslash
+_person: " 
+\backslash
+hsapp mystreet
+\backslash
+_person
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+render 
+\backslash
+$ "herNewAge: " 
+\backslash
+hsapp show herNewAge
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{haskell*}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
