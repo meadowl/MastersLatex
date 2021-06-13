@@ -132,8 +132,8 @@ Set-Set are VERY well-behaved.
 \begin_inset Formula 
 \begin{gather*}
 Set\;w\;(View\;w)\;=\;id\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
+View\;(Set\;w\;p)\;=\;p\\
+Set(Set(w\;p)\;p^{\prime}\;=\;Set(w\;p^{\prime})
 \end{gather*}
 
 \end_inset
@@ -209,6 +209,21 @@ end{code}
 \begin_layout Standard
 The structure is so general, polymorphic that we need to establish laws
  that form what lenses are.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename LensDiagram.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

@@ -211,5 +211,29 @@ The structure is so general, polymorphic that we need to establish laws
  that form what lenses are.
 \end_layout
 
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename LensDiagram.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is a basic idea of what a simplistic lens accomplishes, by providing
+ a means to pattern match internally the ability to navigate withing a structure
+ and even its substructures are possible.
+ As long as the substructure also has been formed in away for pattern matching
+ to also work on it.
+ This creates a composability of the lenses so that it becomes possible
+ to find a focus even if it is nested two or more structures deep.
+ Allowing for viewing or setting that focus, depending on the wish of a
+ given programmer.
+ 
+\end_layout
+
 \end_body
 \end_document
