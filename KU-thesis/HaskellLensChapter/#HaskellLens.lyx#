@@ -105,28 +105,86 @@ The Haskell Lens
 \end_layout
 
 \begin_layout Standard
-Bidirectional transformations (bx).
+Lenses are restudy of the old bidirectional transformations (bx) problem
+ that was already solved through existing dictionary and record systems,
+ but their variation to this approach has been the subject of much study
+ in the attempts to simply for the end user the ways that they can focus
+ in on the individual parts of structures.
 \end_layout
 
 \begin_layout Standard
-Here are some mathematical lens rules.
+Important note, most definitions have the direction established.
+ i.e.
+ where one is going.
+ So only arguments are the structure itself in view case, with just structure
+ and item in set case.
+ Which implicates that the overall pattern-matching system which is the
+ individually implemented lens for each focus in a structure, has been embedded
+ before the configuration of 
+\emph on
+Set
+\emph default
+ and 
+\emph on
+View
+\emph default
+ respectively in its descriptive rules.
+ In practicality the lens is an active and changing argument that the convention
+al programmer sets themselves when they are establishing where they'd like
+ to mutate a structure.
 \end_layout
 
 \begin_layout Standard
-Set-View, View-Set, are well-behaved.
-\end_layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
-\begin_layout Standard
-Set-Set are VERY well-behaved.
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{gather*}
-RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
+Set\;w\;(View\;w)\;=\;id\\
+View\;(Set\;w\;p)\;=\;p\\
+Set(Set(w\;p)\;p^{\prime}\;=\;Set(w\;p^{\prime})
 \end{gather*}
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Lens Laws
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Lens Laws"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Set-View, View-Set are well-behaved.
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Set-Set is very well-behaved.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -134,7 +192,99 @@ RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
 \end_layout
 
 \begin_layout Standard
-Here are some Haskell lens rules.
+The structure is so general, polymorphic that we need to establish laws
+ that form what lenses are, and what rules that they should follow in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Lens Laws"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This is important since there are lenses that do not follow any strict
+ rules and arbitrarily apply bidirectional transformations in ways that
+ aren't consistent.
+ A prime example would be the implementation of partial functions such that
+ the View-Set rule holds but the Set-View doesn't and vise-a-versa for Set-View
+ and View-Set respectively.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename LensDiagram.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Lens Diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Lens Diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is a basic idea of what a simplistic lens accomplishes in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Lens Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, by providing a means to pattern match internally the ability to navigate
+ withing a structure and even its substructures are possible.
+ As long as the substructure also has been formed in away for pattern matching
+ to also work on it.
+ This creates a composability of the lenses so that it becomes possible
+ to find a focus even if it is nested two or more structures deep.
+ Allowing for viewing or setting that focus, depending on the wish of a
+ given programmer.
+ Essentially embedding a lens friendly structure into a larger one, doesn't
+ get rid of the ability to lens into it.
+ Provided that the larger structure also has maintained a means to focus
+ onto that substructure with it's own lens.
+ 
+\end_layout
+
+\begin_layout Standard
+There are some basic Haskell types as well as examples that show that the
+ idea of lenses applies to many sorts of structures in the programming world,
+ including modifications or inspections of two-tuple structures — which
+ is shown below.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -150,7 +300,7 @@ begin{code}
 
 \begin_layout Plain Layout
 
-get :: w -> p
+view :: w -> p
 \end_layout
 
 \begin_layout Plain Layout
@@ -164,12 +314,12 @@ set :: w -> p -> w
 
 \begin_layout Plain Layout
 
-get1 :: (a,b) -> a
+view_a :: (a,b) -> a
 \end_layout
 
 \begin_layout Plain Layout
 
-get1 (x,y) = x
+view_a (x,y) = x
 \end_layout
 
 \begin_layout Plain Layout
@@ -178,12 +328,12 @@ get1 (x,y) = x
 
 \begin_layout Plain Layout
 
-set1 :: (a,b) -> a -> (a,b)
+set_a :: (a,b) -> a -> (a,b)
 \end_layout
 
 \begin_layout Plain Layout
 
-set1 (x,y) x' = (x',y)
+set_a (x,y) x' = (x',y)
 \end_layout
 
 \begin_layout Plain Layout
@@ -199,8 +349,26 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-The structure is so general, polymorphic that we need to establish laws
- t
+In these sorts of cases, the general idea of pattern matching to obtain
+ results is explicit and summarized inside of the code itself.
+ However, the lens in which to focus on a specific element of the two-tuple
+ is implied from the direct call to the pattern matching system provided
+ by Haskell's compiler.
+ This holds true for both view_a and set_a, where the inspection of the
+ two-tuple is enough to view or set the contents of the structures respectively.
+\end_layout
+
+\begin_layout Standard
+Now to explain further, the ideas should be given some space in what a typical
+ lens is when locally implemented, since it is fine to talk about the wide
+ variety that might be associated with injection and projection rules in
+ homotopy type theory.
+ It also is noted here that the wider categories or attempts of abstraction
+ to lens will also be avoided since they aren't relevant to the contents
+ of the papers which includes generalized discussions on asymmetric lenses,
+ bimorphic lenses, and likely whatever else has been proposed in the community
+ at this point and time.
+ And rather than make any bold claims that later in the 
 \end_layout
 
 \end_body
