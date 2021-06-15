@@ -201,10 +201,27 @@ end{code}
 
 \begin_layout Standard
 We extend the abstract syntax these modifications to the original well-formed
- lens rules.
+ lens rules, provided in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Remote-Lens-Laws"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{gather*}
 RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
@@ -217,7 +234,26 @@ RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Remote Lens Laws
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Remote-Lens-Laws"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \paragraph_spacing single
 \noindent
 \align center
@@ -249,7 +285,7 @@ Where
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \paragraph_spacing single
 \noindent
 \align center
@@ -292,7 +328,7 @@ item
  is some substructure.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \paragraph_spacing single
 \noindent
 \align center
@@ -329,6 +365,11 @@ b
  those here TO DO) 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 The essentials of what is required is aptly similar to the definitions seen
  in the elementary Prelude construction of Haskell lenses.
@@ -347,7 +388,17 @@ Remote Object's
  The primary difference in how this is handled by Haskell, is that rather
  than simply pattern matching into the already existing structure, a completely
  different approach is needed instead.
- (Write here more information why a different approach is needed.)
+\end_layout
+
+\begin_layout Standard
+This approach is best summarized as a conflict between the fundamental methods
+ used in typical lens methods that rely strongly on internal pattern matching
+ for the composability of lens, and the existence of a remote connection
+ that prevents that internal pattern matching to take place.
+ This can be essentially thought of any scenario where accessing a structure
+ isn't possible inside of the host system, and the necessity to query a
+ client system takes place.
+ 
 \end_layout
 
 \begin_layout Standard

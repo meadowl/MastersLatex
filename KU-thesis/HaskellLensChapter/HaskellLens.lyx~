@@ -132,6 +132,9 @@ View
  In practicality the lens is an active and changing argument that the convention
 al programmer sets themselves when they are establishing where they'd like
  to mutate a structure.
+ Depending on the source, it is perfectly possible that the lens laws themselves
+ are defined with that extra argument since including it in the hard coding
+ is so common place.
 \end_layout
 
 \begin_layout Standard
@@ -282,12 +285,27 @@ noprefix "false"
 \begin_layout Standard
 There are some basic Haskell types as well as examples that show that the
  idea of lenses applies to many sorts of structures in the programming world,
- including modifications or inspections of two-tuple structures — which
- is shown below.
- 
+ including modifications or inspections of two-tuple structures as displayed
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Elementary-Haskell-Lens"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -341,6 +359,30 @@ set_a (x,y) x' = (x',y)
 
 \backslash
 end{code}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Elementary Haskell Lens
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Elementary-Haskell-Lens"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
