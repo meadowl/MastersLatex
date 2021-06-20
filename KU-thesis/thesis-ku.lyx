@@ -53,7 +53,9 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
-\usepackage{haskell}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
 \end_preamble
 \options letterpaper
 \use_default_options true

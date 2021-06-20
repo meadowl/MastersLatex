@@ -20,7 +20,6 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
-\usepackage{haskell}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -105,22 +104,71 @@ The Haskell Lens
 \end_layout
 
 \begin_layout Standard
-Lenses are restudy of the old bidirectional transformations (bx) problem
- that was already solved through existing dictionary and record systems,
- but their variation to this approach has been the subject of much study
- in the attempts to simply for the end user the ways that they can focus
- in on the individual parts of structures.
+Lenses are a restudy of the old problem of bidirectional transformations
+ (bx) that were historically solved using dictionary and record systems.
+ It is still an active field on it's own, with much stronger abstractions
+ constructed to hold onto many different sub-fields within computer science.
+ Explicitly described, bx are a mechanism for maintaining the consistency
+ of two (or more) related sources of information, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "inproceedings"
+literal "false"
+
+\end_inset
+
+.
+ The nature of bidirectional transformations allows them to be applied to
+ domain specific languages and the host language itself, as a means to translate
+ between run-time values.
 \end_layout
 
 \begin_layout Standard
-Important note, most definitions have the direction established.
+From the discovering of lenses in the bx programming community there has
+ been in recent years a new passion for their joint implementation in a
+ larger variety of scenarios then they were initially imagined for.
+ The study has broadened to the attempt to abstract and simplify over many
+ sorts of structures, including their individual parts.
+ The attempt at generality provides for opportunities in anything that might
+ be presentable as a meaningful bx.
+\end_layout
+
+\begin_layout Standard
+The structure is so general, polymorphic that we need to establish laws
+ that form what lenses are, and what rules that they should follow.
+ This is important since there are lenses that do not follow any strict
+ rules and arbitrarily apply bidirectional transformations in ways that
+ aren't consistent, which makes them not well-behaved.
+ In fact, this manuscript will only deal with the idea of well-behaved lenses
+ and their applications.
+ These typical mathematical lens have rules that shall be obeyed between
+ strictly two sources of information, if one is to call them well-behaved.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{gather}
+Set\;obj\;(View\;obj)\;=\;id\label{eq:1}\\
+View\;(Set\;obj\;item)\;=\;obj\label{eq:2}\\
+Set(Set(obj\;item)\;item^{\prime}\;=\;Set(obj\;item^{\prime})\label{eq:3}
+\end{gather}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Important note, most definitions have the direction of the lens operators
+ established.
  i.e.
- where one is going.
- So only arguments are the structure itself in view case, with just structure
- and item in set case.
- Which implicates that the overall pattern-matching system which is the
- individually implemented lens for each focus in a structure, has been embedded
- before the configuration of 
+ where the Set or View will traverse along a given object to reach the designate
+d destination.
+ So the only arguments are the structure itself in View, with just structure
+ and item in Set.
+ The definitions implicate that the overall pattern-matching system, which
+ is the individually implemented lens for each focus in a structure, has
+ been embedded before the configuration of 
 \emph on
 Set
 \emph default
@@ -128,90 +176,26 @@ Set
 \emph on
 View
 \emph default
- respectively in its descriptive rules.
- In practicality the lens is an active and changing argument that the convention
-al programmer sets themselves when they are establishing where they'd like
- to mutate a structure.
+, respectively, in its descriptive rules.
+ In use the lens is an active and changing argument that the programmer
+ sets when they are establishing where they'd like to mutate a structure.
+ It is perfectly possible that the lens laws themselves are defined with
+ that extra argument as shown below, which exposes some addition structure
+ underneath that the more instantiated definitions previously provided obfuscate
+d.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
 \begin_inset Formula 
-\begin{gather*}
-Set\;w\;(View\;w)\;=\;id\\
-View\;(Set\;w\;p)\;=\;p\\
-Set(Set(w\;p)\;p^{\prime}\;=\;Set(w\;p^{\prime})
-\end{gather*}
+\begin{gather}
+Set\;acc\;obj\;(View\;acc\;obj)\;=\;id\label{eq:1-1}\\
+View\;acc\;(Set\;acc\;obj\;item)\;=\;obj\label{eq:2-1}\\
+Set(Set(obj\;item)\;item^{\prime}\;=\;Set(obj\;item^{\prime})\label{eq:3-1}
+\end{gather}
 
 \end_inset
 
 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Lens Laws
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Lens Laws"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-Set-View, View-Set are well-behaved.
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-Set-Set is very well-behaved.
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The structure is so general, polymorphic that we need to establish laws
- that form what lenses are, and what rules that they should follow in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Lens Laws"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- This is important since there are lenses that do not follow any strict
- rules and arbitrarily apply bidirectional transformations in ways that
- aren't consistent.
- A prime example would be the implementation of partial functions such that
- the View-Set rule holds but the Set-View doesn't and vise-a-versa for Set-View
- and View-Set respectively.
- 
 \end_layout
 
 \begin_layout Standard
@@ -282,12 +266,28 @@ noprefix "false"
 \begin_layout Standard
 There are some basic Haskell types as well as examples that show that the
  idea of lenses applies to many sorts of structures in the programming world,
- including modifications or inspections of two-tuple structures — which
- is shown below.
- 
+ including modifications or inspections of two-tuple structures as displayed
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Elementary-Haskell-Lens"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -348,6 +348,30 @@ end{code}
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Elementary Haskell Lens
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Elementary-Haskell-Lens"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 In these sorts of cases, the general idea of pattern matching to obtain
  results is explicit and summarized inside of the code itself.
@@ -368,7 +392,125 @@ Now to explain further, the ideas should be given some space in what a typical
  of the papers which includes generalized discussions on asymmetric lenses,
  bimorphic lenses, and likely whatever else has been proposed in the community
  at this point and time.
- And rather than make any bold claims that later in the 
+ And rather than make any bold claims about polymorphic lenses, topics will
+ be restricted to monomorphic occurrences instead.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+type MyLens s a = forall f.
+ Functor f => (a -> f a) -> s -> f s
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data Creation = Creation {
+\end_layout
+
+\begin_layout Plain Layout
+
+    _title :: String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , _rank :: Int}
+\end_layout
+
+\begin_layout Plain Layout
+
+    deriving (Show, Eq)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+item_name :: MyLens Creation String
+\end_layout
+
+\begin_layout Plain Layout
+
+item_name some_function (Creation t r) = 
+\end_layout
+
+\begin_layout Plain Layout
+
+			(
+\backslash
+t'->  Creation t' r) <$> (some_function t)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+set :: forall s a.
+ MyLens s a -> (a -> s -> s) 
+\end_layout
+
+\begin_layout Plain Layout
+
+view :: MyLens s a -> (s -> a)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+getPateronTitle :: Creation -> String
+\end_layout
+
+\begin_layout Plain Layout
+
+getPateronTitle = view item_name
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+setPateronTitle :: Creation -> String -> Creation 
+\end_layout
+
+\begin_layout Plain Layout
+
+setPateronTitle = set item_name
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
