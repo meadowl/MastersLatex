@@ -208,7 +208,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename LensDiagram.png
+	filename r.png
+	scale 150
 
 \end_inset
 
@@ -237,7 +238,7 @@ name "fig:Lens Prism"
 \end_layout
 
 \begin_layout Standard
-Here is a basic idea of what a simplistic lens accomplishes in Figure 
+There is a basic idea of what a simplistic lens accomplishes in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Lens Prism"
@@ -247,18 +248,18 @@ noprefix "false"
 
 \end_inset
 
-, by providing a means to pattern match internally the ability to navigate
- withing a structure and even its substructures are possible.
- As long as the substructure also has been formed in away for pattern matching
- to also work on it.
- This creates a composability of the lenses so that it becomes possible
- to find a focus even if it is nested two or more structures deep.
- Allowing for viewing or setting that focus, depending on the wish of a
- given programmer.
- Essentially embedding a lens friendly structure into a larger one, doesn't
- get rid of the ability to lens into it.
- Provided that the larger structure also has maintained a means to focus
- onto that substructure with it's own lens, this is shown in Figure 
+, showing a means to pattern match internally and a navigation of that structure
+ to the desired focus with the help of a lens.
+ The diagram hints that it is possible to navigate into the focus, provided
+ that the focus is a similarly formatted structure.
+ This is true, if both the primary structure and all associated substructures
+ have been made in a way that allows for pattern-matching, then pattern-matching
+ over the entire structure is possible.
+ The stacking of structures, creates a composability of the lenses so that
+ it becomes possible to find a focus even if it is nested two or more structures
+ deep.
+ The embedding a lens friendly structure into a larger one and the resulting
+ composition of lenses is illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Diagram of Lens Composition"
@@ -311,9 +312,8 @@ name "fig:Diagram of Lens Composition"
 
 \begin_layout Standard
 There are some basic Haskell types as well as examples that show that the
- idea of lenses applies to many sorts of structures in the programming world,
- including modifications or inspections of two-tuple structures as displayed
- in Figure 
+ idea of lenses applies to many sorts of structures, including modifications
+ or inspections of two-tuple structures as displayed in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Elementary-Haskell-Lens"
@@ -328,7 +328,6 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -336,6 +335,15 @@ status open
 \begin_layout Plain Layout
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}[t]{1
+\backslash
+columnwidth}%
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -389,12 +397,30 @@ set_a (x,y) x' = (x',y)
 end{code}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename geogebra-export.png
+	scale 85
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -419,27 +445,30 @@ name "fig:Elementary-Haskell-Lens"
 \end_layout
 
 \begin_layout Standard
-In these sorts of cases, the general idea of pattern matching to obtain
- results is explicit and summarized inside of the code itself.
- However, the lens in which to focus on a specific element of the two-tuple
- is implied from the direct call to the pattern matching system provided
- by Haskell's compiler.
+In simple cases, the general idea of pattern matching to obtain results
+ is explicit and summarized inside the code itself.
+ However, Haskell's compiler allows for implicit pattern matching to take
+ place as well.
+ The implicit calls to focus on specific elements of the two-tuple is handled
+ in this manner for all cases shown.
  This holds true for both view_a and set_a, where the inspection of the
  two-tuple is enough to view or set the contents of the structures respectively.
 \end_layout
 
 \begin_layout Standard
-Now to explain further, the ideas should be given some space in what a typical
- lens is when locally implemented, since it is fine to talk about the wide
- variety that might be associated with injection and projection rules in
- homotopy type theory.
- It also is noted here that the wider categories or attempts of abstraction
- to lens will also be avoided since they aren't relevant to the contents
- of the papers which includes generalized discussions on asymmetric lenses,
- bimorphic lenses, and likely whatever else has been proposed in the community
- at this point and time.
- And rather than make any bold claims about polymorphic lenses, topics will
- be restricted to monomorphic occurrences instead.
+To explain further, lenses have been so generalized as to become such a
+ wide sub-field of bx, that is becomes cumbersome to handle explanations
+ for all the work that has been done, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "inproceedings"
+literal "false"
+
+\end_inset
+
+.
+ These and many more topics will be restricted to monomorphic occurrences
+ instead, whilst the rest will fall outside the scope of this thesis.
 \end_layout
 
 \begin_layout Standard
