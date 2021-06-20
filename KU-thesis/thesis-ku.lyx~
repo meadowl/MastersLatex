@@ -53,6 +53,9 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
 \end_preamble
 \options letterpaper
 \use_default_options true
@@ -368,6 +371,26 @@ end{romanpages}
 \begin_inset CommandInset include
 LatexCommand include
 filename "ScratchDraft/Draft-0.1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "IntroductionChapter/Introduction.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "HaskellLensChapter/HaskellLens.lyx"
 
 \end_inset
 
