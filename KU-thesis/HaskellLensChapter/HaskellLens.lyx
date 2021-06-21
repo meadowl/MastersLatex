@@ -747,7 +747,7 @@ view
 \emph default
  are implementing their individual accesses to the structure aren't terribly
  important, they are only giving instantiation to the much more familiar
- usage and format of the well-behaved lens laws in Equations
+ usage and format of the well-behaved lens laws in Equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:1"
@@ -757,7 +757,7 @@ noprefix "false"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:2"
@@ -767,7 +767,7 @@ noprefix "false"
 
 \end_inset
 
-,
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3"

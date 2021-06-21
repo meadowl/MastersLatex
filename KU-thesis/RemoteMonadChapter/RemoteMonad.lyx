@@ -21,10 +21,7 @@
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
 
-\usepackage{xcolor}
-\definecolor{darkblue}{rgb}{0,0,0.5} 
-\usepackage{transparent}
-\usepackage[adobe-utopia]{mathdesign}
+\usepackage{fvextra}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -166,7 +163,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
 \end_layout
 
 \begin_layout Plain Layout
@@ -229,8 +227,8 @@ status open
 \begin_inset Formula 
 \begin{gather*}
 RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
+RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item\\
+RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)
 \end{gather*}
 
 \end_inset
@@ -336,37 +334,38 @@ item
 \paragraph_spacing single
 \noindent
 \align center
-Where these laws show the View-Set (Modifying a subpart such that it is
- the same as it was before), Set-Set (Modifying a subpart with 
-\begin_inset Quotes eld
+Where these laws show the View-Set Eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1-1"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
-a
-\begin_inset Quotes erd
+, Set-View Eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2-1"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
-, then with 
-\begin_inset Quotes eld
+, Set-Set Eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3-1"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
-b
-\begin_inset Quotes erd
-\end_inset
-
- will be the same as if you just modified with 
-\begin_inset Quotes eld
-\end_inset
-
-b
-\begin_inset Quotes erd
-\end_inset
-
-), Set-View (Modifying a subpart, then viewing will be the same as just
- viewing the modification itself).
- (These are the analogs, get rid of parenthesis.
- Represent these extended to a remote setting.
- More detailed explanation in previous chapter with equations, and reference
- those here TO DO) 
+.
+ 
 \end_layout
 
 \end_inset
@@ -573,7 +572,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -591,12 +591,7 @@ RemoteSet :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad
 \begin_layout Plain Layout
 
 RemoteOver :: (FromJSON t, Show a) => (String -> String) -> (t -> a) ->
- (RemoteValue a)
-\end_layout
-
-\begin_layout Plain Layout
-
- 					 -> RemoteMonad (RemoteValue a)
+ (RemoteValue a) -> RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -667,7 +662,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -711,7 +707,8 @@ end{code}
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -747,7 +744,8 @@ end{code}
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -795,20 +793,20 @@ end{code}
 \begin_layout Standard
 As a reminder, it is worth noting that due to the fact that we are dealing
  with a remote connection that the connection must be passed around — in
- addition to the structure you want to manipulate, where inside the structure
+ addition to the structure one wants to manipulate, where inside the structure
  one wishes to lens to, and a value if using the Set function.
 \end_layout
 
 \begin_layout Standard
-Now, one more important thing to note, is while in Haskell you normally
- are manipulating and creating new objects every time you run a function
+Now, one more important thing to note, is while in Haskell one normally
+ is manipulating and creating new objects every time one runs a function
  or assign it to a value.
- When manipulating Javascript, you are never creating a new object on the
+ When manipulating Javascript, one is never creating a new object on the
  other side.
- So, any code you’d want to write with these methods on the Haskell-side,
- would need to keep in mind that you never are dealing with a fresh object.
- The connection will always make sure you are pointing to the one and only
- original Javascript object you are trying to manipulate.
+ So, any code one would want to write with these methods on the Haskell-side,
+ would need to keep in mind that one is never dealing with a fresh object.
+ The connection will always make sure one is pointing to the one and only
+ original Javascript object one is trying to manipulate.
 \end_layout
 
 \begin_layout Standard
@@ -858,7 +856,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -885,8 +884,8 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-Where for the remote-object of person, I am accessing 2 layers into it’s
- fields to retrieve a double value from extra3.
+Continuing for the remote-object of person, one is accessing 2 layers into
+ it’s fields to retrieve a double value from extra3.
 \end_layout
 
 \begin_layout Standard
@@ -906,7 +905,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -948,7 +948,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1005,7 +1006,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1075,7 +1077,6 @@ texttt{blah}
 \end_layout
 
 \begin_layout Standard
-– Where is needed less often, try deleting them.
 \begin_inset ERT
 status open
 
@@ -1088,7 +1089,8 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout

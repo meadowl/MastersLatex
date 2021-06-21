@@ -56,6 +56,7 @@
 
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{fvextra}
 \end_preamble
 \options letterpaper
 \use_default_options true
@@ -196,71 +197,20 @@ begin{abstractlong}
 \end_layout
 
 \begin_layout Standard
-Hopefully, you are reading 
-\begin_inset Quotes eld
-\end_inset
-
-ku-thesis.pdf
-\begin_inset Quotes erd
-\end_inset
-
-.
- If you are reading a file with some other name, then there's been a goof
- up.
+The contents of this manuscript are intended to show a deeper look at the
+ manipulation of information across a remote distance by providing a means
+ to safely edit and manipulate data with the type-safety of lensing.
+ In standard practice most programmers rely on complex methods to guarantee
+ that they are editing without error, or in other cases they omit effort
+ and use simple methods without any guarantees on errors.
+ Taking the host side to be the strongly-typed language with lensing properties,
+ and the client side to be a weakly-typed language with minimal lensing
+ properties, this work will contribute to the existing body of research
+ that has brought lenses from the realm of math to the space of computer
+ science.
+ And shall give a formal look on remote editing of data in type safety with
+ remote monads and their variants.
  
-\end_layout
-
-\begin_layout Standard
-I want you to use \SpecialChar LaTeX
-.
- I think doing anything else is finger painting.
- I've watched 20 MA and PhD theses written with this template and I know
- a bright student will succeed and be happy with the result.
- If you have a laptop computer and you want to show me some errors, I can
- give you 5 or 10 minutes.
- But not much more...
- 
-\end_layout
-
-\begin_layout Standard
-CRMDA offers some workshops and I teach graduate courses in which we show
- how to use \SpecialChar LaTeX
-.
- If you find something wrong with kuthesis.cls, I will be glad to try to
- fix it.
- 
-\end_layout
-
-\begin_layout Standard
-I don't have time/ability to answer a million email questions about \SpecialChar LaTeX
- or
- \SpecialChar LyX
-.
- If you are stuck on a tough problem, I may be able to help, but if I have
- to exert myself, you should know I expect you to give me a t-shirt and/or
- add me to the acknowledgments in your dissertation.
- (I'm not joking on that.) I spent about 20 hours helping a KUMC student
- fix his LaTeX and he assured me I'll get a big discount on treatment for
- any liver illnesses I may endure in the future.
- (I'm joking about that.) I did get a medical center license plate holder,
- though.
-\end_layout
-
-\begin_layout Standard
-Paul Johnson <pauljohn@ku.edu>
-\end_layout
-
-\begin_layout Standard
-Prof.
- Political Science & Director, Center for Research Methods and Data Analysis
-\end_layout
-
-\begin_layout Standard
-2019-02-01
-\end_layout
-
-\begin_layout Standard
-And that's the end of the abstract.
 \end_layout
 
 \begin_layout Standard
@@ -287,7 +237,7 @@ status open
 
 
 \backslash
-begin{acknowledgementslong}
+begin{acknowledgements}
 \end_layout
 
 \begin_layout Plain Layout
@@ -306,8 +256,20 @@ begin{acknowledgementslong}
 \end_layout
 
 \begin_layout Standard
-I would like to thank all of the little people who made this thesis possible.
- Sleepy, Dopey, Grumpy, you know who you are.
+A thanks to Dr.
+ Matthew Moore for his inspiration and continued help throughout the entirety
+ of my graduate career, from independent study on Homotopy Type Theory to
+ this Master's Thesis.
+ An appreciation for Dr.
+ Andy Gill for letting me partake in this research, from my own interests
+ in the topic.
+ Dr.
+ Man Kong for believing that I could turn out to be a decent GTA, resulting
+ in the funding for this paper.
+ And a thanks to Dr.
+ Gary Minden and Dr.
+ Perry Alexander for teaching the more formative classes in my decision
+ to attend graduate school.
 \end_layout
 
 \begin_layout Standard
@@ -318,7 +280,7 @@ status open
 
 
 \backslash
-end{acknowledgementslong}
+end{acknowledgements}
 \end_layout
 
 \end_inset
