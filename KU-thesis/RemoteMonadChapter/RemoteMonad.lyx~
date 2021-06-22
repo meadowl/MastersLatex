@@ -218,7 +218,6 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -427,7 +426,6 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -591,12 +589,7 @@ RemoteSet :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad
 \begin_layout Plain Layout
 
 RemoteOver :: (FromJSON t, Show a) => (String -> String) -> (t -> a) ->
- (RemoteValue a)
-\end_layout
-
-\begin_layout Plain Layout
-
- 					 -> RemoteMonad (RemoteValue a)
+ (RemoteValue a) -> RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -723,9 +716,7 @@ RemoteSet accessor new_item object = constructor $ JavaScript $ pack $
 
 \begin_layout Plain Layout
 
-		(accessor (var
-\backslash
-_text objectName)) ++ " = " ++ new_item
+		(accessor (var_text objectName)) ++ " = " ++ new_item
 \end_layout
 
 \begin_layout Plain Layout
@@ -1057,6 +1048,10 @@ end{code}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 FP Complete Lens Exercise Adapated To 
 \emph on
 RemoteMonad
@@ -1066,19 +1061,28 @@ RemoteMonad
 Remote Lens.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – For Code Words like RemoteView 
 \backslash
 texttt{blah} 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – Not applying them both at the same time.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – Talk about why these are congruent but not equal, in original math they
  are equal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -1125,6 +1129,40 @@ age objectName = objectName ++ ".age"
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some Details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1201,6 +1239,40 @@ getAge newperson = RemoteView age newperson
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some Details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1210,12 +1282,12 @@ exercise1 :: Engine -> IO ()
 
 \begin_layout Plain Layout
 
-exercise1 eng = do{
+exercise1 eng = do
 \end_layout
 
 \begin_layout Plain Layout
 
-	send eng $ do{
+	send eng $ do
 \end_layout
 
 \begin_layout Plain Layout
@@ -1265,29 +1337,18 @@ exercise1 eng = do{
 
 \begin_layout Plain Layout
 
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 end{code}
 \end_layout
 
-\begin_layout Plain Layout
-
-%
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Some Details.
 \end_layout
 
 \end_body

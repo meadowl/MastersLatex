@@ -1,0 +1,20 @@
+\newrgbcolor{rvwvcq}{0.08235294117647059 0.396078431372549 0.7529411764705882}
+\psset{xunit=1cm,yunit=1cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-0.8874,-1.569)(24.3686,14.887)
+\multips(0,-1)(0,2){9}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-0.8874,0)(24.3686,0)}
+\multips(0,0)(2,0){13}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-1.569)(0,14.887)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,labels=none,Dx=2,Dy=2,ticksize=-2pt 0,subticks=2]{->}(0,0)(0,0)(24.3686,14.887)
+\psline[linewidth=2pt,linestyle=dashed,dash=1pt 1pt](0,3)(2,3)
+\psline[linewidth=2pt,linestyle=dashed,dash=1pt 1pt](2,3)(2,0)
+\psline[linewidth=2pt,linestyle=dashed,dash=1pt 1pt](2,3)(4,3)
+\begin{scriptsize}
+\psdots[dotstyle=*,linecolor=rvwvcq](2,3)
+\rput[bl](2.0826,3.227){\rvwvcq{(x,y)}}
+\psdots[dotstyle=*,linecolor=rvwvcq](4,3)
+\rput[bl](4.0846,3.227){\rvwvcq{$set_a((x,y),x') = (x',y)$}}
+\psdots[dotstyle=*,linecolor=rvwvcq](0,3)
+\rput[bl](0.0806,3.227){\rvwvcq{y}}
+\psdots[dotstyle=*,linecolor=rvwvcq](2,0)
+\rput[bl](2.0826,0.213){\rvwvcq{$view_a(x,y) = x$}}
+\end{scriptsize}
+\end{pspicture*}

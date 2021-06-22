@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 1043.6 900" xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw" version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="joinedLines" id="id1558802563">
+            <polyline points="200.0,860.0 200.0,700.0 200.0,120.0 " stroke="black" stroke-width="2.5" fill="none" stroke-dasharray="8.819444444444445, 5.291666666666667" latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-1558802563)"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id2010909520">
+            <rect x="98.00000000000011" y="49.40000000000015" width="219.60000000000014" height="88.39999999999986" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="white"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id552376744">
+            <rect x="783.0000000000001" y="49.40000000000015" width="219.60000000000048" height="88.39999999999986" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id1762685084">
+            <rect x="1.0" y="1.0" width="1.0" height="1.0" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id911425244">
+            <rect x="1.0" y="1.0" width="1.0" height="1.0" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id127686041">
+            <rect x="1.0" y="1.0" width="1.0" height="1.0" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="none"/>
+        </g>
+        <g latexdraw:type="rectangle" id="id496551479">
+            <rect x="181.0" y="203.10526315789474" width="38.0" height="475.89473684210526" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="white"/>
+        </g>
+    </g>
+    <defs>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="90" id="arrow0-1558802563">
+            <path d="M 0.0 0.0 L -9.585208333333334 -3.447916666666667 L -9.585208333333334 0.0 L -9.585208333333334 3.447916666666667 z" fill="black" stroke="black" latexdraw:arrSizeNum="1.7" latexdraw:tbarSizeNum="5"/>
+        </marker>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:centreHoriz>false</latexdraw:centreHoriz>
+            <latexdraw:positionVert/>
+            <latexdraw:zoom>0.95</latexdraw:zoom>
+            <latexdraw:vpx>0.504</latexdraw:vpx>
+            <latexdraw:vpy>0.4</latexdraw:vpy>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

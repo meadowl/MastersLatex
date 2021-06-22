@@ -20,6 +20,14 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+\usepackage{tikz} 
+\usepackage{pgfplots}
+% recommended as of Pgfplots 1.3:
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+\usepackage{pstricks-add}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -747,7 +755,7 @@ view
 \emph default
  are implementing their individual accesses to the structure aren't terribly
  important, they are only giving instantiation to the much more familiar
- usage and format of the well-behaved lens laws in Equations
+ usage and format of the well-behaved lens laws in Equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:1"
@@ -782,6 +790,25 @@ noprefix "false"
  where after applying the lens to the set or view, then only the classic
  arguments are needed, since the lens has already focused on a specific
  area of the structure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "geo-graph.txt"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "geogebra-export.txt"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

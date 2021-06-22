@@ -218,7 +218,6 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -427,7 +426,6 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -718,9 +716,7 @@ RemoteSet accessor new_item object = constructor $ JavaScript $ pack $
 
 \begin_layout Plain Layout
 
-		(accessor (var
-\backslash
-_text objectName)) ++ " = " ++ new_item
+		(accessor (var_text objectName)) ++ " = " ++ new_item
 \end_layout
 
 \begin_layout Plain Layout
@@ -1052,6 +1048,10 @@ end{code}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 FP Complete Lens Exercise Adapated To 
 \emph on
 RemoteMonad
@@ -1061,19 +1061,38 @@ RemoteMonad
 Remote Lens.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – For Code Words like RemoteView 
 \backslash
 texttt{blah} 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – Not applying them both at the same time.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 – Talk about why these are congruent but not equal, in original math they
  are equal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a particularly complete example from the first exercise of Haskell
+ lensing from FP Complete, that was subsequently adapted to 
+\emph on
+RemoteMonad
+\emph default
+ and 
+\emph on
+Remote Lens 
+\emph default
+so that it could be clearly illustrated in long form what some of the major
+ similarities and differences might be between remote and local implementations.
 \end_layout
 
 \begin_layout Standard
@@ -1120,6 +1139,40 @@ age objectName = objectName ++ ".age"
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some Details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1196,6 +1249,40 @@ getAge newperson = RemoteView age newperson
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some Details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1205,12 +1292,12 @@ exercise1 :: Engine -> IO ()
 
 \begin_layout Plain Layout
 
-exercise1 eng = do{
+exercise1 eng = do
 \end_layout
 
 \begin_layout Plain Layout
 
-	send eng $ do{
+	send eng $ do
 \end_layout
 
 \begin_layout Plain Layout
@@ -1260,29 +1347,18 @@ exercise1 eng = do{
 
 \begin_layout Plain Layout
 
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 end{code}
 \end_layout
 
-\begin_layout Plain Layout
-
-%
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Some Details.
 \end_layout
 
 \end_body
