@@ -1,0 +1,23 @@
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{pstricks-add}
+% \usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+% \makeatletter % For spaces in paths
+% \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+% \makeatother
+% 
+\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+{
+\begin{pspicture}(0,-4.524619)(4.88,0.6879524)
+\definecolor{colour0}{rgb}{0.5019608,0.5019608,0.0}
+\pstriangle[linecolor=cyan, linewidth=0.02, fillstyle=gradient, gradlines=2000, gradbegin=blue, dimen=outer](2.44,-4.1777143)(4.88,4.584)
+\psline[linecolor=black, linewidth=0.04](2.456,0.35295236)(1.0133333,-4.1510477)
+\psdots[linecolor=colour0, dotsize=0.44](1.008,-4.1840477)
+\psdots[linecolor=black, dotstyle=oplus, dotsize=0.44](1.0053333,-4.1787143)
+\rput[bl](1.24,-4.524619){Focus}
+\rput[bl](1.688,0.40795237){Structure}
+\end{pspicture}
+}

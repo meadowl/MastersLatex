@@ -1,0 +1,43 @@
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{pstricks-add}
+% \usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+% \makeatletter % For spaces in paths
+% \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+% \makeatother
+% 
+\psscalebox{0.45 0.5} % Change this value to rescale the drawing.
+{
+\begin{pspicture}(0,-8.619772)(17.6,8.619772)
+\definecolor{colour2}{rgb}{0.8,0.9019608,1.0}
+\psline[linecolor=black, linewidth=0.05, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291667cm 1.7,arrowlength=1.39,arrowinset=0.0]{<-}(4.0,-8.580228)(4.0,-5.380228)(4.0,6.219772)
+\psframe[linecolor=black, linewidth=0.04, fillstyle=gradient, gradlines=2000, gradbegin=colour2, gradend=white, dimen=outer](6.022222,7.6787)(2.1841629,5.8707)
+\psline[linecolor=black, linewidth=0.06, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.06cm 3.5,arrowlength=2.0,arrowinset=0.0]{->}(15.417505,-4.3396106)(4.3491597,-4.3455434)(4.332859,-4.345552)
+\psline[linecolor=black, linewidth=0.06, arrowsize=0.06cm 3.5,arrowlength=2.0,arrowinset=0.0]{->}(4.127059,4.1962423)(15.195406,4.1962423)(15.211707,4.1962423)
+\psframe[linecolor=black, linewidth=0.04, dimen=outer](0.06,8.619772)(0.0,8.559772)
+\psframe[linecolor=black, linewidth=0.04, dimen=outer](0.06,8.619772)(0.0,8.559772)
+\psframe[linecolor=black, linewidth=0.04, dimen=outer](0.06,8.619772)(0.0,8.559772)
+\psframe[linecolor=black, linewidth=0.04, fillstyle=gradient, gradlines=2000, gradbegin=colour2, gradend=white, dimen=outer](4.4,4.5776663)(3.6,-4.9802284)
+\rput[bl](3.6,6.619772){Host}
+\psline[linecolor=black, linewidth=0.05, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.05291667cm 1.7,arrowlength=1.39,arrowinset=0.0]{<-}(15.5458765,-8.575522)(15.5458765,-5.3755226)(15.5458765,6.224478)
+\psframe[linecolor=black, linewidth=0.04, fillstyle=gradient, gradlines=2000, gradbegin=colour2, gradend=white, dimen=outer](17.6,7.6564775)(13.761941,5.848478)
+\psframe[linecolor=black, linewidth=0.04, fillstyle=gradient, gradlines=2000, gradbegin=colour2, gradend=white, dimen=outer](15.892271,4.582372)(15.199481,-4.9755225)
+\rput[bl](15.199481,6.6244774){Client}
+\rput[bl](7.974489,4.4460955){Send Remote View}
+\rput[bl](7.9862537,-4.111552){Recieve Local Focus}
+\psframe[linecolor=black, linewidth=0.04, fillstyle=gradient, gradlines=2000, gradbegin=colour2, gradend=white, dimen=outer](11.284716,1.6588454)(6.084716,-1.3411546)
+\psline[linecolor=black, linewidth=0.04](6.084716,0.8588454)(11.284716,0.8588454)
+\rput[bl](6.7647157,1.0988454){Client's Local Structure}
+\psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm](11.233116,0.058845412)(6.1147156,0.058845412)
+\rput[bl](6.8047156,0.21884541){Embeded Substructure}
+\rput[bl](6.8847156,-1.0211546){Focused Element}
+\psline[linecolor=black, linewidth=0.04, linestyle=dotted, dotsep=0.10583334cm](6.6783156,-1.1875546)(6.6847157,-0.54115456)(9.684716,-0.54115456)(9.691115,-1.2899545)
+\psline[linecolor=black, linewidth=0.06, arrowsize=0.06cm 3.5,arrowlength=2.0,arrowinset=0.0]{->>}(15.2,1.8197718)(10.6,1.2197717)
+\psline[linecolor=black, linewidth=0.06, linestyle=dashed, dash=0.17638889cm 0.10583334cm, arrowsize=0.06cm 3.5,arrowlength=2.0,arrowinset=0.0,dotsize=0.07056cm 4.0]{<<-*}(15.2,-1.3802283)(8.0,-1.1802282)
+\psrotate(11.933333, 1.8197718){6.842752}{\rput[bl](11.933333,1.8197718){Local View Method}}
+\psrotate(12.044444, -1.2024505){-2.50679}{\rput[bl](12.044444,-1.2024505){Local Focus}}
+\end{pspicture}
+}

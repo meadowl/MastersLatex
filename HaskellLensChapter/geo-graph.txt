@@ -1,0 +1,29 @@
+\definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-7.861400000000007,
+xmax=17.130600000000015,
+ymin=-5.617000000000007,
+ymax=10.575000000000006,
+xtick={-6,-4,...,16},
+ytick={-4,-2,...,10},]
+\clip(-7.8614,-5.617) rectangle (17.1306,10.575);
+\draw [line width=2pt,dash pattern=on 1pt off 1pt] (0,3)-- (2,3);
+\draw [line width=2pt,dash pattern=on 1pt off 1pt] (2,3)-- (2,0);
+\draw [line width=2pt,dash pattern=on 1pt off 1pt] (2,3)-- (4,3);
+\begin{scriptsize}
+\draw [fill=rvwvcq] (2,3) circle (2.5pt);
+\draw[color=rvwvcq] (2.5226,3.48) node {(x,y)};
+\draw [fill=rvwvcq] (4,3) circle (2.5pt);
+\draw[color=rvwvcq] (6.0866,3.546) node {$set_a((x,y),x') = (x',y)$};
+\draw [fill=rvwvcq] (0,3) circle (2.5pt);
+\draw[color=rvwvcq] (0.1686,3.48) node {y};
+\draw [fill=rvwvcq] (2,0) circle (2.5pt);
+\draw[color=rvwvcq] (3.2926,0.532) node {$view_a(x,y) = x$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}

@@ -21,18 +21,10 @@
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
 
-\usepackage{fvextra}
-\usepackage{pstricks}
-\usepackage{pstricks-add}
-\usepackage{epsfig}
-\usepackage{pst-grad} % For gradients
-\usepackage{pst-plot} % For axes
-\usepackage[space]{grffile} % For spaces in paths
-\usepackage{etoolbox} % For spaces in paths
-\makeatletter % For spaces in paths
-\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
-\makeatother
-\usepackage{auto-pst-pdf}
+\usepackage{xcolor}
+\definecolor{darkblue}{rgb}{0,0,0.5} 
+\usepackage{transparent}
+\usepackage[adobe-utopia]{mathdesign}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -41,12 +33,12 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman "times" "Times New Roman"
+\font_roman "times" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -113,13 +105,20 @@
 \begin_body
 
 \begin_layout Chapter
-Remote Lenses And The Remote Monad
+The Remote Monad
 \end_layout
 
 \begin_layout Standard
-In this chapter, we detail a novel extension of lenses to remote structures,
- by making use of the Remote Monad.
- As described, the two primary components of lenses are the 
+The purpose of this chapter is to expand past covering the mathematical
+ background and the historical Haskell programming context.
+ In this primary article will show both an introduction to remote lenses
+ as well as their implementation with the 
+\emph on
+Remote Monad
+\emph default
+.
+ As described the two primary components of both programmatic and mathematical
+ lenses are the 
 \emph on
 Set
 \emph default
@@ -127,112 +126,23 @@ Set
 \emph on
 View 
 \emph default
-functions
-\emph on
- 
-\emph default
 which produce as a result of applying them both at the same time a command
  referenced as 
 \emph on
 Over
 \emph default
 .
- When one applies
-\emph on
- View 
-\emph default
-to the structure in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Expanded-Lens"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, an element of that structure is retrieved.
- One now modifying that retrieved element with some function, before applying
- 
-\emph on
-Set
-\emph default
- to that very same structure, shall result in a structure' which accomplishes
- the same as having applied 
-\emph on
-Over
-\emph default
- from the very beginning.
- The application of 
-\emph on
-View
-\emph default
- and 
-\emph on
-Set
-\emph default
- in this sequence is equivalent to 
-\emph on
-Over
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "ExpandedLensDiagram.tex"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Expanded Lens
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Expanded-Lens"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-These definitions allows us to describe a variation of lenses that copies
- the syntactical sugar and programmatic intent of these operators over a
- remote connection between a client and a host device, the host running
- Haskell and the client running some other language.
- The variation from standard local lenses is the main subject of study in
- this manuscript and shall be referred to as the 
+ This now allows us to describe a variation that copies on the structure
+ and intent of these operators over a remote connection between a client
+ and a host device, the host running Haskell and the client running some
+ other language.
+ This variation which is the main subject of study of this paper will be
+ referred to as the 
 \emph on
 Remote Lens
 \emph default
-.
- This topic be fleshed out starting now and until the end of this document.
+ and will be fleshed out starting now and until the end of this manuscript.
+ (Clean up this sentence structure)
 \end_layout
 
 \begin_layout Standard
@@ -256,8 +166,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=false,breakafter={>}]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -311,17 +220,18 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
 \begin_inset Formula 
-\begin{flalign*}
-RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\: & \equiv\:\,obj\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\: & \equiv\:\,item\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\, & \equiv\,\:RemoteSet(acc\,\:item2\,\:obj)
-\end{flalign*}
+\begin{gather*}
+RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
+RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\\
+RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item
+\end{gather*}
 
 \end_inset
 
@@ -426,38 +336,37 @@ item
 \paragraph_spacing single
 \noindent
 \align center
-Where these laws show the View-Set Eq (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
+Where these laws show the View-Set (Modifying a subpart such that it is
+ the same as it was before), Set-Set (Modifying a subpart with 
+\begin_inset Quotes eld
 \end_inset
 
-), Set-View Eq.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2-1"
-plural "false"
-caps "false"
-noprefix "false"
-
+a
+\begin_inset Quotes erd
 \end_inset
 
-, Set-Set Eq.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3-1"
-plural "false"
-caps "false"
-noprefix "false"
-
+, then with 
+\begin_inset Quotes eld
 \end_inset
 
-.
- 
+b
+\begin_inset Quotes erd
+\end_inset
+
+ will be the same as if you just modified with 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+), Set-View (Modifying a subpart, then viewing will be the same as just
+ viewing the modification itself).
+ (These are the analogs, get rid of parenthesis.
+ Represent these extended to a remote setting.
+ More detailed explanation in previous chapter with equations, and reference
+ those here TO DO) 
 \end_layout
 
 \end_inset
@@ -507,7 +416,7 @@ noprefix "false"
  in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Diagram of Lens Composition"
+reference "fig:Lens Diagram"
 plural "false"
 caps "false"
 noprefix "false"
@@ -519,6 +428,7 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -526,10 +436,9 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "LensingRemotelyView.tex"
+\begin_inset External
+	template XFig
+	filename RemoteLensDiagramold.eps
 
 \end_inset
 
@@ -538,10 +447,8 @@ filename "LensingRemotelyView.tex"
 \end_inset
 
 
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "LensingRemotelySet.tex"
+\begin_inset Graphics
+	filename RemoteLensDiagram2.png
 
 \end_inset
 
@@ -667,8 +574,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -686,7 +592,12 @@ RemoteSet :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad
 \begin_layout Plain Layout
 
 RemoteOver :: (FromJSON t, Show a) => (String -> String) -> (t -> a) ->
- (RemoteValue a) -> RemoteMonad (RemoteValue a)
+ (RemoteValue a)
+\end_layout
+
+\begin_layout Plain Layout
+
+ 					 -> RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -757,8 +668,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -802,8 +712,7 @@ end{code}
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -813,7 +722,9 @@ RemoteSet accessor new_item object = constructor $ JavaScript $ pack $
 
 \begin_layout Plain Layout
 
-		(accessor (var_text objectName)) ++ " = " ++ new_item
+		(accessor (var
+\backslash
+_text objectName)) ++ " = " ++ new_item
 \end_layout
 
 \begin_layout Plain Layout
@@ -837,8 +748,7 @@ end{code}
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -886,20 +796,20 @@ end{code}
 \begin_layout Standard
 As a reminder, it is worth noting that due to the fact that we are dealing
  with a remote connection that the connection must be passed around — in
- addition to the structure one wants to manipulate, where inside the structure
+ addition to the structure you want to manipulate, where inside the structure
  one wishes to lens to, and a value if using the Set function.
 \end_layout
 
 \begin_layout Standard
-Now, one more important thing to note, is while in Haskell one normally
- is manipulating and creating new objects every time one runs a function
+Now, one more important thing to note, is while in Haskell you normally
+ are manipulating and creating new objects every time you run a function
  or assign it to a value.
- When manipulating Javascript, one is never creating a new object on the
+ When manipulating Javascript, you are never creating a new object on the
  other side.
- So, any code one would want to write with these methods on the Haskell-side,
- would need to keep in mind that one is never dealing with a fresh object.
- The connection will always make sure one is pointing to the one and only
- original Javascript object one is trying to manipulate.
+ So, any code you’d want to write with these methods on the Haskell-side,
+ would need to keep in mind that you never are dealing with a fresh object.
+ The connection will always make sure you are pointing to the one and only
+ original Javascript object you are trying to manipulate.
 \end_layout
 
 \begin_layout Standard
@@ -949,8 +859,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -977,8 +886,8 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-Continuing for the remote-object of person, one is accessing 2 layers into
- it’s fields to retrieve a double value from extra3.
+Where for the remote-object of person, I am accessing 2 layers into it’s
+ fields to retrieve a double value from extra3.
 \end_layout
 
 \begin_layout Standard
@@ -998,8 +907,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1041,8 +949,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1099,8 +1006,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1145,10 +1051,6 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 FP Complete Lens Exercise Adapated To 
 \emph on
 RemoteMonad
@@ -1158,41 +1060,23 @@ RemoteMonad
 Remote Lens.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 – For Code Words like RemoteView 
 \backslash
 texttt{blah} 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 – Not applying them both at the same time.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 – Talk about why these are congruent but not equal, in original math they
  are equal.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-There is a particularly complete example from the first exercise of Haskell
- lensing from FP Complete, that was subsequently adapted to 
-\emph on
-RemoteMonad
-\emph default
- and 
-\emph on
-Remote Lens 
-\emph default
-so that it could be clearly illustrated in long form what some of the major
- similarities and differences might be between remote and local implementations.
-\end_layout
-
-\begin_layout Standard
+– Where is needed less often, try deleting them.
 \begin_inset ERT
 status open
 
@@ -1205,8 +1089,7 @@ status open
 
 
 \backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
+begin{code}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1236,40 +1119,6 @@ age objectName = objectName ++ ".age"
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{code}
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Some Details.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1346,40 +1195,6 @@ getAge newperson = RemoteView age newperson
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{code}
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Some Details.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
-kanywhere=true,breakafter=>]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1389,12 +1204,12 @@ exercise1 :: Engine -> IO ()
 
 \begin_layout Plain Layout
 
-exercise1 eng = do
+exercise1 eng = do{
 \end_layout
 
 \begin_layout Plain Layout
 
-	send eng $ do
+	send eng $ do{
 \end_layout
 
 \begin_layout Plain Layout
@@ -1444,18 +1259,29 @@ exercise1 eng = do
 
 \begin_layout Plain Layout
 
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 end{code}
 \end_layout
 
+\begin_layout Plain Layout
+
+%
+\end_layout
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Some Details.
 \end_layout
 
 \end_body
