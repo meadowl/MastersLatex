@@ -444,12 +444,6 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename test2.tex
-
-\end_inset
-
-
 \begin_inset CommandInset include
 LatexCommand input
 preview true

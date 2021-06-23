@@ -20,14 +20,18 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
-\usepackage{tikz} 
-\usepackage{pgfplots}
-% recommended as of Pgfplots 1.3:
-\pgfplotsset{compat=1.15}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows}
+
 \usepackage{pstricks}
 \usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -234,9 +238,10 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename r.png
-	scale 150
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "r.tex"
 
 \end_inset
 
@@ -308,8 +313,10 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename LensDiagram.png
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensDiagram.tex"
 
 \end_inset
 
@@ -457,9 +464,10 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename geogebra-export.png
-	scale 85
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensGraph.tex"
 
 \end_inset
 

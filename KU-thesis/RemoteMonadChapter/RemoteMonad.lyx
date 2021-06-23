@@ -447,7 +447,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "test2.tex"
+filename "LensingRemotelyView.tex"
 
 \end_inset
 
@@ -456,8 +456,10 @@ filename "test2.tex"
 \end_inset
 
 
-\begin_inset Graphics
-	filename RemoteLensDiagram2.png
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensingRemotelySet.tex"
 
 \end_inset
 
