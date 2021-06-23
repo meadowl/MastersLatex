@@ -57,6 +57,17 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{fvextra}
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \options letterpaper
 \use_default_options true
@@ -65,12 +76,12 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman "times" "default"
+\font_roman "times" "Times New Roman"
 \font_sans "lmss" "default"
 \font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100

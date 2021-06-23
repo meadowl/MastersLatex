@@ -104,9 +104,9 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This story begins with looking for overall abstractions between remote object
- systems and being curious as to seeing if adding an ordered lens-like structure
- was possible between multiple systems.
+The origin of this manuscript began with looking for overall abstractions
+ between remote object systems and being curious as to seeing if adding
+ an ordered lens-like structure was possible between multiple systems.
  Even if the abstraction is nothing more than a wrapper or boilerplate for
  existing code, it sparked curiosity if these remote systems could stimulate
  or in fact provide the simplicity of lenses to an end user.
