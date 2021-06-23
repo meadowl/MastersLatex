@@ -113,20 +113,13 @@
 \begin_body
 
 \begin_layout Chapter
-The Remote Monad
+Remote Lenses And The Remote Monad
 \end_layout
 
 \begin_layout Standard
-The purpose of this chapter is to expand past covering the mathematical
- background and the historical Haskell programming context.
- In this primary article will show both an introduction to remote lenses
- as well as their implementation with the 
-\emph on
-Remote Monad
-\emph default
-.
- As described the two primary components of both programmatic and mathematical
- lenses are the 
+In this chapter, we detail a novel extension of lenses to remote structures,
+ by making use of the Remote Monad.
+ As described, the two primary components of lenses are the 
 \emph on
 Set
 \emph default
@@ -134,23 +127,112 @@ Set
 \emph on
 View 
 \emph default
+functions
+\emph on
+ 
+\emph default
 which produce as a result of applying them both at the same time a command
  referenced as 
 \emph on
 Over
 \emph default
 .
- This now allows us to describe a variation that copies on the structure
- and intent of these operators over a remote connection between a client
- and a host device, the host running Haskell and the client running some
- other language.
- This variation which is the main subject of study of this paper will be
- referred to as the 
+ When one applies
+\emph on
+ View 
+\emph default
+to the structure in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Expanded-Lens"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, an element of that structure is retrieved.
+ One now modifying that retrieved element with some function, before applying
+ 
+\emph on
+Set
+\emph default
+ to that very same structure, shall result in a structure' which accomplishes
+ the same as having applied 
+\emph on
+Over
+\emph default
+ from the very beginning.
+ The application of 
+\emph on
+View
+\emph default
+ and 
+\emph on
+Set
+\emph default
+ in this sequence is equivalent to 
+\emph on
+Over
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "ExpandedLensDiagram.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Expanded Lens
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Expanded-Lens"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These definitions allow for one to describe a variation of lenses that copies
+ the syntactical sugar and programmatic intent of these operators over a
+ remote connection between a client and a host device, the host running
+ Haskell and the client running some other language.
+ The variation from standard local lenses is the main subject of study in
+ this manuscript and shall be referred to as the 
 \emph on
 Remote Lens
 \emph default
- and will be fleshed out starting now and until the end of this manuscript.
- (Clean up this sentence structure)
+.
+ This topic be fleshed out starting now and until the end of this document.
 \end_layout
 
 \begin_layout Standard
@@ -213,8 +295,12 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-We extend the abstract syntax these modifications to the original well-formed
- lens rules, provided in Figure 
+
+\end_layout
+
+\begin_layout Standard
+It is now possible to extend the abstract syntax these modifications to
+ the original well-formed lens rules, provided in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Remote-Lens-Laws"
@@ -235,11 +321,11 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Formula 
-\begin{gather*}
-RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\:\equiv\:\,obj\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\:\equiv\:\,item\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\,\equiv\,\:RemoteSet(acc\,\:item2\,\:obj)
-\end{gather*}
+\begin{flalign*}
+RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\: & \equiv\:\,obj\\
+RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\: & \equiv\:\,item\\
+RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\, & \equiv\,\:RemoteSet(acc\,\:item2\,\:obj)
+\end{flalign*}
 
 \end_inset
 
@@ -337,44 +423,44 @@ item
 \begin_inset Quotes erd
 \end_inset
 
- is some substructure.
+ is a substructure.
 \end_layout
 
 \begin_layout Plain Layout
 \paragraph_spacing single
 \noindent
 \align center
-Where these laws show the View-Set Eq.
+Where these laws show the View-Set Eq(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:1-1"
+reference "eq:2"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-, Set-View Eq.
+), Set-View Eq(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:2-1"
+reference "eq:2"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-, Set-Set Eq.
+), Set-Set Eq(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:3-1"
+reference "eq:2"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-.
+).
  
 \end_layout
 
@@ -447,7 +533,7 @@ status open
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "test2.tex"
+filename "LensingRemotelyView.tex"
 
 \end_inset
 
@@ -456,8 +542,10 @@ filename "test2.tex"
 \end_inset
 
 
-\begin_inset Graphics
-	filename RemoteLensDiagram2.png
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensingRemotelySet.tex"
 
 \end_inset
 
