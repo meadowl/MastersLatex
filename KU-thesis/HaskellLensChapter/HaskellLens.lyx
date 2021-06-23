@@ -36,12 +36,12 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman "times" "default"
+\font_roman "times" "Times New Roman"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -790,25 +790,6 @@ noprefix "false"
  where after applying the lens to the set or view, then only the classic
  arguments are needed, since the lens has already focused on a specific
  area of the structure.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "geo-graph.txt"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "geogebra-export.txt"
-
-\end_inset
-
-
 \end_layout
 
 \end_body

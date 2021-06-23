@@ -22,6 +22,17 @@
 \newcommand{\ignore}[1]{}
 
 \usepackage{fvextra}
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -30,12 +41,12 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman "times" "default"
+\font_roman "times" "Times New Roman"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -434,7 +445,15 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename RemoteLensDiagram.png
+	filename test2.tex
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "test2.tex"
 
 \end_inset
 
@@ -1049,7 +1068,7 @@ end{code}
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 FP Complete Lens Exercise Adapated To 
@@ -1082,7 +1101,17 @@ texttt{blah}
 \end_layout
 
 \begin_layout Standard
-
+There is a particularly complete example from the first exercise of Haskell
+ lensing from FP Complete, that was subsequently adapted to 
+\emph on
+RemoteMonad
+\emph default
+ and 
+\emph on
+Remote Lens 
+\emph default
+so that it could be clearly illustrated in long form what some of the major
+ similarities and differences might be between remote and local implementations.
 \end_layout
 
 \begin_layout Standard

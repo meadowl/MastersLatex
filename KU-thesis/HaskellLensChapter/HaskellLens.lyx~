@@ -26,7 +26,7 @@
 \pgfplotsset{compat=1.15}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
-
+\usepackage{pstricks}
 \usepackage{pstricks-add}
 \end_preamble
 \use_default_options false
@@ -790,25 +790,6 @@ noprefix "false"
  where after applying the lens to the set or view, then only the classic
  arguments are needed, since the lens has already focused on a specific
  area of the structure.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "geo-graph.txt"
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "geogebra-export.txt"
-
-\end_inset
-
-
 \end_layout
 
 \end_body
