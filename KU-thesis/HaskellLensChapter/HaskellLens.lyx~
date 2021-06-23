@@ -116,6 +116,18 @@ The Haskell Lens
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent 
+\end_layout
+
+\end_inset
+
 Lenses are a restudy of the old problem of bidirectional transformations
  (bx) that were historically solved using dictionary and record systems.
  It is still an active field on it's own, with much stronger abstractions
@@ -171,11 +183,11 @@ The structure is so general, polymorphic that we need to establish laws
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather}
-Set\;obj\;(View\;obj)\;=\;id\label{eq:1}\\
-View\;(Set\;obj\;item)\;=\;obj\label{eq:2}\\
-Set(Set(obj\;item)\;item^{\prime}\;=\;Set(obj\;item^{\prime})\label{eq:3}
-\end{gather}
+\begin{flalign}
+Set\;obj\;(View\;obj)\; & =\;id\label{eq:1}\\
+View\;(Set\;obj\;item)\; & =\;obj\nonumber \\
+Set(Set(obj\;item)\;item^{\prime}\; & =\;Set(obj\;item^{\prime})\nonumber 
+\end{flalign}
 
 \end_inset
 
@@ -218,11 +230,11 @@ d.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather}
-Set\;acc\;obj\;(View\;acc\;obj)\;=\;id\label{eq:1-1}\\
-View\;acc\;(Set\;acc\;obj\;item)\;=\;obj\label{eq:2-1}\\
-Set((acc\;Set(acc\;obj\;item)\;item^{\prime}\;=\;Set((acc\;obj\;item^{\prime})\label{eq:3-1}
-\end{gather}
+\begin{flalign}
+Set\;acc\;obj\;(View\;acc\;obj)\; & =\;id\label{eq:2}\\
+View\;acc\;(Set\;acc\;obj\;item)\; & =\;obj\nonumber \\
+Set((acc\;Set(acc\;obj\;item)\;item^{\prime}\; & =\;Set((acc\;obj\;item^{\prime})\nonumber 
+\end{flalign}
 
 \end_inset
 
@@ -367,10 +379,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -478,10 +486,6 @@ filename "LensGraph.tex"
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -771,7 +775,7 @@ view
 \emph default
  are implementing their individual accesses to the structure aren't terribly
  important, they are only giving instantiation to the much more familiar
- usage and format of the well-behaved lens laws in Equations 
+ usage and format of the well-behaved lens laws in Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:1"
@@ -781,27 +785,7 @@ noprefix "false"
 
 \end_inset
 
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
+).
  This is made more clear in the PatronTitle functions and type definitions,
  where after applying the lens to the set or view, then only the classic
  arguments are needed, since the lens has already focused on a specific
