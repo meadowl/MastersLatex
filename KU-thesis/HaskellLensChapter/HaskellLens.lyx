@@ -128,7 +128,7 @@ bx
  sources of information, 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "inproceedings"
+key "Czarnecki2009"
 literal "false"
 
 \end_inset
@@ -172,9 +172,9 @@ The structure is so general, polymorphic that we need to establish laws
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\;obj\;(View\;obj)\; & =\;id\label{eq:1}\\
-View\;(Set\;obj\;item)\; & =\;obj\nonumber \\
-Set(Set(obj\;item)\;item^{\prime}\; & =\;Set(obj\;item^{\prime})\nonumber 
+Set\big(obj,\;View(obj)\big)\; & =\;id\label{eq:1}\\
+View\big(Set(obj,\;item)\big)\; & =\;obj\nonumber \\
+Set\big(Set(obj,\;item)\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
 \end{flalign}
 
 \end_inset
@@ -219,9 +219,9 @@ d.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\;acc\;obj\;(View\;acc\;obj)\; & =\;id\label{eq:2}\\
-View\;acc\;(Set\;acc\;obj\;item)\; & =\;obj\nonumber \\
-Set((acc\;Set(acc\;obj\;item)\;item^{\prime}\; & =\;Set((acc\;obj\;item^{\prime})\nonumber 
+Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;id\label{eq:2}\\
+View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;obj\nonumber \\
+Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set\big((acc,\;obj,\;item^{\prime}\big)\nonumber 
 \end{flalign}
 
 \end_inset
@@ -529,7 +529,7 @@ bx
  has been done, 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "inproceedings"
+key "Czarnecki2009"
 literal "false"
 
 \end_inset

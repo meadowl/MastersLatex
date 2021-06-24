@@ -21,7 +21,7 @@
   ISBN                     = {0387989579, 9780387989570}
 }
 
-@InProceedings{Czarnecki2009,
+@InProceedings{inproceedings,
   author    = {Czarnecki, Krzysztof and Foster, Nate and Hu, Zhenjiang and Lämmel, Ralf and Schürr, Andy and Terwilliger, James},
   booktitle = {Theory and Practice of Model Transformations},
   title     = {Bidirectional Transformations: A Cross-Discipline Perspective},

@@ -113,7 +113,7 @@
 \begin_body
 
 \begin_layout Chapter
-Remote Lenses And The Remote Monad
+Remote Lenses And The Remote Monad (Separate?)
 \end_layout
 
 \begin_layout Standard
@@ -176,6 +176,112 @@ Set
 Over
 \emph default
 .
+ For the a command sequence to be equal to Over, it must directly perform
+ a given function onto the focus whilst in in the same singular injective
+ process?
+\end_layout
+
+\begin_layout Standard
+(Writer note: https://ncatlab.org/nlab/show/lens%20(in%20computer%20science
+ and other links are sparse to establish certainty in the correct definition
+ of Over, is there a way to go about figuring it out? Basic lens code provided
+ below, I suspect that this is all function composition from the beginning
+ and that just applying set and view is an Equal way to define Over?)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+set' :: forall s a.
+ MyLens s a -> (a -> s -> s)
+\end_layout
+
+\begin_layout Plain Layout
+
+set' ln x s = runIdentity (ln (set_fld x) s)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+view' :: MyLens s a -> (s -> a) 
+\end_layout
+
+\begin_layout Plain Layout
+
+view' ln s = runConst (ln Const s)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+over' :: MyLens s a -> (a -> a) -> s -> s
+\end_layout
+
+\begin_layout Plain Layout
+
+over' ln f s = runIdentity (ln (Identity .
+ f) s)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(Writer note: Also, Important question for you, I found a couple papers,
+ talking about http://dblab.cs.toronto.edu/project/dataexchange/docs/pde-tods06.pdf
+ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.451.8423&rep=rep1&type=pdf
+ these are strictly on the space of of bidirectional and lenses in database
+ systems.
+ Work on the DSL area looks more like this paper, even not specific to databases
+ https://hal.archives-ouvertes.fr/hal-00350266/document .
+ I remember being told that Master's thesis aren't always a fully novel
+ idea, is this where I would say 
+\begin_inset Quotes eld
+\end_inset
+
+rather than reimplementing an entire api from scratch with lensing or similar
+ concepts from the begining and bx at the forefront for XML or related database
+ queries, this style is focused on looking at a DSL built over existing
+ API for nonstandard targets? Can I ask you to look the links and see if
+ in generality my content is sufficiently different/from a different perspective
+?)
 \end_layout
 
 \begin_layout Standard
@@ -236,11 +342,161 @@ Remote Lens
 \end_layout
 
 \begin_layout Standard
-To define the individual components of 
+It is now possible to extend the abstract syntax from Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) as modifications to the original well-formed lens rules which are provided
+ in the following Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $;$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the sequence of operation and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes congruence but not equality.
+ Where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+acc
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is the accessor to the structure, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+obj
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is the structure, and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+item
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ is a substructure.
+ And where these laws show the View-Set Eq(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), Set-View Eq(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), Set-Set Eq(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{flalign}
+RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\label{eq:3}\\
+RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\nonumber \\
+RemoteSet(acc,\,\:item,\,\:obj)\,\:;\,\:RemoteSet(acc,\:\,item2,\,\:obj)\:\, & \equiv\,\:RemoteSet(acc,\,\:item2,\,\:obj)\nonumber 
+\end{flalign}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The essentials of what is required is aptly similar to the definitions seen
+ in the elementary Prelude construction of Haskell lenses.
+ With that in mind, the first argument typically taken by any lens operator
+ is a function that will access a deep rooted parameter inside of a structure.
+ In the same vein, the
+\emph on
+ Remote Lens
+\emph default
+ variant accomplishes this with an abstraction of the 
+\emph on
+Remote Object's
+\emph default
+ nested fields that are to be queried into once the command is sent from
+ host to client.
+ The primary difference in how this is handled by Haskell, is that rather
+ than simply pattern matching into the already existing structure, a completely
+ different approach is needed instead.
+ To define the individual components of 
 \emph on
 Remote Lenses
 \emph default
-, we begin by providing the relevant abstract type definitions below.
+, for an arbitrary type system we begin by providing the relevant abstract
+ type definitions below.
 \end_layout
 
 \begin_layout Standard
@@ -292,197 +548,6 @@ end{code}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-It is now possible to extend the abstract syntax these modifications to
- the original well-formed lens rules, provided in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Remote-Lens-Laws"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{flalign*}
-RemoteSet(acc\:\,RemoteView(acc\,\:obj)\:\,obj)\,\: & \equiv\:\,obj\\
-RemoteView(acc\,\:RemoteSet(acc\,\,item\:\,obj))\,\: & \equiv\:\,item\\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\, & \equiv\,\:RemoteSet(acc\,\:item2\,\:obj)
-\end{flalign*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Remote Lens Laws
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Remote-Lens-Laws"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\paragraph_spacing single
-\noindent
-\align center
-Where 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $;$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- denotes the sequence of operation and 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\equiv$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- denotes congruence but not equality.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\paragraph_spacing single
-\noindent
-\align center
-Where 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-acc
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is the accessor to the structure, 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-obj
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is the structure, and 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-item
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is a substructure.
-\end_layout
-
-\begin_layout Plain Layout
-\paragraph_spacing single
-\noindent
-\align center
-Where these laws show the View-Set Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), Set-View Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), Set-Set Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The essentials of what is required is aptly similar to the definitions seen
- in the elementary Prelude construction of Haskell lenses.
- With that in mind, the first argument typically taken by any lens operator
- is a function that will access a deep rooted parameter inside of a structure.
- In the same vein, the
-\emph on
- Remote Lens
-\emph default
- variant accomplishes this with an abstraction of the 
-\emph on
-Remote Object's
-\emph default
- nested fields that are to be queried into once the command is sent from
- host to client.
- The primary difference in how this is handled by Haskell, is that rather
- than simply pattern matching into the already existing structure, a completely
- different approach is needed instead.
 \end_layout
 
 \begin_layout Standard
@@ -573,17 +638,17 @@ name "fig:Remote-Diagrams"
 \end_layout
 
 \begin_layout Standard
-This will involve internally concatenating a conjointment of the parameter.
- Each of the parameters that normally would be accessed with a composition
- of pattern matching functions, must instead be accessed with a composition
- of the 
+This method will involve internally concatenating a conjointment of the
+ parameters such that each of the parameters that normally would be accessed
+ with a composition of pattern matching functions, must instead be accessed
+ with a composition of the 
 \emph on
 Remote Object's
 \emph default
  internal parameters.
- It is fair and equally valid to imagine representing the target object
- as a remote record with the means to access the contents completely dependent
- on how that record was implemented inside of the client's language.
+ It is equivalent to imagine representing the target object as a remote
+ record with the means to access the contents completely dependent on how
+ that record was implemented inside of the client's language.
 \end_layout
 
 \begin_layout Standard
@@ -598,9 +663,9 @@ Remote Lens
  For these reasons directly accessing the information is not possible, since
  one is manipulating only a reference to the actual object on the client's
  side.
- That the careful composition method mentioned in the former paragraph was
- needed.
- Given that bundling the reference to the 
+ That is the careful composition method mentioned in the former paragraph
+ is needed to focus in on the remote structure.
+ Bundling the reference to the 
 \emph on
 Remote Object
 \emph default
@@ -608,9 +673,9 @@ Remote Object
 \emph on
 Remote Object
 \emph default
- are absolutely necessary, otherwise none of the methods to view or alter
- the contents of that structure are at all possible to create.
- (Try to rewrite these sentences to flow better)
+ are absolutely necessary.
+ Otherwise none of the methods to view or alter the contents of that structure
+ can be accomplished.
 \end_layout
 
 \begin_layout Standard
@@ -621,18 +686,14 @@ The final shared parameter is the return type from the result of applying
 Remote Lens's
 \emph default
  return type, where for a 
-\noun on
+\emph on
 RemoteView
-\noun default
+\emph default
  the return type will be the desired queried item wrapped in the remote
- operator that allowed for the operation to take place and for 
-\noun on
-RemoteSet
-\noun default
-/
-\noun on
-RemoteOver
-\noun default
+ operator that allowed for the operation to take place and for
+\emph on
+ RemoteSet/RemoteOver
+\emph default
  the return type will be the reference to the altered structure wrapped
  up in the same remote operator.
  The only major consideration when manipulating the returned structure,
