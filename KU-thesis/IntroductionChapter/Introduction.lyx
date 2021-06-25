@@ -236,6 +236,28 @@ literal "false"
 \end_inset
 
 .
+ Much of the specifics in theory has grown from the typical database relationshi
+p from SQL and other table based services, and the constructed ideas are
+ tailored to concepts display in works like 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bohannon2006"
+literal "false"
+
+\end_inset
+
+.
+ Several works are representative of these direct methods and their specific
+ heritage in database problems with source-to-target and target-to-source
+ transformations, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Fuxman2006"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -266,6 +288,31 @@ literal "false"
  The automatic formation of lenses has been limited to closed systems where
  the understanding of the underlying systems, in this case strings, are
  fully understood.
+ 
+\end_layout
+
+\begin_layout Standard
+For a fair clarification, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Foster2007"
+literal "false"
+
+\end_inset
+
+, it has been strictly in the sense and derived from the premise of database
+ systems, with even this primary source document having constrained itself
+ to a strict representation in the fundamentals.
+ Which is why there is still open space for sudo-implementations of lenses
+ that haven't received much coverage if any in literature, perhaps because
+ they break from all of the much higher level concepts and exert effort
+ in the more rudimentary space of custom constructed DSLs.
+ A DSL that is built over existing systems, not from the ground up or with
+ an intention of being able to represent these much deeper concepts.
+ It is a focus on practical and applied designing patterns concerned with
+ construction in the execution space, and where one doesn't need more than
+ just an understanding of the well-behaved lens laws to be able to put them
+ into application.
 \end_layout
 
 \end_body
