@@ -104,18 +104,6 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-indent 
-\end_layout
-
-\end_inset
-
 The origin of this manuscript began with looking for overall abstractions
  between remote object systems and being curious as to seeing if adding
  an ordered lens-like structure was possible between multiple systems.
@@ -202,6 +190,74 @@ Leading to the main body of this work which will be an exploration and attempt
  to quantitatively define Remote Lenses, and unique differences that one
  can describe when holding them up to the light in comparison to classical
  Local Lenses.
+\end_layout
+
+\begin_layout Standard
+There are several types of lenses that bridge the gap between remote and
+ local interactions already in existence, to varying degrees of depth of
+ implementation.
+ As well as what the focus of those implementations were in the broader
+ scheme.
+ From the broad categories of c-lenses to the category of d-lenses, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Johnson2013"
+literal "false"
+
+\end_inset
+
+, using the concepts of opfibrations to encapsulate the nature of transition
+ information between a system and a database.
+ The previous work, derives the motivation from the database systems such
+ as SQL and the manipulation of table or record information, i.e.
+ the original derivation of the c-lens from the categorical notion of Grothendie
+ck opfibration for a solution to the view update problem for functorial
+ update processes, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Johnson2011"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Specific implementations that directly reference how a host can only see
+ a certain amount of information from the client side's database system,
+ but both must maintain a consitently updated view no matter the views or
+ set that go 
+\end_layout
+
+\begin_layout Standard
+From the category of automatic lens generators and parsers, most notably
+ Boomerang a bidirectional programming language for textual data, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Barbosa2010"
+literal "false"
+
+\end_inset
+
+.
+ With further development into automatic subsets of the textual lenses explored
+ further in the Optician implementation of the Boomerang system, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Miltner2017"
+literal "false"
+
+\end_inset
+
+.
+ While there is some escape to other parts of a Linux system in these two
+ tools, it is important to note that they remain limited to the express
+ manipulation and editing of strings even if directed to say a configuration
+ file.
+ The automatic formation of lenses has been limited to closed systems where
+ the understanding of the underlying systems, in this case strings, are
+ fully understood.
 \end_layout
 
 \end_body

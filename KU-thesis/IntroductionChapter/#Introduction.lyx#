@@ -227,15 +227,7 @@ literal "false"
 Specific implementations that directly reference how a host can only see
  a certain amount of information from the client side's database system,
  with a goal that both must maintain a consistently updated view no matter
- the views or set that are executed, 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Ahman2014"
-literal "false"
-
-\end_inset
-
-.
+ the views or set that are executed,  
 \end_layout
 
 \begin_layout Standard
