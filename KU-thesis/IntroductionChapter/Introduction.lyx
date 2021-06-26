@@ -313,6 +313,39 @@ literal "false"
 ion in the execution space.
  Since one doesn't need more than an understanding of the well-behaved lens
  laws to be able to put them into application for remote and local systems.
+ Additionally, DSLs already have their own unique sub-field in the lensing
+ community with respect to the bidirectional transformation problem 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Czarnecki2009"
+literal "false"
+
+\end_inset
+
+.
+ This topic focuses on the API advancements provided by the remote monad
+ design pattern for remote calls to external systems for the purposes of
+ Remote Procedure Calls that have their commands executed remotely before
+ returned locally, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gill2015"
+literal "false"
+
+\end_inset
+
+.
+ The Remote Lensing is in the same vein as database lensing, but it distinguishe
+s itself by being primarily focused on Remote Procedure Calls rather than
+ the typical database view update problem — of the latter this is not an
+ attempt to expand on.
+ The manuscript is focused on bringing in the concepts of lenses that are
+ used in DSLs to an explicit light where they haven't been explored before,
+ apart from generic implementations across web packages but not explored
+ in documented in literature.
+ With explicit focus on the usability and ease of implementation from the
+ fundamental well-behaved rules, and the capacity to scaffold them onto
+ existing API.
 \end_layout
 
 \end_body

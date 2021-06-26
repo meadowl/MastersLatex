@@ -33,7 +33,7 @@
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -227,7 +227,37 @@ literal "false"
 Specific implementations that directly reference how a host can only see
  a certain amount of information from the client side's database system,
  with a goal that both must maintain a consistently updated view no matter
- the views or set that are executed,  
+ the views or set that are executed, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Ahman2014"
+literal "false"
+
+\end_inset
+
+.
+ Much of the specifics in theory has grown from the typical database relationshi
+p from SQL and other table based services, and the constructed ideas are
+ tailored to concepts display in works like 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bohannon2006"
+literal "false"
+
+\end_inset
+
+.
+ Several works are representative of these direct methods and their specific
+ heritage in database problems with source-to-target and target-to-source
+ transformations, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Fuxman2006"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -258,6 +288,49 @@ literal "false"
  The automatic formation of lenses has been limited to closed systems where
  the understanding of the underlying systems, in this case strings, are
  fully understood.
+ 
+\end_layout
+
+\begin_layout Standard
+For a fair clarification, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Foster2007"
+literal "false"
+
+\end_inset
+
+, this field has been strictly derived from the premise of database systems,
+ with even this primary source document having constrained itself to a strict
+ representation in the fundamentals.
+ Which is why there is still open space for sudo-implementations of lenses
+ that haven't received much coverage if any in literature, perhaps because
+ they break from all of the much higher level concepts and exert effort
+ in the more rudimentary space of custom constructed DSLs.
+ A DSL that is built over existing systems, not from the ground up with
+ an intention of being able to represent much deeper concepts.
+ It is a focus on practical designing patterns that are concerned with construct
+ion in the execution space.
+ Since one doesn't need more than an understanding of the well-behaved lens
+ laws to be able to put them into application for remote and local systems.
+ Additionally, DSLs already have their own unique sub-field in the lensing
+ community with respect to the bidirectional transformation problem 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Czarnecki2009"
+literal "false"
+
+\end_inset
+
+.
+ This topic focuses on the API advancements provided by the remote monad
+ design pattern for remote calls to external systems for the purposes of
+ Remote Procedure Calls that have their commands executed remotely before
+ returned locally .
+ The Remote Lensing is in the same vein as the typical database lensing
+ problem, it distinguishes itself by being primarily focused on Remote Procedure
+ Calls rather than the typical database problems.
+ This system is not an attempt at the 
 \end_layout
 
 \end_body
