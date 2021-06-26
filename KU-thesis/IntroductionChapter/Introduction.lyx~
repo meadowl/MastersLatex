@@ -33,7 +33,7 @@
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -300,19 +300,19 @@ literal "false"
 
 \end_inset
 
-, it has been strictly in the sense and derived from the premise of database
- systems, with even this primary source document having constrained itself
- to a strict representation in the fundamentals.
+, this field has been strictly derived from the premise of database systems,
+ with even this primary source document having constrained itself to a strict
+ representation in the fundamentals.
  Which is why there is still open space for sudo-implementations of lenses
  that haven't received much coverage if any in literature, perhaps because
  they break from all of the much higher level concepts and exert effort
  in the more rudimentary space of custom constructed DSLs.
- A DSL that is built over existing systems, not from the ground up or with
- an intention of being able to represent these much deeper concepts.
- It is a focus on practical and applied designing patterns concerned with
- construction in the execution space, and where one doesn't need more than
- an understanding of the well-behaved lens laws to be able to put them into
- application.
+ A DSL that is built over existing systems, not from the ground up with
+ an intention of being able to represent much deeper concepts.
+ It is a focus on practical designing patterns that are concerned with construct
+ion in the execution space.
+ Since one doesn't need more than an understanding of the well-behaved lens
+ laws to be able to put them into application for remote and local systems.
 \end_layout
 
 \end_body

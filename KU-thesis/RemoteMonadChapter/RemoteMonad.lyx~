@@ -46,7 +46,7 @@
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -264,27 +264,6 @@ end{code}
 \end_layout
 
 \begin_layout Standard
-(Writer note: Also, Important question for you, I found a couple papers,
- talking about http://dblab.cs.toronto.edu/project/dataexchange/docs/pde-tods06.pdf
- http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.451.8423&rep=rep1&type=pdf
- these are strictly on the space of of bidirectional and lenses in database
- systems.
- Work on the DSL area looks more like this paper, even not specific to databases
- https://hal.archives-ouvertes.fr/hal-00350266/document .
- I remember being told that Master's thesis aren't always a fully novel
- idea, is this where I would say 
-\begin_inset Quotes eld
-\end_inset
-
-rather than reimplementing an entire api from scratch with lensing or similar
- concepts from the begining and bx at the forefront for XML or related database
- queries, this style is focused on looking at a DSL built over existing
- API for nonstandard targets? Can I ask you to look the links and see if
- in generality my content is sufficiently different/from a different perspective
-?)
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -463,9 +442,9 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\label{eq:3}\\
-RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\nonumber \\
-RemoteSet(acc\,\:item\,\:obj)\,\:;\,\:RemoteSet(acc\:\,item2\,\:obj)\:\, & \equiv\,\:RemoteSet(acc\,\:item2\,\:obj)\nonumber 
+RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\nonumber \\
+RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\label{eq:3}\\
+RemoteSet(acc,\,\:item,\,\:obj)\,\:;\,\:RemoteSet(acc,\:\,item2,\,\:obj)\:\, & \equiv\,\:RemoteSet(acc,\,\:item2,\,\:obj)\nonumber 
 \end{flalign}
 
 \end_inset
@@ -591,10 +570,35 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset CommandInset include
 LatexCommand input
-preview true
 filename "LensingRemotelyView.tex"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -603,10 +607,35 @@ filename "LensingRemotelyView.tex"
 \end_inset
 
 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset CommandInset include
 LatexCommand input
-preview true
 filename "LensingRemotelySet.tex"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

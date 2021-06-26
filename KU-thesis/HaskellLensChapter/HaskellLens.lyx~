@@ -43,9 +43,9 @@
 \font_roman "times" "Times New Roman"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_math "auto" "default"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -158,6 +158,7 @@ bx
 \end_layout
 
 \begin_layout Standard
+\noindent
 The structure is so general, polymorphic that we need to establish laws
  that form what lenses are, and what rules that they should follow.
  This is important since there are lenses that do not follow any strict
@@ -170,11 +171,30 @@ The structure is so general, polymorphic that we need to establish laws
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength
+\backslash
+abovedisplayskip{0pt} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 \begin_inset Formula 
 \begin{flalign}
-Set\big(obj,\;View(obj)\big)\; & =\;id\label{eq:1}\\
-View(Set(obj,\;item))\; & =\;obj\nonumber \\
-Set(Set(obj,\;item)\;item^{\prime})\; & =\;Set(obj\;item^{\prime})\nonumber 
+Set\big(obj,\;View(obj)\big)\; & =\;id\nonumber \\
+View\big(Set(obj,\;item)\big)\; & =\;obj\label{eq:1}\\
+Set\big(Set(obj,\;item)\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
 \end{flalign}
 
 \end_inset
@@ -217,11 +237,29 @@ d.
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength
+\backslash
+abovedisplayskip{0pt} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\;acc\;obj\;(View\;acc\;obj)\; & =\;id\label{eq:2}\\
-View\;acc\;(Set\;acc\;obj\;item)\; & =\;obj\nonumber \\
-Set((acc\;Set(acc\;obj\;item)\;item^{\prime}\; & =\;Set((acc\;obj\;item^{\prime})\nonumber 
+Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;id\nonumber \\
+View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;obj\label{eq:2}\\
+Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set\big((acc,\;obj,\;item^{\prime}\big)\nonumber 
 \end{flalign}
 
 \end_inset
