@@ -167,15 +167,38 @@ bx
 
 \begin_layout Standard
 \noindent
-The structure is so general, polymorphic that we need to establish laws
- that form what lenses are, and what rules that they should follow.
- This is important since there are lenses that do not follow any strict
- rules and arbitrarily apply bidirectional transformations in ways that
- aren't consistent, which makes them not well-behaved.
- In fact, this manuscript will only deal with the idea of well-behaved lenses
- and their applications.
- These typical mathematical lens have rules that shall be obeyed between
- strictly two sources of information, if one is to call them well-behaved.
+Lenses are characterized by the satisfaction of abstract laws and rules,
+ established fully in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Pierce2003"
+literal "false"
+
+\end_inset
+
+.
+ Since there exist so called 
+\begin_inset Quotes eld
+\end_inset
+
+not well-behaved
+\begin_inset Quotes erd
+\end_inset
+
+ lenses that only follow some proper subset of the well-behaved lens rules
+ and arbitrarily apply bidirectional transformations in ways that aren't
+ consistent.
+ Such 
+\begin_inset Quotes eld
+\end_inset
+
+not well-behaved
+\begin_inset Quotes erd
+\end_inset
+
+ lenses are beyond the scope of this manuscript, we will only deal with
+ well-behaved lenses and their applications.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -183,8 +206,8 @@ The structure is so general, polymorphic that we need to establish laws
 \begin_inset Formula 
 \begin{flalign}
 Set\big(obj,\;View(obj)\big)\; & =\;obj\nonumber \\
-View\big(Set(obj,\;item)\big)\; & =\;obj\label{eq:1}\\
-Set\big(Set(obj,\;item)\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
+View\big(Set(obj,\;item)\big)\; & =\;item\label{eq:1}\\
+Set\big(Set(obj,\;item),\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
 \end{flalign}
 
 \end_inset
@@ -193,21 +216,31 @@ Set\big(Set(obj,\;item)\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonu
 \end_layout
 
 \begin_layout Standard
-Important note, most definitions have the direction of the lens operators
- established.
- i.e.
- where the Set or View will traverse along a given object to reach the designate
-d destination.
- So the only arguments are the structure itself in 
+It is an important note, that most definitions fix the direction of the
+ lens operators 
 \emph on
-View
+a priori
 \emph default
-, with just structure and item in 
+, i.e.
+ where the 
 \emph on
 Set
 \emph default
-.
- The definitions implicate that the overall pattern-matching system, which
+ or 
+\emph on
+View
+\emph default
+ will traverse along a given object to reach the designated destination.
+ The only arguments to 
+\emph on
+View
+\emph default
+ are the structure itself, and with the only arguments to 
+\emph on
+Set
+\emph default
+ being the structure and item.
+ The definitions assume that the overall pattern-matching system, which
  is the individually implemented lens for each focus in a structure, has
  been embedded before the configuration of 
 \emph on
@@ -218,25 +251,50 @@ Set
 View
 \emph default
 , respectively, in its descriptive rules.
- In use the lens is an active and changing argument that the programmer
- sets when they are establishing where they'd like to mutate a structure.
- It is perfectly possible that the lens laws themselves are defined with
- that extra argument as shown below, which exposes some addition structure
- underneath that the more instantiated definitions previously provided obfuscate
-d.
+ In use, the lens is an active and changing argument that the programmer
+ sets when they are establishing where they would like to mutate a structure.
+ It is also possible to define the lens laws with an extra argument to determine
+ the direction: 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;obj\nonumber \\
-View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;obj\label{eq:2}\\
-Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set(acc,\;obj,\;item^{\prime})\nonumber 
+Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;obj\;,\nonumber \\
+View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;item\;,\label{eq:2}\\
+Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set(acc,\;obj,\;item^{\prime})\;.\nonumber 
 \end{flalign}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+This exposes some additional structure which the more instantiated definition
+ in Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) had previously obfuscated.
 \end_layout
 
 \begin_layout Standard
@@ -280,7 +338,7 @@ name "fig:Lens Prism"
 \end_layout
 
 \begin_layout Standard
-There is a basic idea of what a simplistic lens accomplishes in Figure 
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Lens Prism"
@@ -290,8 +348,9 @@ noprefix "false"
 
 \end_inset
 
-, showing a means to pattern match internally and a navigation of that structure
- to the desired focus with the help of a lens.
+ illustrates a simplistic lens, showing a means to pattern match internally
+ and a navigation of that structure to the desired focus with the help of
+ a lens.
  The diagram hints that it is possible to navigate into the focus, provided
  that the focus is a similarly formatted structure.
  This is true, if both the primary structure and all associated substructures
