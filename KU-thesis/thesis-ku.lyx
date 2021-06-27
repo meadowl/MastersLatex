@@ -68,6 +68,8 @@
 \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
 \makeatother
 \usepackage{auto-pst-pdf}
+
+\usepackage{indentfirst}
 \end_preamble
 \options letterpaper
 \use_default_options true

@@ -118,14 +118,22 @@ The Haskell Lens
 \begin_layout Standard
 Lenses are a restudy of the old problem of bidirectional transformations
  (bx) that were historically solved using dictionary and record systems.
- It is still an active field on it's own, with much stronger abstractions
- constructed to hold onto many different sub-fields within computer science.
+ It is still an active field of study, with many connections to different
+ sub-fields of computer science.
  Explicitly described, 
+\begin_inset Quotes erd
+\end_inset
+
+
 \emph on
 bx
 \emph default
  are a mechanism for maintaining the consistency of two (or more) related
- sources of information, 
+ sources of information
+\begin_inset Quotes erd
+\end_inset
+
+, 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Czarnecki2009"
@@ -140,12 +148,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-From the discovering of lenses in the 
+From the implementation of lenses in the 
 \emph on
 bx
 \emph default
  programming community there has been in recent years a new passion for
- their joint implementation in a larger variety of scenarios then they were
+ their joint implementation in a larger variety of scenarios than they were
  initially imagined for.
  The study has broadened to the attempt to abstract and simplify over many
  sorts of structures, including their individual parts.
@@ -174,7 +182,7 @@ The structure is so general, polymorphic that we need to establish laws
 \noindent
 \begin_inset Formula 
 \begin{flalign}
-Set\big(obj,\;View(obj)\big)\; & =\;id\nonumber \\
+Set\big(obj,\;View(obj)\big)\; & =\;obj\nonumber \\
 View\big(Set(obj,\;item)\big)\; & =\;obj\label{eq:1}\\
 Set\big(Set(obj,\;item)\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
 \end{flalign}
@@ -221,9 +229,9 @@ d.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;id\nonumber \\
+Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;obj\nonumber \\
 View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;obj\label{eq:2}\\
-Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set\big((acc,\;obj,\;item^{\prime}\big)\nonumber 
+Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set(acc,\;obj,\;item^{\prime})\nonumber 
 \end{flalign}
 
 \end_inset
