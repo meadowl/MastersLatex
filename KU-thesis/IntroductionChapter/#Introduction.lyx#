@@ -110,7 +110,7 @@ The origin of this manuscript began with looking for overall abstractions
  Even if the abstraction is nothing more than a wrapper or boilerplate for
  existing code, it sparked curiosity if these remote systems could stimulate
  or in fact provide the simplicity of lenses to an end user.
- And that these abstractions were representable of total systems in existence,
+ And that these abstractions were representative of total systems in existence,
  due to the popularity of classical lenses.
  It was discovered that online server applications attempt to bring this
  boilerplate into their own code with different levels of effectiveness
@@ -134,11 +134,10 @@ Keeping in mind that Lenses are about solving a bijective interaction with
  In the sense that the functions that wrap data into structures are able
  to be acted on by functions that unwrap or re-wrap data in a convenient
  way.
- There are extensional ideas that relate to this such as Traversable structures
- and those should be representable as well.
- But that is not the primary focus of this research, although in the case
- of Remote Monad, the Traversable is very much implementable abet with some
- extra efforts.
+ There are extensional ideas that relate to this such as Traversable structures,
+ but that is not the primary focus of this research, although in the case
+ of Remote Monad, the Traversable is very much implementable — abet with
+ some extra efforts.
 \end_layout
 
 \begin_layout Standard
@@ -303,6 +302,9 @@ literal "false"
 , this field has been strictly derived from the premise of database systems,
  with even this primary source document having constrained itself to a strict
  representation in the fundamentals.
+ Not a surprise when considering that the original well-behaved lens laws
+ were first formulated by Benjamin C.
+ Pierce in the context of database manipulation.
  Which is why there is still open space for sudo-implementations of lenses
  that haven't received much coverage if any in literature, perhaps because
  they break from all of the much higher level concepts and exert effort
@@ -326,11 +328,26 @@ literal "false"
  This topic focuses on the API advancements provided by the remote monad
  design pattern for remote calls to external systems for the purposes of
  Remote Procedure Calls that have their commands executed remotely before
- returned locally .
- The Remote Lensing is in the same vein as the typical database lensing
- problem, it distinguishes itself by being primarily focused on Remote Procedure
- Calls rather than the typical database problems.
- This system is not an attempt at the 
+ returned locally, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gill2015"
+literal "false"
+
+\end_inset
+
+.
+ The Remote Lensing is in the same vein as database lensing, but it distinguishe
+s itself by being primarily focused on Remote Procedure Calls rather than
+ the typical database view update problem — of the latter this is not an
+ attempt to expand on.
+ The manuscript is focused on bringing in the concepts of lenses that are
+ used in DSLs to an explicit light where they haven't been explored before,
+ apart from generic implementations across web packages but not explored
+ in documented in literature.
+ With explicit focus on the usability and ease of implementation from the
+ fundamental well-behaved rules, and the capacity to scaffold them onto
+ existing API.
 \end_layout
 
 \end_body

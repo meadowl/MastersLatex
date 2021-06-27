@@ -153,24 +153,40 @@
   url       = {https://doi.org/10.1145/1142351.1142399},
 }
 
-@article{10.1145/2887747.2804311,
-author = {Gill, Andy and Sculthorpe, Neil and Dawson, Justin and Eskilson, Aleksander and Farmer, Andrew and Grebe, Mark and Rosenbluth, Jeffrey and Scott, Ryan and Stanton, James},
-title = {The Remote Monad Design Pattern},
-year = {2015},
-issue_date = {December 2015},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {50},
-number = {12},
-issn = {0362-1340},
-url = {https://doi.org/10.1145/2887747.2804311},
-doi = {10.1145/2887747.2804311},
-abstract = { Remote Procedure Calls are expensive. This paper demonstrates how to reduce the cost of calling remote procedures from Haskell by using the remote monad design pattern, which amortizes the cost of remote calls. This gives the Haskell community access to remote capabilities that are not directly supported, at a surprisingly inexpensive cost. We explore the remote monad design pattern through six models of remote execution patterns, using a simulated Internet of Things toaster as a running example. We consider the expressiveness and optimizations enabled by each remote execution model, and assess the feasibility of our approach. We then present a full-scale case study: a Haskell library that provides a Foreign Function Interface to the JavaScript Canvas API. Finally, we discuss existing instances of the remote monad design pattern found in Haskell libraries. },
-journal = {SIGPLAN Not.},
-month = aug,
-pages = {59–70},
-numpages = {12},
-keywords = {Monads, FFI, Remote Procedure Call, Design Pattern}
+@Article{Gill2015,
+  author     = {Gill, Andy and Sculthorpe, Neil and Dawson, Justin and Eskilson, Aleksander and Farmer, Andrew and Grebe, Mark and Rosenbluth, Jeffrey and Scott, Ryan and Stanton, James},
+  journal    = {SIGPLAN Not.},
+  title      = {The Remote Monad Design Pattern},
+  year       = {2015},
+  issn       = {0362-1340},
+  month      = aug,
+  number     = {12},
+  pages      = {59–70},
+  volume     = {50},
+  abstract   = {Remote Procedure Calls are expensive. This paper demonstrates how to reduce the cost of calling remote procedures from Haskell by using the remote monad design pattern, which amortizes the cost of remote calls. This gives the Haskell community access to remote capabilities that are not directly supported, at a surprisingly inexpensive cost. We explore the remote monad design pattern through six models of remote execution patterns, using a simulated Internet of Things toaster as a running example. We consider the expressiveness and optimizations enabled by each remote execution model, and assess the feasibility of our approach. We then present a full-scale case study: a Haskell library that provides a Foreign Function Interface to the JavaScript Canvas API. Finally, we discuss existing instances of the remote monad design pattern found in Haskell libraries.},
+  address    = {New York, NY, USA},
+  doi        = {10.1145/2887747.2804311},
+  issue_date = {December 2015},
+  keywords   = {Monads, FFI, Remote Procedure Call, Design Pattern},
+  numpages   = {12},
+  publisher  = {Association for Computing Machinery},
+  url        = {https://doi.org/10.1145/2887747.2804311},
 }
 
+@article{pierce2003lenses,
+  title={Lenses and view update translation},
+  author={Pierce, Benjamin C and Schmitt, Alan},
+  journal={Manuscript},
+  year={2003},
+  publisher={Citeseer}
+}
+
+@article{greenwald2003language,
+  title={A language for bi-directional tree transformations},
+  author={Greenwald, Michael B and Moore, Jonathan T and Pierce, Benjamin C and Schmitt, Alan},
+  journal={Pat},
+  volume={333},
+  pages={4444},
+  year={2003}
+}
 @Comment{jabref-meta: databaseType:bibtex;}

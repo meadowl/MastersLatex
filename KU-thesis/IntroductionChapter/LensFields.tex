@@ -1,0 +1,33 @@
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{pstricks-add}
+% \usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+% \makeatletter % For spaces in paths
+% \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+% \makeatother
+% 
+\resizebox{.8\textwidth}{!}{%
+\begin{pspicture}(0,-4.9)(13.6,3.3)
+\definecolor{colour0}{rgb}{0.8,0.9019608,1.0}
+\definecolor{colour1}{rgb}{1.0,0.8,0.6}
+\psframe[linecolor=black, linewidth=0.04, fillstyle=solid,fillcolor=colour0, dimen=outer](13.6,3.3)(0.0,-4.9)
+\psframe[linecolor=black, linewidth=0.04, fillstyle=solid,fillcolor=colour1, dimen=outer](13.6,-4.1)(0.0,-4.9)
+\rput[bl](3.6,-4.7){``Lenses are everywhere,'' Bartosz Milewski}
+\rput[bl](8.6,1.1){Split Opfibrations}
+\rput[bl](1.2,-0.5){Functions Between Sets}
+\rput[bl](0.8,2.3){Grothendieck Fibrations}
+\rput[bl](3.2,0.9){CoAlgebras and CoMonads}
+\rput[bl](9.4,-0.5){Functional References }
+\rput[bl](11.4,2.3){Monads}
+\rput[bl](6.2,-1.1){Bifunctors}
+\rput[bl](7.4,2.5){Monoids}
+\rput[bl](2.8,-2.1){Yoneda Embeddings}
+\rput[bl](9.6,-2.7){Profunctors}
+\rput[bl](0.8,-2.9){van Laarhoven Lens}
+\rput[bl](5.6,-3.3){ Accessor and Mutator}
+\end{pspicture}
+}
+

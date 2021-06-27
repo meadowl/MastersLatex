@@ -20,6 +20,18 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -110,7 +122,7 @@ The origin of this manuscript began with looking for overall abstractions
  Even if the abstraction is nothing more than a wrapper or boilerplate for
  existing code, it sparked curiosity if these remote systems could stimulate
  or in fact provide the simplicity of lenses to an end user.
- And that these abstractions were representable of total systems in existence,
+ And that these abstractions were representative of total systems in existence,
  due to the popularity of classical lenses.
  It was discovered that online server applications attempt to bring this
  boilerplate into their own code with different levels of effectiveness
@@ -134,11 +146,10 @@ Keeping in mind that Lenses are about solving a bijective interaction with
  In the sense that the functions that wrap data into structures are able
  to be acted on by functions that unwrap or re-wrap data in a convenient
  way.
- There are extensional ideas that relate to this such as Traversable structures
- and those should be representable as well.
- But that is not the primary focus of this research, although in the case
- of Remote Monad, the Traversable is very much implementable abet with some
- extra efforts.
+ There are extensional ideas that relate to this such as Traversable structures,
+ but that is not the primary focus of this research, although in the case
+ of Remote Monad, the Traversable is very much implementable — abet with
+ some extra efforts.
 \end_layout
 
 \begin_layout Standard
@@ -221,9 +232,68 @@ literal "false"
 \end_inset
 
 .
+ The notions of what can be considered entirely a lens or a portion of the
+ children a lens structure, illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Variety-of-Lenses"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "LensFields.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Variety of Lenses
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Variety-of-Lenses"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 Specific implementations that directly reference how a host can only see
  a certain amount of information from the client side's database system,
  with a goal that both must maintain a consistently updated view no matter
@@ -303,6 +373,17 @@ literal "false"
 , this field has been strictly derived from the premise of database systems,
  with even this primary source document having constrained itself to a strict
  representation in the fundamentals.
+ The fact of this is not a surprise when considering that the original well-beha
+ved lens laws were first formulated by Benjamin C.
+ Pierce in the context of database manipulation, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Pierce2003,Greenwald2003"
+literal "false"
+
+\end_inset
+
+.
  Which is why there is still open space for sudo-implementations of lenses
  that haven't received much coverage if any in literature, perhaps because
  they break from all of the much higher level concepts and exert effort
@@ -341,12 +422,11 @@ s itself by being primarily focused on Remote Procedure Calls rather than
  attempt to expand on.
  The manuscript is focused on bringing in the concepts of lenses that are
  used in DSLs to an explicit light where they haven't been explored before,
- apart from generic implementations across web packages but not explored
- in documented in literature.
+ apart from generic implementations across web packages where it is still
+ neglected in documented in literature.
  With explicit focus on the usability and ease of implementation from the
  fundamental well-behaved rules, and the capacity to scaffold them onto
  existing API.
- 
 \end_layout
 
 \end_body
