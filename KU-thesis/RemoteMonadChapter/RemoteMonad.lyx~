@@ -256,7 +256,7 @@ over' ln f s = runIdentity (ln (Identity .
 
 \begin_layout Plain Layout
 
-Set(Obj F(View(Obj)) = Over(Obj, F)
+Set(Obj F(View(Obj)) = Over(Obj, F) (Writer note to put this somewhere)
 \end_layout
 
 \begin_layout Plain Layout
