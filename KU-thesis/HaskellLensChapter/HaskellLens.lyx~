@@ -338,7 +338,7 @@ name "fig:Lens Prism"
 \end_layout
 
 \begin_layout Standard
-There is a basic idea of what a simplistic lens accomplishes in Figure 
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Lens Prism"
@@ -348,18 +348,27 @@ noprefix "false"
 
 \end_inset
 
-, showing a means to pattern match internally and a navigation of that structure
- to the desired focus with the help of a lens.
- The diagram hints that it is possible to navigate into the focus, provided
+ illustrates a simplistic lens, showing a means to pattern match internally
+ and a navigation of that structure to the desired focus with the help of
+ a lens.
+ The diagram implies that it is possible to navigate into the focus, provided
  that the focus is a similarly formatted structure.
- This is true, if both the primary structure and all associated substructures
- have been made in a way that allows for pattern-matching, then pattern-matching
- over the entire structure is possible.
- The stacking of structures, creates a composability of the lenses so that
- it becomes possible to find a focus even if it is nested two or more structures
- deep.
- The embedding a lens friendly structure into a larger one and the resulting
- composition of lenses is illustrated in Figure 
+ This is true, provided that both the primary structure and all associated
+ substructures have been constructed in a way that allows for pattern-matching.
+ If this is the case, then pattern-matching over the entire structure is
+ possible.
+ This 
+\begin_inset Quotes eld
+\end_inset
+
+stacking
+\begin_inset Quotes erd
+\end_inset
+
+ of structures, enables lenses to be composed so that it becomes possible
+ to find a focus even if it is nested two or more structures deep.
+ The embedding of a lens equipped structure into a larger lens equipped
+ and the resulting composition of lenses is illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Diagram of Lens Composition"
@@ -426,12 +435,81 @@ noprefix "false"
 \end_inset
 
 .
+ In simple cases, the general idea of pattern matching to obtain results
+ is explicit and summarized inside the code itself.
+ However, Haskell's compiler allows for implicit pattern matching to take
+ place as well.
+ The implicit calls to focus on specific elements of the two-tuple is handled
+ in this manner, display in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram of Lens Composition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This holds true for both 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{view
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{set
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+, where the inspection of the two-tuple is enough to view or set the contents
+ of the structures respectively.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -509,6 +587,11 @@ end{minipage}
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -520,7 +603,7 @@ has_inner_box 1
 inner_pos "c"
 use_parbox 0
 use_makebox 0
-width "100col%"
+width "45col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -569,32 +652,9 @@ name "fig:Elementary-Haskell-Lens"
 \end_layout
 
 \begin_layout Standard
-In simple cases, the general idea of pattern matching to obtain results
- is explicit and summarized inside the code itself.
- However, Haskell's compiler allows for implicit pattern matching to take
- place as well.
- The implicit calls to focus on specific elements of the two-tuple is handled
- in this manner for all cases shown.
- This holds true for both 
-\emph on
-view_a
-\emph default
- and 
-\emph on
-set_a
-\emph default
-, where the inspection of the two-tuple is enough to view or set the contents
- of the structures respectively.
-\end_layout
-
-\begin_layout Standard
-To explain further, lenses have been so generalized and grown to such a
- wide sub-field of 
-\emph on
-bx
-\emph default
-, that is becomes cumbersome to handle explanations for all the work that
- has been done, 
+Lenses represent such a large sub-field of bx, and have been so generalized
+ that a full view is well beyond the scope of this manuscript.
+ The interested reader may refer to 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Czarnecki2009"
@@ -602,7 +662,7 @@ literal "false"
 
 \end_inset
 
-.
+ for a good survery.
  These and many more topics will be restricted to monomorphic occurrences
  instead, whilst the rest will fall outside the scope of this thesis.
 \end_layout
@@ -731,31 +791,90 @@ end{code}
 From this, there is a general structure that represents how a lens may be
  formed by the type abstraction of 
 \emph on
-MyLens
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+texttt{MyLens}
+\end_layout
+
+\end_inset
+
+
 \emph default
 .
  Specifically instantiated the expansion for
 \emph on
- item_name
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+texttt{item
+\backslash
+_name}
+\end_layout
+
+\end_inset
+
+
 \emph default
  would appear something along the lines of 
-\emph on
-(String -> f String) -> MyStructure -> f MyStructure
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{String -> f String) -> MyStructure -> f MyStructure}
+\end_layout
+
+\end_inset
+
 .
  Which allows a set or view implementation to provide some functor that
  renders the inspection or modification of the structure in compliance with
  the well-behaved features of lenses.
  Another way to see this, is that upon inspecting the instantiation of 
 \emph on
-item_name
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+texttt{item
+\backslash
+_name}
+\end_layout
+
+\end_inset
+
+
 \emph default
 , it is possible to spot out the initial pattern matching of the structure.
  The leftmost argument having 
 \emph on
-some_function 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+texttt{some
+\backslash
+_function}
+\end_layout
+
+\end_inset
+
+
 \emph default
-applied to it, before being injected back into the structure.
+ applied to it, before being injected back into the structure.
 \end_layout
 
 \begin_layout Standard
@@ -823,11 +942,11 @@ end{code}
 \begin_layout Standard
 The specifics of how 
 \emph on
-set
+Set
 \emph default
  and 
 \emph on
-view
+View
 \emph default
  are implementing their individual accesses to the structure aren't terribly
  important, they are only giving instantiation to the much more familiar

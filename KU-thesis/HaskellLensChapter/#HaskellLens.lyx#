@@ -20,6 +20,18 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -28,10 +40,10 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman "times" "default"
+\font_roman "times" "Times New Roman"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_math "auto" "default"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -106,13 +118,25 @@ The Haskell Lens
 \begin_layout Standard
 Lenses are a restudy of the old problem of bidirectional transformations
  (bx) that were historically solved using dictionary and record systems.
- It is still an active field on it's own, with much stronger abstractions
- constructed to hold onto many different sub-fields within computer science.
- Explicitly described, bx are a mechanism for maintaining the consistency
- of two (or more) related sources of information, 
+ It is still an active field of study, with many connections to different
+ sub-fields of computer science.
+ Explicitly described, 
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+bx
+\emph default
+ are a mechanism for maintaining the consistency of two (or more) related
+ sources of information
+\begin_inset Quotes erd
+\end_inset
+
+, 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "inproceedings"
+key "Czarnecki2009"
 literal "false"
 
 \end_inset
@@ -124,34 +148,67 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-From the discovering of lenses in the bx programming community there has
- been in recent years a new passion for their joint implementation in a
- larger variety of scenarios then they were initially imagined for.
+From the implementation of lenses in the 
+\emph on
+bx
+\emph default
+ programming community there has been in recent years a new passion for
+ their joint implementation in a larger variety of scenarios than they were
+ initially imagined for.
  The study has broadened to the attempt to abstract and simplify over many
  sorts of structures, including their individual parts.
  The attempt at generality provides for opportunities in anything that might
- be presentable as a meaningful bx.
+ be presentable as a meaningful 
+\emph on
+bx
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
-The structure is so general, polymorphic that we need to establish laws
- that form what lenses are, and what rules that they should follow.
- This is important since there are lenses that do not follow any strict
- rules and arbitrarily apply bidirectional transformations in ways that
- aren't consistent, which makes them not well-behaved.
- In fact, this manuscript will only deal with the idea of well-behaved lenses
- and their applications.
- These typical mathematical lens have rules that shall be obeyed between
- strictly two sources of information, if one is to call them well-behaved.
+\noindent
+Lenses are characterized by the satisfaction of abstract laws and rules,
+ established fully in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Pierce2003"
+literal "false"
+
+\end_inset
+
+.
+ Since there exist so called 
+\begin_inset Quotes eld
+\end_inset
+
+not well-behaved
+\begin_inset Quotes erd
+\end_inset
+
+ lenses that only follow some proper subset of the well-behaved lens rules
+ and arbitrarily apply bidirectional transformations in ways that aren't
+ consistent.
+ Such 
+\begin_inset Quotes eld
+\end_inset
+
+not well-behaved
+\begin_inset Quotes erd
+\end_inset
+
+ lenses are beyond the scope of this manuscript, we will only deal with
+ well-behaved lenses and their applications.
+ 
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Formula 
-\begin{gather}
-Set\;obj\;(View\;obj)\;=\;id\label{eq:1}\\
-View\;(Set\;obj\;item)\;=\;obj\label{eq:2}\\
-Set(Set(obj\;item)\;item^{\prime}\;=\;Set(obj\;item^{\prime})\label{eq:3}
-\end{gather}
+\begin{flalign}
+Set\big(obj,\;View(obj)\big)\; & =\;obj\nonumber \\
+View\big(Set(obj,\;item)\big)\; & =\;item\label{eq:1}\\
+Set\big(Set(obj,\;item),\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
+\end{flalign}
 
 \end_inset
 
@@ -159,14 +216,31 @@ Set(Set(obj\;item)\;item^{\prime}\;=\;Set(obj\;item^{\prime})\label{eq:3}
 \end_layout
 
 \begin_layout Standard
-Important note, most definitions have the direction of the lens operators
- established.
- i.e.
- where the Set or View will traverse along a given object to reach the designate
-d destination.
- So the only arguments are the structure itself in View, with just structure
- and item in Set.
- The definitions implicate that the overall pattern-matching system, which
+It is an important note, that most definitions fix the direction of the
+ lens operators 
+\emph on
+a priori
+\emph default
+, i.e.
+ where the 
+\emph on
+Set
+\emph default
+ or 
+\emph on
+View
+\emph default
+ will traverse along a given object to reach the designated destination.
+ The only arguments to 
+\emph on
+View
+\emph default
+ are the structure itself, and with the only arguments to 
+\emph on
+Set
+\emph default
+ being the structure and item.
+ The definitions assume that the overall pattern-matching system, which
  is the individually implemented lens for each focus in a structure, has
  been embedded before the configuration of 
 \emph on
@@ -177,25 +251,50 @@ Set
 View
 \emph default
 , respectively, in its descriptive rules.
- In use the lens is an active and changing argument that the programmer
- sets when they are establishing where they'd like to mutate a structure.
- It is perfectly possible that the lens laws themselves are defined with
- that extra argument as shown below, which exposes some addition structure
- underneath that the more instantiated definitions previously provided obfuscate
-d.
+ In use, the lens is an active and changing argument that the programmer
+ sets when they are establishing where they would like to mutate a structure.
+ It is also possible to define the lens laws with an extra argument to determine
+ the direction: 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{gather}
-Set\;acc\;obj\;(View\;acc\;obj)\;=\;id\label{eq:1-1}\\
-View\;acc\;(Set\;acc\;obj\;item)\;=\;obj\label{eq:2-1}\\
-Set((acc\;Set(acc\;obj\;item)\;item^{\prime}\;=\;Set((acc\;obj\;item^{\prime})\label{eq:3-1}
-\end{gather}
+\begin{flalign}
+Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;obj\;,\nonumber \\
+View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;item\;,\label{eq:2}\\
+Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set(acc,\;obj,\;item^{\prime})\;.\nonumber 
+\end{flalign}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+This exposes some additional structure which the more instantiated definition
+ in Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) had previously obfuscated.
 \end_layout
 
 \begin_layout Standard
@@ -207,8 +306,10 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename r.png
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "r.tex"
 
 \end_inset
 
@@ -237,7 +338,7 @@ name "fig:Lens Prism"
 \end_layout
 
 \begin_layout Standard
-There is a basic idea of what a simplistic lens accomplishes in Figure 
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Lens Prism"
@@ -247,18 +348,27 @@ noprefix "false"
 
 \end_inset
 
-, showing a means to pattern match internally and a navigation of that structure
- to the desired focus with the help of a lens.
- The diagram hints that it is possible to navigate into the focus, provided
+ illustrates a simplistic lens, showing a means to pattern match internally
+ and a navigation of that structure to the desired focus with the help of
+ a lens.
+ The diagram implies that it is possible to navigate into the focus, provided
  that the focus is a similarly formatted structure.
- This is true, if both the primary structure and all associated substructures
- have been made in a way that allows for pattern-matching, then pattern-matching
- over the entire structure is possible.
- The stacking of structures, creates a composability of the lenses so that
- it becomes possible to find a focus even if it is nested two or more structures
- deep.
- The embedding a lens friendly structure into a larger one and the resulting
- composition of lenses is illustrated in Figure 
+ This is true, provided that both the primary structure and all associated
+ substructures have been constructed in a way that allows for pattern-matching.
+ If this is the case, then pattern-matching over the entire structure is
+ possible.
+ This 
+\begin_inset Quotes eld
+\end_inset
+
+stacking
+\begin_inset Quotes erd
+\end_inset
+
+ of structures, enables lenses to be composed so that it becomes possible
+ to find a focus even if it is nested two or more structures deep.
+ The embedding of a lens equipped structure into a larger lens equipped
+ and the resulting composition of lenses is illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Diagram of Lens Composition"
@@ -280,8 +390,10 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename LensDiagram.png
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensDiagram.tex"
 
 \end_inset
 
@@ -323,11 +435,58 @@ noprefix "false"
 \end_inset
 
 .
+ In simple cases, the general idea of pattern matching to obtain results
+ is explicit and summarized inside the code itself.
+ However, Haskell's compiler allows for implicit pattern matching to take
+ place as well.
+ The implicit calls to focus on specific elements of the two-tuple is handled
+ in this manner, display in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagram of Lens Composition"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This holds true for both 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{view
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{set
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+, where the inspection of the two-tuple is enough to view or set the contents
+ of the structures respectively.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -340,7 +499,16 @@ status open
 
 
 \backslash
-begin{code}
+begin{minipage}[t]{0.5
+\backslash
+textwidth}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -388,13 +556,49 @@ set_a (x,y) x' = (x',y)
 end{code}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "LensGraph.tex"
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -422,27 +626,40 @@ name "fig:Elementary-Haskell-Lens"
 \end_layout
 
 \begin_layout Standard
-In these sorts of cases, the general idea of pattern matching to obtain
- results is explicit and summarized inside of the code itself.
- However, the lens in which to focus on a specific element of the two-tuple
- is implied from the direct call to the pattern matching system provided
- by Haskell's compiler.
- This holds true for both view_a and set_a, where the inspection of the
- two-tuple is enough to view or set the contents of the structures respectively.
+To explain further, lenses have been so generalized and grown to such a
+ wide sub-field of 
+\emph on
+bx
+\emph default
+, that is becomes cumbersome to handle explanations for all the work that
+ has been done, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Czarnecki2009"
+literal "false"
+
+\end_inset
+
+.
+ These and many more topics will be restricted to monomorphic occurrences
+ instead, whilst the rest will fall outside the scope of this thesis.
 \end_layout
 
 \begin_layout Standard
-Now to explain further, the ideas should be given some space in what a typical
- lens is when locally implemented, since it is fine to talk about the wide
- variety that might be associated with injection and projection rules in
- homotopy type theory.
- It also is noted here that the wider categories or attempts of abstraction
- to lens will also be avoided since they aren't relevant to the contents
- of the papers which includes generalized discussions on asymmetric lenses,
- bimorphic lenses, and likely whatever else has been proposed in the community
- at this point and time.
- And rather than make any bold claims about polymorphic lenses, topics will
- be restricted to monomorphic occurrences instead.
+Expanding on how a lens may be implemented in Haskell, an important example
+ to consider is how building lenses and operating on a structure work.
+ Not an implicit lens like in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Elementary-Haskell-Lens"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, but an explicit lens that allows access to a richer structure.
+ One begins by initializing such a structure as follows below.
 \end_layout
 
 \begin_layout Standard
@@ -453,7 +670,60 @@ status open
 
 
 \backslash
-begin{code}
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
+\end_layout
+
+\begin_layout Plain Layout
+
+data MyStructure = MyStructure {
+\end_layout
+
+\begin_layout Plain Layout
+
+    MyName :: String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , MyAge :: Int}
+\end_layout
+
+\begin_layout Plain Layout
+
+    deriving (Show, Eq)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The structure contains two important points of focus a String and an Int
+ value, and one can make a lens with the ability to access either of the
+ two elements.
+ In similarity the two-tuple example, constructing an accessor to each element
+ to view or set must be done individually.
+ But in this case, there isn't a trick to get the Haskell compiler to do
+ all the work, so a little bit of code is needed to break inside.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -468,47 +738,73 @@ type MyLens s a = forall f.
 
 \begin_layout Plain Layout
 
-data Creation = Creation {
+item_name :: MyLens MyStructure String
 \end_layout
 
 \begin_layout Plain Layout
 
-    _title :: String
-\end_layout
-
-\begin_layout Plain Layout
-
-    , _rank :: Int}
-\end_layout
-
-\begin_layout Plain Layout
-
-    deriving (Show, Eq)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-item_name :: MyLens Creation String
-\end_layout
-
-\begin_layout Plain Layout
-
-item_name some_function (Creation t r) = 
+item_name some_function (MyStructure l r) = 
 \end_layout
 
 \begin_layout Plain Layout
 
 			(
 \backslash
-t'->  Creation t' r) <$> (some_function t)
+l'->  MyStructure l' r) <$> (some_function l)
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{code}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From this, there is a general structure that represents how a lens may be
+ formed by the type abstraction of 
+\emph on
+MyLens
+\emph default
+.
+ Specifically instantiated the expansion for
+\emph on
+ item_name
+\emph default
+ would appear something along the lines of 
+\emph on
+(String -> f String) -> MyStructure -> f MyStructure
+\emph default
+.
+ Which allows a set or view implementation to provide some functor that
+ renders the inspection or modification of the structure in compliance with
+ the well-behaved features of lenses.
+ Another way to see this, is that upon inspecting the instantiation of 
+\emph on
+item_name
+\emph default
+, it is possible to spot out the initial pattern matching of the structure.
+ The leftmost argument having 
+\emph on
+some_function 
+\emph default
+applied to it, before being injected back into the structure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -528,12 +824,12 @@ view :: MyLens s a -> (s -> a)
 
 \begin_layout Plain Layout
 
-getPateronTitle :: Creation -> String
+getPatronTitle :: MyStructure -> String
 \end_layout
 
 \begin_layout Plain Layout
 
-getPateronTitle = view item_name
+getPatronTitle = view item_name
 \end_layout
 
 \begin_layout Plain Layout
@@ -542,12 +838,12 @@ getPateronTitle = view item_name
 
 \begin_layout Plain Layout
 
-setPateronTitle :: Creation -> String -> Creation 
+setPatronTitle :: MyStructure -> String -> MyStructure 
 \end_layout
 
 \begin_layout Plain Layout
 
-setPateronTitle = set item_name
+setPatronTitle = set item_name
 \end_layout
 
 \begin_layout Plain Layout
@@ -560,6 +856,34 @@ end{code}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The specifics of how 
+\emph on
+set
+\emph default
+ and 
+\emph on
+view
+\emph default
+ are implementing their individual accesses to the structure aren't terribly
+ important, they are only giving instantiation to the much more familiar
+ usage and format of the well-behaved lens laws in Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ This is made more clear in the PatronTitle functions and type definitions,
+ where after applying the lens to the set or view, then only the classic
+ arguments are needed, since the lens has already focused on a specific
+ area of the structure.
 \end_layout
 
 \end_body
