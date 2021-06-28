@@ -494,11 +494,15 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset space \hfill{}
+\end_inset
+
+
 \begin_inset Box Frameless
-position "t"
+position "b"
 hor_pos "c"
 has_inner_box 1
-inner_pos "t"
+inner_pos "b"
 use_parbox 0
 use_makebox 0
 width "45col%"
@@ -515,15 +519,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}[t]{0.5
-\backslash
-textwidth}%
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -577,13 +572,6 @@ set_a (x,y) x' = (x',y)
 end{code}
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{minipage}
-\end_layout
-
 \end_inset
 
 
@@ -597,10 +585,10 @@ end{minipage}
 
 
 \begin_inset Box Frameless
-position "t"
+position "b"
 hor_pos "c"
 has_inner_box 1
-inner_pos "c"
+inner_pos "b"
 use_parbox 0
 use_makebox 0
 width "45col%"
@@ -625,6 +613,10 @@ filename "LensGraph.tex"
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset space \hfill{}
 \end_inset
 
 
@@ -662,7 +654,7 @@ literal "false"
 
 \end_inset
 
- for a good survery.
+ for a good survey.
  These and many more topics will be restricted to monomorphic occurrences
  instead, whilst the rest will fall outside the scope of this thesis.
 \end_layout
@@ -797,6 +789,8 @@ status open
 
 \begin_layout Plain Layout
 
+
+\backslash
 texttt{MyLens}
 \end_layout
 
@@ -813,6 +807,8 @@ status open
 
 \begin_layout Plain Layout
 
+
+\backslash
 texttt{item
 \backslash
 _name}
@@ -847,6 +843,8 @@ status open
 
 \begin_layout Plain Layout
 
+
+\backslash
 texttt{item
 \backslash
 _name}
@@ -865,6 +863,8 @@ status open
 
 \begin_layout Plain Layout
 
+
+\backslash
 texttt{some
 \backslash
 _function}

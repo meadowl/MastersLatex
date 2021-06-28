@@ -117,8 +117,8 @@ Remote Lenses And The Remote Monad (Separate?)
 \end_layout
 
 \begin_layout Standard
-In this chapter, we detail a novel extension of lenses to remote structures,
- by making use of the Remote Monad.
+In this chapter, we detail a novel extension of lenses to remote structures
+ making use of the Remote Monad.
  As described, the two primary components of lenses are the 
 \emph on
 Set
@@ -152,13 +152,14 @@ noprefix "false"
 \end_inset
 
 , an element of that structure is retrieved.
- One now modifying that retrieved element with some function, before applying
+ We may then modify that retrieved element with some function before applying
  
 \emph on
 Set
 \emph default
- to that very same structure, shall result in a structure' which accomplishes
- the same as having applied 
+ to that very same structure.
+ This results in a new structure which accomplishes the same as having applied
+ 
 \emph on
 Over
 \emph default
@@ -176,9 +177,12 @@ Set
 Over
 \emph default
 .
- For the a command sequence to be equal to Over, it must directly perform
- a given function onto the focus whilst in in the same singular injective
- process?
+ For the a command sequence to be equal to 
+\emph on
+Over
+\emph default
+, it must directly perform a given function onto the focus whilst in in
+ the same singular injective process?
 \end_layout
 
 \begin_layout Standard
@@ -244,6 +248,15 @@ over' :: MyLens s a -> (a -> a) -> s -> s
 
 over' ln f s = runIdentity (ln (Identity .
  f) s)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Set(Obj F(View(Obj)) = Over(Obj, F) (Writer note to put this somewhere)
 \end_layout
 
 \begin_layout Plain Layout
@@ -317,11 +330,10 @@ These definitions allow for one to describe a variation of lenses that copies
 Remote Lens
 \emph default
 .
- This topic be fleshed out starting now and until the end of this document.
 \end_layout
 
 \begin_layout Standard
-It is now possible to extend the abstract syntax from Equation (
+We now extend the abstract identities in Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:2"
@@ -331,18 +343,41 @@ noprefix "false"
 
 \end_inset
 
-) as modifications to the original well-formed lens rules which are provided
- in the following Equation (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3"
-plural "false"
-caps "false"
-noprefix "false"
+) to the Remote Lens setting, obtaining the 
+\emph on
+Remote Lens Identities
+\emph default
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{flalign}
+RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\:\,,\nonumber \\
+RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\:\,,\label{eq:3}\\
+RemoteSet(acc,\,\:item,\,\:obj)\,\:;\,\:RemoteSet(acc,\:\,item2,\,\:obj)\:\, & \equiv\,\:RemoteSet(acc,\,\:item2,\,\:obj)\:\,.\nonumber 
+\end{flalign}
 
 \end_inset
 
-).
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+When a lens interacts with a structure, a Remote Lens interacts with a Remote
+ Structure.
  Where 
 \begin_inset Quotes eld
 \end_inset
@@ -368,7 +403,9 @@ noprefix "false"
 \end_inset
 
  denotes congruence but not equality.
- Where 
+ 
+\strikeout on
+Where 
 \begin_inset Quotes eld
 \end_inset
 
@@ -436,45 +473,59 @@ noprefix "false"
 \end_inset
 
 ).
- 
-\end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\begin{flalign}
-RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\nonumber \\
-RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\label{eq:3}\\
-RemoteSet(acc,\,\:item,\,\:obj)\,\:;\,\:RemoteSet(acc,\:\,item2,\,\:obj)\:\, & \equiv\,\:RemoteSet(acc,\,\:item2,\,\:obj)\nonumber 
-\end{flalign}
-
+\strikeout default
+ (Talk about why equivalence 
+\begin_inset Quotes eld
 \end_inset
 
 
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ here, but equal 
+\begin_inset Quotes eld
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+elsewhere) (Reference Equation 2.2).
 \end_layout
 
 \begin_layout Standard
-The essentials of what is required is aptly similar to the definitions seen
- in the elementary Prelude construction of Haskell lenses.
- With that in mind, the first argument typically taken by any lens operator
- is a function that will access a deep rooted parameter inside of a structure.
+The essentials of what is required to construct the 
+\emph on
+Remote Lens Identities
+\emph default
+ inside of Haskell is aptly similar to the construction of definitions seen
+ in the elementary Prelude constructions of Haskell lenses.
+ The first argument typically taken by any lens operator is a function that
+ will access a deep-rooted parameter inside of a structure.
  In the same vein, the
 \emph on
  Remote Lens
 \emph default
  variant accomplishes this with an abstraction of the 
 \emph on
-Remote Object's
+Remote Structure's
 \emph default
  nested fields that are to be queried into once the command is sent from
  host to client.
- The primary difference in how this is handled by Haskell, is that rather
- than simply pattern matching into the already existing structure, a completely
- different approach is needed instead.
+ The primary difference in how this is handled by Haskell.
+ Rather than simply pattern matching into the already existing structure,
+ a completely different approach is needed instead due to to the structure
+ being remote.
  To define the individual components of 
 \emph on
 Remote Lenses
 \emph default
-, for an arbitrary type system we begin by providing the relevant abstract
+ for an arbitrary type system we begin by providing the relevant abstract
  type definitions below.
 \end_layout
 
