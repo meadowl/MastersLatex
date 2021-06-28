@@ -284,7 +284,19 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{ 
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset include
 LatexCommand input
 preview true
@@ -293,7 +305,14 @@ filename "ExpandedLensDiagram.tex"
 \end_inset
 
 
-\begin_inset space \qquad{}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ }
+\end_layout
+
 \end_inset
 
 
