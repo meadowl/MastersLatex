@@ -69,6 +69,9 @@
 \makeatother
 \usepackage{auto-pst-pdf}
 
+\usepackage{nccmath}
+\usepackage{setspace}
+
 \usepackage{indentfirst}
 \end_preamble
 \options letterpaper

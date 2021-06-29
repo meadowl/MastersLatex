@@ -33,6 +33,9 @@
 \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
 \makeatother
 \usepackage{auto-pst-pdf}
+
+\usepackage{nccmath}
+\usepackage{setspace}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -284,10 +287,34 @@ status open
 
 \begin_layout Plain Layout
 \noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{ 
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset include
 LatexCommand input
 preview true
 filename "ExpandedLensDiagram.tex"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ }
+\end_layout
 
 \end_inset
 
@@ -347,6 +374,21 @@ noprefix "false"
 Remote Lens Identities
 \emph default
 ,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+useshortskip 
+\backslash
+begin{spacing}{1} 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -356,6 +398,19 @@ RemoteSet\big(acc,\:\,RemoteView(acc,\,\:obj),\:\,obj\big)\,\: & \equiv\:\,obj\:
 RemoteView\big(acc,\,\:RemoteSet(acc,\,\,item,\:\,obj)\big)\,\: & \equiv\:\,item\:\,,\label{eq:3}\\
 RemoteSet(acc,\,\:item,\,\:obj)\,\:;\,\:RemoteSet(acc,\:\,item2,\,\:obj)\:\, & \equiv\,\:RemoteSet(acc,\,\:item2,\,\:obj)\:\,.\nonumber 
 \end{flalign}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing} 
+\end_layout
 
 \end_inset
 
@@ -1012,17 +1067,9 @@ With basic syntactical sugar, with
 \emph on
 RemoteView
 \emph default
- as
-\emph on
- ^.
-
-\emph default
- And composition of remote lens fields as 
-\emph on
->>>
-\emph default
- … one gets a clear expression that shows to anyone else on ones coding
- team what one was doing.
+ as ^.
+ And composition of remote lens fields as >>> one gets a clear expression
+ that shows to anyone else on ones coding team what one was doing.
  
 \end_layout
 
