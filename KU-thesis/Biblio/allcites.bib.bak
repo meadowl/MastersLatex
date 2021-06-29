@@ -25,6 +25,7 @@
   volume    = {308},
   abstract  = {Lenses are mathematical structures used in the context of bidirectional transformations. In this paper, we introduce update lenses as a refinement of ordinary (asymmetric) lenses in which we distinguish between views and updates. In addition to the set of views, there is a monoid of updates and an action of the monoid on the set of views. Decoupling updates from views allows for other ways of changing the source than just merging a view into the source. We also consider a yet finer dependently typed version of update lenses. We give a number of characterizations of update lenses in terms of bialgebras and coalgebras, including analogs to O'Connor's coalgebraic and Johnson, Rosebrugh and Wood's algebraic characterizations of ordinary lenses. We consider conversion of views and updates, a tensor product of update lenses and composition of update lenses.},
   doi       = {https://doi.org/10.1016/j.entcs.2014.10.003},
+  file      = {:Ahman2014 - Coalgebraic Update Lenses.pdf:PDF},
   keywords  = {lenses, comonads, monads, coalgebras, algebras, bialgebras, distributive laws, liftings, monoid acts, directed containers},
   publisher = {Elsevier {BV}},
   url       = {https://www.sciencedirect.com/science/article/pii/S157106611400070X},
@@ -43,6 +44,7 @@
   address    = {New York, NY, USA},
   articleno  = {1},
   doi        = {10.1145/3158089},
+  file       = {:Miltner2017 - Synthesizing Bijective Lenses.pdf:PDF},
   issue_date = {January 2018},
   keywords   = {Type-Directed Synthesis, Type Systems, Bidirectional Programming, Program Synthesis},
   numpages   = {30},
@@ -58,6 +60,7 @@
   pages     = {Volume 57: Bidirectional Transformations 2013},
   volume    = {57},
   doi       = {http://dx.doi.org/10.14279/tuj.eceasst.57.875},
+  file      = {:Johnson2013 - Delta Lenses and Opfibrations.pdf:PDF},
   language  = {en},
   publisher = {European Association of Software Science and Technology},
 }
@@ -72,6 +75,7 @@
   pages     = {25},
   volume    = {22},
   doi       = {10.1017/s0960129511000442},
+  file      = {:Johnson2011 - Lenses, Fibrations and Universal Translations.pdf:PDF},
   publisher = {Cambridge University Press},
 }
 
@@ -88,6 +92,7 @@
   abstract   = {Bidirectional programming languages are a practical approach to the view update problem. Programs in these languages, called lenses, define both a view and an update policy - i.e., every program can be read as a function mapping sources to views as well as one mapping updated views back to updated sources.One thorny issue that has not received sufficient attention in the design of bidirectional languages is alignment. In general, to correctly propagate an update to a view, a lens needs to match up the pieces of the view with the corresponding pieces of the underlying source, even after data has been inserted, deleted, or reordered. However, existing bidirectional languages either support only simple strategies that fail on many examples of practical interest, or else propose specific strategies that are baked deeply into the underlying theory.We propose a general framework of matching lenses that parameterizes lenses over arbitrary heuristics for calculating alignments. We enrich the types of lenses with "chunks" identifying reorderable pieces of the source and view that should be re-aligned after an update, and we formulate behavioral laws that capture essential constraints on the handling of chunks. We develop a core language of matching lenses for strings, together with a set of "alignment combinators" that implement a variety of alignment strategies.},
   address    = {New York, NY, USA},
   doi        = {10.1145/1932681.1863572},
+  file       = {:Barbosa2010 - Matching Lenses_ Alignment and View Update.pdf:PDF},
   issue_date = {September 2010},
   keywords   = {boomerang, view update problem, bidirectional languages, lenses, alignment},
   numpages   = {12},
@@ -108,6 +113,7 @@
   abstract   = {We propose a novel approach to the view-update problem for tree-structured data: a domain-specific programming language in which all expressions denote bidirectional transformations on trees. In one direction, these transformations---dubbed lenses---map a concrete tree into a simplified abstract view; in the other, they map a modified abstract view, together with the original concrete tree, to a correspondingly modified concrete tree. Our design emphasizes both robustness and ease of use, guaranteeing strong well-behavedness and totality properties for well-typed lenses.We begin by identifying a natural space of well-behaved bidirectional transformations over arbitrary structures, studying definedness and continuity in this setting. We then instantiate this semantic framework in the form of a collection of lens combinators that can be assembled to describe bidirectional transformations on trees. These combinators include familiar constructs from functional programming (composition, mapping, projection, conditionals, recursion) together with some novel primitives for manipulating trees (splitting, pruning, merging, etc.). We illustrate the expressiveness of these combinators by developing a number of bidirectional list-processing transformations as derived forms. An extended example shows how our combinators can be used to define a lens that translates between a native HTML representation of browser bookmarks and a generic abstract bookmark format.},
   address    = {New York, NY, USA},
   doi        = {10.1145/1232420.1232424},
+  file       = {:Foster2007 - Combinators for Bidirectional Tree Transformations_ a Linguistic Approach to the View Update Problem.pdf:PDF},
   issue_date = {May 2007},
   keywords   = {XML, Bidirectional programming, Harmony, view update problem, lenses},
   numpages   = {65},
@@ -128,6 +134,7 @@
   abstract   = {In this article, we introduce and study a framework, called peer data exchange, for sharing and exchanging data between peers. This framework is a special case of a full-fledged peer data management system and a generalization of data exchange between a source schema and a target schema. The motivation behind peer data exchange is to model authority relationships between peers, where a source peer may contribute data to a target peer, specified using source-to-target constraints, and a target peer may use target-to-source constraints to restrict the data it is willing to receive, but cannot modify the data of the source peer.A fundamental algorithmic problem in this framework is that of deciding the existence of a solution: given a source instance and a target instance for a fixed peer data exchange setting, can the target instance be augmented in such a way that the source instance and the augmented target instance satisfy all constraints of the setting? We investigate the computational complexity of the problem for peer data exchange settings in which the constraints are given by tuple generating dependencies. We show that this problem is always in NP, and that it can be NP-complete even for “acyclic” peer data exchange settings. We also show that the data complexity of the certain answers of target conjunctive queries is in coNP, and that it can be coNP-complete even for “acyclic” peer data exchange settings.After this, we explore the boundary between tractability and intractability for deciding the existence of a solution and for computing the certain answers of target conjunctive queries. To this effect, we identify broad syntactic conditions on the constraints between the peers under which the existence-of-solutions problem is solvable in polynomial time. We also identify syntactic conditions between peer data exchange settings and target conjunctive queries that yield polynomial-time algorithms for computing the certain answers. For both problems, these syntactic conditions turn out to be tight, in the sense that minimal relaxations of them lead to intractability. Finally, we introduce the concept of a universal basis of solutions in peer data exchange and explore its properties.},
   address    = {New York, NY, USA},
   doi        = {10.1145/1189769.1189778},
+  file       = {:Fuxman2006 - Peer Data Exchange.pdf:PDF},
   issue_date = {December 2006},
   keywords   = {schema mapping, Data exchange, conjunctive queries, metadata model management, certain answers, data integration},
   numpages   = {45},
@@ -146,6 +153,7 @@
   series    = {PODS '06},
   abstract  = {We propose a novel approach to the classical view update problem. The view update problem arises from the fact that modifications to a database view may not correspond uniquely to modifications on the underlying database; we need a means of determining an "update policy" that guides how view updates are reflected in the database. Our approach is to define a bi-directional query language, in which every expression can be read bot(from left to right) as a view definition and (from right to left) as an update policy. The primitives of this language are based on standard relational operators. Its type system, which includes record-level predicates and functional dependencies, plays a crucial role in guaranteeing that update policies are well-behaved, in a precise sense, and that they are total—i.e., able to handle arbitrary changes to the view.},
   doi       = {10.1145/1142351.1142399},
+  file      = {:Bohannon2006 - Relational Lenses_ a Language for Updatable Views.pdf:PDF},
   isbn      = {1595933182},
   keywords  = {lenses, view update},
   location  = {Chicago, IL, USA},
@@ -166,6 +174,7 @@
   abstract   = {Remote Procedure Calls are expensive. This paper demonstrates how to reduce the cost of calling remote procedures from Haskell by using the remote monad design pattern, which amortizes the cost of remote calls. This gives the Haskell community access to remote capabilities that are not directly supported, at a surprisingly inexpensive cost. We explore the remote monad design pattern through six models of remote execution patterns, using a simulated Internet of Things toaster as a running example. We consider the expressiveness and optimizations enabled by each remote execution model, and assess the feasibility of our approach. We then present a full-scale case study: a Haskell library that provides a Foreign Function Interface to the JavaScript Canvas API. Finally, we discuss existing instances of the remote monad design pattern found in Haskell libraries.},
   address    = {New York, NY, USA},
   doi        = {10.1145/2887747.2804311},
+  file       = {:Gill2015 - The Remote Monad Design Pattern.pdf:PDF},
   issue_date = {December 2015},
   keywords   = {Monads, FFI, Remote Procedure Call, Design Pattern},
   numpages   = {12},
@@ -173,20 +182,23 @@
   url        = {https://doi.org/10.1145/2887747.2804311},
 }
 
-@article{pierce2003lenses,
-  title={Lenses and view update translation},
-  author={Pierce, Benjamin C and Schmitt, Alan},
-  journal={Manuscript},
-  year={2003},
-  publisher={Citeseer}
+@Article{Pierce2003,
+  author    = {Pierce, Benjamin C and Schmitt, Alan},
+  journal   = {Manuscript},
+  title     = {Lenses and view update translation},
+  year      = {2003},
+  file      = {:Pierce2003 - Lenses and View Update Translation.pdf:PDF},
+  publisher = {Citeseer},
 }
 
-@article{greenwald2003language,
-  title={A language for bi-directional tree transformations},
-  author={Greenwald, Michael B and Moore, Jonathan T and Pierce, Benjamin C and Schmitt, Alan},
-  journal={Pat},
-  volume={333},
-  pages={4444},
-  year={2003}
+@Article{Greenwald2003,
+  author  = {Greenwald, Michael B and Moore, Jonathan T and Pierce, Benjamin C and Schmitt, Alan},
+  journal = {Pat},
+  title   = {A language for bi-directional tree transformations},
+  year    = {2003},
+  pages   = {4444},
+  volume  = {333},
+  file    = {:Greenwald2003 - A Language for Bi Directional Tree Transformations.pdf:PDF},
 }
+
 @Comment{jabref-meta: databaseType:bibtex;}
