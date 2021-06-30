@@ -209,8 +209,6 @@ status open
 
 
 \backslash
-useshortskip 
-\backslash
 begin{spacing}{1} 
 \end_layout
 

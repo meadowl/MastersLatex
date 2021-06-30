@@ -251,6 +251,18 @@ name "fig:Variety-of-Lenses"
 
 \begin_layout Standard
 \noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent 
+\end_layout
+
+\end_inset
+
 Specific implementations that directly reference how a host can only see
  a certain amount of information from the client side's database system,
  with a goal that both must maintain a consistently updated view no matter

@@ -116,7 +116,7 @@
 \begin_body
 
 \begin_layout Chapter
-Remote Lenses And The Remote Monad (Separate?)
+Remote Lenses and The Remote Monad (Separate?)
 \end_layout
 
 \begin_layout Standard
@@ -209,6 +209,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=false,breakafter={>}]
 \end_layout
@@ -267,6 +274,13 @@ Set(Obj F(View(Obj)) = Over(Obj, F) (Writer note to put this somewhere)
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -594,6 +608,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=false,breakafter={>}]
 \end_layout
@@ -620,6 +641,13 @@ RemoteOver :: (String -> String) -> (t -> a) -> (Wrapped a) -> ReturnType
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -810,6 +838,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -837,6 +872,13 @@ RemoteOver :: (FromJSON t, Show a) => (String -> String) -> (t -> a) ->
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -894,6 +936,13 @@ status open
 \begin_layout Plain Layout
 
 %
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1018,6 +1067,13 @@ end{code}
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
 %
 \end_layout
 
@@ -1084,6 +1140,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -1099,6 +1162,13 @@ f :: Double <- person ^.
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1133,6 +1203,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -1147,6 +1224,13 @@ RemoteView (extra3(nest2(nest))) person
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1176,6 +1260,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -1195,6 +1286,13 @@ procedure $ var g
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1234,6 +1332,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -1267,6 +1372,13 @@ RemoteOver (extra3(nest2(nest))) (
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1340,6 +1452,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
 kanywhere=true,breakafter=>]
 \end_layout
@@ -1378,6 +1497,13 @@ end{code}
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
 %
 \end_layout
 
@@ -1397,6 +1523,13 @@ status open
 \begin_layout Plain Layout
 
 %
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1488,6 +1621,13 @@ end{code}
 
 \begin_layout Plain Layout
 
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
 %
 \end_layout
 
@@ -1507,6 +1647,13 @@ status open
 \begin_layout Plain Layout
 
 %
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1582,6 +1729,13 @@ exercise1 eng = do
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \end_inset
