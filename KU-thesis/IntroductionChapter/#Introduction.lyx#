@@ -20,6 +20,18 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \newcommand{\ignore}[1]{}
+
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[space]{grffile} % For spaces in paths
+\usepackage{etoolbox} % For spaces in paths
+\makeatletter % For spaces in paths
+\patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+\makeatother
+\usepackage{auto-pst-pdf}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -104,99 +116,57 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The origin of this manuscript began with looking for overall abstractions
- between remote object systems and being curious as to seeing if adding
- an ordered lens-like structure was possible between multiple systems.
- Even if the abstraction is nothing more than a wrapper or boilerplate for
- existing code, it sparked curiosity if these remote systems could stimulate
- or in fact provide the simplicity of lenses to an end user.
- And that these abstractions were representative of total systems in existence,
- due to the popularity of classical lenses.
- It was discovered that online server applications attempt to bring this
- boilerplate into their own code with different levels of effectiveness
- across their own systems.
+The origin of this work begins with looking for overall abstractions between
+ remote object systems and investigating whether adding an ordered lens-like
+ structure was possible between multiple systems.
+ These remote systems could stimulate or in fact provide the simplicity
+ of lenses to an end user, such that these abstractions were representative
+ of systems already in existence.
+ Due to the popularity of classical lenses, it was discovered that online
+ applications attempt to bring this boilerplate into their own code with
+ different levels of effectiveness across their own systems.
 \end_layout
 
 \begin_layout Standard
-This led to some initial questions and concerns, mainly what a lens is,
- what a lens is in a programming language — specifically Haskell, and what
- are the existing standards for what constitutes the different categories
- of lenses that exist in the broad community.
-\end_layout
+To begin with, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Foster2007"
+literal "false"
 
-\begin_layout Standard
-Keeping in mind that Lenses are about solving a bijective interaction with
- a data structure, as so little as to provide convenience to the end user
- and as far to provide many layers of type safety.
- Most commonly in the functional community lenses are abstractions that
- are popular to provide an object-oriented accessor notation to an object’s
- elements.
- In the sense that the functions that wrap data into structures are able
- to be acted on by functions that unwrap or re-wrap data in a convenient
- way.
- There are extensional ideas that relate to this such as Traversable structures,
+\end_inset
+
+, this field has been strictly derived from the premise of database systems,
+ with even this primary source having constrained itself to a strict representat
+ion in the fundamentals.
+ The fact of this is not a surprise when considering that the original well-beha
+ved lens laws were first formulated by Benjamin C.
+ Pierce in the context of database manipulation, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Pierce2003,Greenwald2003"
+literal "false"
+
+\end_inset
+
+.
+ From this series of work, Lenses originated from studying bidirectional
+ transformations, as providing convenience to the end user as well as layers
+ of type safety.
+ Most commonly in the functional programming community lenses are popular
+ abstractions to provide an object-oriented accessor notation to an object’s
+ elements: the functions that wrap data into structures are able to be acted
+ on by functions that unwrap or re-wrap data in a convenient way.
+ There are extensional ideas that relate to this such as Traversable Structures,
  but that is not the primary focus of this research, although in the case
- of Remote Monad, the Traversable is very much implementable — abet with
+ of Remote Monad, the Traversable is very much implementable — albeit with
  some extra efforts.
 \end_layout
 
 \begin_layout Standard
-Lenses are in briefest summary a mathematical tool to solve the bidirectional
- transformations problem.
- They came as an expansion to the mostly solved bijective dictionary space
- and an attempt to further expand out the work with new levels of abstractions.
- Every lens has a set and a get function that it bundles together, and are
- modeled after object-class accessors.
- To accomplish the goal of retrieving or mutating values inside of those
- kinds of objects.
- As to what the community considers a well-behaved lens, this in itself
- can be varied and ends up becoming unclear based on who’s implementation
- and rationalization one reads on.
- Much like much of computer science terms end up thrown around interchangeably,
- meanings are lost and altered for established words, and so therefore it
- becomes important to establish what each body of work considers to be a
- lens and a well-behaved lens.
-\end_layout
-
-\begin_layout Standard
-For starters what separates well-behaved from not? A well-behaved function
- follows what are generally expected rules and results that the average
- user might expect.
- And a function that is not well-behaved will possibly posses unexpected
- behaviors that the user does not intend to occur.
- A clever way to imagine this is to imagine the standards in place for the
- C++ compiler.
- There are well-behaved and expected results if one were to define a simple
- addition function.
- However, there are no defined results as to what should happen if one's
- main function does not have a return statement embedded at the end.
- So in this way a well-behaved lens has some expected behaviors that will
- always hold true if it follows a community's prescribed expectations.
- But unfortunately, the manual itself is ill-defined based on the source
- that one prescribes, therefore it is important that in this body of work
- the manual for a well-behaved lens is included.
- So that it becomes possible to judge in this body of work if the lens fits
- the established expectations with its behaviors.
- And ultimately anything that is not defined should be disregarded in the
- same way that one might disregard the C++ compilers handling of no return
- statement in main.
- This manuscript is ultimately concerned with defined behaviors as they
- relate to defined expectations.
-\end_layout
-
-\begin_layout Standard
-Leading to the main body of this work which will be an exploration and attempt
- to quantitatively define Remote Lenses, and unique differences that one
- can describe when holding them up to the light in comparison to classical
- Local Lenses.
-\end_layout
-
-\begin_layout Standard
 There are several types of lenses that bridge the gap between remote and
- local interactions already in existence, to varying degrees of depth of
- implementation.
- As well as what the focus of those implementations were in the broader
- scheme.
+ local interactions already in existence, with varying degrees of depth
+ of implementation.
  From the broad categories of c-lenses to the category of d-lenses, 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -205,13 +175,21 @@ literal "false"
 
 \end_inset
 
-, using the concepts of opfibrations to encapsulate the nature of transition
+ use the concepts of opfibrations to encapsulate the nature of transition
  information between a system and a database.
- The previous work, derives the motivation from the database systems such
- as SQL and the manipulation of table or record information, i.e.
+ The previous work derives its motivation from database systems such as
+ SQL and the manipulation of table or record information, i.e.
  the original derivation of the c-lens from the categorical notion of Grothendie
-ck opfibration for a solution to the view update problem for functorial
- update processes, 
+ck opfibration, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Grothendieck1971"
+literal "false"
+
+\end_inset
+
+, for a solution to the view update problem for functorial update processes,
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Johnson2011"
@@ -220,13 +198,9 @@ literal "false"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Specific implementations that directly reference how a host can only see
- a certain amount of information from the client side's database system,
- with a goal that both must maintain a consistently updated view no matter
- the views or set that are executed, 
+ From the idea that a host can only see a certain amount of information
+ from the client side's database system, but both must maintain a consistently
+ updated view parameter, 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Ahman2014"
@@ -235,9 +209,119 @@ literal "false"
 \end_inset
 
 .
- Much of the specifics in theory has grown from the typical database relationshi
-p from SQL and other table based services, and the constructed ideas are
- tailored to concepts display in works like 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "LensFields.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Variety of Lenses
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Variety-of-Lenses"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent 
+\end_layout
+
+\end_inset
+
+In fact, the advancements in category theory are heavily rooted in earlier
+ works that bridged the gaps between algebraic topology and algebraic geometry,
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Grothendieck1958-1960"
+literal "false"
+
+\end_inset
+
+.
+ Which nearly paralleled the formalization of Beck's work in the formalization
+ of the monadicity theorem which established when a functor is monadic,
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Beck1967"
+literal "false"
+
+\end_inset
+
+.
+ These and multiple many discoveries gave rise to the derivation of several
+ important concepts, including bifibrations and the monad itself, the details
+ of which are not in the scope of this manuscript.
+ Which gives rise to the formality of lenses despite their very humble beginning
+s, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Greenwald2003"
+literal "false"
+
+\end_inset
+
+.
+ The notions of what can be considered entirely a lens or a portion of the
+ children a lens structure, is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Variety-of-Lenses"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Much of the general theory has assumed a typical database relationship such
+ as SQL or other table based services, this is based from the hard coded
+ implementations that preceded these constructed ideas, which are hand tailored
+ in works such as 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Bohannon2006"
@@ -246,9 +330,10 @@ literal "false"
 \end_inset
 
 .
- Several works are representative of these direct methods and their specific
- heritage in database problems with source-to-target and target-to-source
- transformations, 
+ Several of these works are representative of these direct methods and their
+ specific heritage in database problems which would be too numerous to cite
+ here, but an impactful reference on source-to-target and target-to-source
+ transformations is 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Fuxman2006"
@@ -260,8 +345,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-From the category of automatic lens generators and parsers, most notably
- Boomerang a bidirectional programming language for textual data, 
+There is a wide range of work exploring the idea of automatic lens generators
+ and parsers, most notably Boomerang a bidirectional programming language
+ for textual data, 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Barbosa2010"
@@ -291,31 +377,22 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-For a fair clarification, 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Foster2007"
-literal "false"
-
-\end_inset
-
-, this field has been strictly derived from the premise of database systems,
- with even this primary source document having constrained itself to a strict
- representation in the fundamentals.
- Not a surprise when considering that the original well-behaved lens laws
- were first formulated by Benjamin C.
- Pierce in the context of database manipulation.
- Which is why there is still open space for sudo-implementations of lenses
+Which is why there is still open space for pseudo-implementations of lenses
  that haven't received much coverage if any in literature, perhaps because
  they break from all of the much higher level concepts and exert effort
- in the more rudimentary space of custom constructed DSLs.
+ in the more rudimentary space of custom constructed Domain Specific Languages
+ (DSLs).
  A DSL that is built over existing systems, not from the ground up with
  an intention of being able to represent much deeper concepts.
  It is a focus on practical designing patterns that are concerned with construct
 ion in the execution space.
  Since one doesn't need more than an understanding of the well-behaved lens
  laws to be able to put them into application for remote and local systems.
- Additionally, DSLs already have their own unique sub-field in the lensing
+ 
+\end_layout
+
+\begin_layout Standard
+Additionally, DSLs already have their own unique sub-field in the lensing
  community with respect to the bidirectional transformation problem 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -325,7 +402,7 @@ literal "false"
 \end_inset
 
 .
- This topic focuses on the API advancements provided by the remote monad
+ This topic focuses on the API advancements provided by the Remote Monad
  design pattern for remote calls to external systems for the purposes of
  Remote Procedure Calls that have their commands executed remotely before
  returned locally, 
@@ -341,10 +418,8 @@ literal "false"
 s itself by being primarily focused on Remote Procedure Calls rather than
  the typical database view update problem — of the latter this is not an
  attempt to expand on.
- The manuscript is focused on bringing in the concepts of lenses that are
- used in DSLs to an explicit light where they haven't been explored before,
- apart from generic implementations across web packages but not explored
- in documented in literature.
+ This manuscript is focused on bringing in the concepts of lenses which
+ are neglected in documented in literature f.
  With explicit focus on the usability and ease of implementation from the
  fundamental well-behaved rules, and the capacity to scaffold them onto
  existing API.

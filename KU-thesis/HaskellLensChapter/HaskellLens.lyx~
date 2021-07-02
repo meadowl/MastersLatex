@@ -124,7 +124,7 @@ Lenses are a restudy of the old problem of bidirectional transformations
  It is still an active field of study, with many connections to different
  sub-fields of computer science.
  Explicitly described, 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -747,6 +747,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 \end_layout
 
@@ -777,6 +784,13 @@ data MyStructure = MyStructure {
 end{code}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
 \end_inset
 
 
@@ -795,6 +809,13 @@ The structure contains two important points of focus a String and an Int
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -835,6 +856,13 @@ l'->  MyStructure l' r) <$> (some_function l)
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \end_inset
@@ -948,6 +976,13 @@ status open
 
 
 \backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 \end_layout
 
@@ -995,6 +1030,13 @@ setPatronTitle = set item_name
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
 \end_layout
 
 \end_inset
