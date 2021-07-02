@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1252"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="285.943 89.917 356.057 517.536" xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw" version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="triangle" id="id1217689460" latexdraw:points="305.9428571428566 335.93571428571397 549.9428571428573 335.93571428571397 549.9428571428573 565.1357142857138 305.9428571428566 565.1357142857138">
+            <polygon points="427.94285714285695,336.9998419298933 549.2125636316861,564.6357142857138 306.6731506540279,564.6357142857138" latexdraw:borderPos="outer" stroke="red" stroke-width="1.0" fill="url(#linearGradient1217689460)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id289705967">
+            <polyline points="428.7428571428574,338.6023809523805 356.609523809524,563.8023809523805 " stroke="black" stroke-width="2.0" fill="none" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="dot" id="id1263043629" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="356.3428571428573 565.4523809523812">
+            <ellipse cx="356.3428571428573" cy="565.4523809523812" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#000080" fill="#000080"/>
+        </g>
+        <g latexdraw:type="dot" id="id585225463" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="356.20952380952434 565.1857142857143">
+            <ellipse cx="356.20952380952434" cy="565.1857142857143" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="red" fill="none"/>
+            <path d="M 356.20952380952434 556.9357142857143 L 356.20952380952434 573.4357142857143 M 347.95952380952434 565.1857142857143 L 364.45952380952434 565.1857142857143" stroke-width="1.375" stroke-linecap="butt" stroke="red" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id1732793651" fill="black" latexdraw:position="bl">
+            <text x="366.8" y="581.9095238095233">Focus</text>
+        </g>
+        <g latexdraw:type="triangle" id="id321058400" latexdraw:points="377.99999999999994 109.99999999999997 621.9999999999999 109.99999999999997 621.9999999999999 339.2 377.99999999999994 339.2">
+            <polygon points="499.9999999999999,111.06412764417932 621.2697064888287,338.7 378.7302935111712,338.7" latexdraw:borderPos="outer" stroke="cyan" stroke-width="1.0" fill="url(#linearGradient321058400)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id930202445">
+            <polyline points="500.80000000000007,112.66666666666652 428.66666666666686,337.8666666666668 " stroke="black" stroke-width="2.0" fill="none" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="dot" id="id705735231" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="428.40000000000026 339.51666666666745">
+            <ellipse cx="428.40000000000026" cy="339.51666666666745" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#808000" fill="#808000"/>
+        </g>
+        <g latexdraw:type="dot" id="id1060936599" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="428.2666666666672 339.25000000000057">
+            <ellipse cx="428.2666666666672" cy="339.25000000000057" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="black" fill="none"/>
+            <path d="M 428.2666666666672 331.00000000000057 L 428.2666666666672 347.50000000000057 M 420.0166666666672 339.25000000000057 L 436.5166666666672 339.25000000000057" stroke-width="1.375" stroke-linecap="butt" stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id1793347860" fill="black" latexdraw:position="bl">
+            <text x="439.99999999999994" y="356.54523809523795">Substructure</text>
+        </g>
+        <g latexdraw:type="text" id="id733920906" fill="black" latexdraw:position="bl">
+            <text x="462.3999999999995" y="109.91666666666656">Structure</text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="linearGradient1217689460" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="cyan"/>
+            <stop offset="0.9" stop-color="red"/>
+        </linearGradient>
+        <linearGradient id="linearGradient321058400" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="blue"/>
+            <stop offset="0.9" stop-color="cyan"/>
+        </linearGradient>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:centreHoriz>false</latexdraw:centreHoriz>
+            <latexdraw:positionVert/>
+            <latexdraw:zoom>0.7</latexdraw:zoom>
+            <latexdraw:vpx>0.476</latexdraw:vpx>
+            <latexdraw:vpy>0.405</latexdraw:vpy>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="windows-1252"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.238 3.613 866.453 558.856" xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw" version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="rectangle" id="id1935029255">
+            <rect x="279.00000000000057" y="274.71547619047647" width="236.7619047619021" height="26.57142857142844" transform="translate(5.291666666666667 0.0) translate(-1.5498932828877896 3.7417733837788205)" stroke-width="2" fill="#808080" stroke="#808080" latexdraw:type="shadow"/>
+            <rect x="279.00000000000057" y="274.71547619047647" width="236.7619047619021" height="26.57142857142844" latexdraw:type="background" fill="#ffffb3" stroke="#ffffb3" stroke-width="10.0"/>
+            <rect x="279.00000000000057" y="274.71547619047647" width="236.7619047619021" height="26.57142857142844" latexdraw:borderPos="outer" stroke="black" stroke-width="2.0" fill="#ffffb3"/>
+        </g>
+        <g latexdraw:type="dot" id="id1615977397" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="82.68571428571465 519.5166666666673">
+            <ellipse cx="82.68571428571465" cy="519.5166666666673" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#808000" fill="#808000"/>
+        </g>
+        <g latexdraw:type="dot" id="id1579177205" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="82.55238095238155 519.2500000000005">
+            <ellipse cx="82.55238095238155" cy="519.2500000000005" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="black" fill="none"/>
+            <path d="M 82.55238095238155 511.00000000000045 L 82.55238095238155 527.5000000000005 M 74.30238095238155 519.2500000000005 L 90.80238095238155 519.2500000000005" stroke-width="1.375" stroke-linecap="butt" stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id102213234" fill="black" latexdraw:position="bl">
+            <text x="96.95238095238096" y="537.3071428571427">Focus</text>
+        </g>
+        <g latexdraw:type="text" id="id796175412" fill="black" latexdraw:position="bl">
+            <text x="669.364110932051" y="536.9307890569669">New Focus</text>
+        </g>
+        <g latexdraw:type="dot" id="id914296748" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="655.0666666666667 520.4690476190484">
+            <ellipse cx="655.0666666666667" cy="520.4690476190484" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#000080" fill="#000080"/>
+        </g>
+        <g latexdraw:type="dot" id="id691768386" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="654.9333333333336 520.2023809523814">
+            <ellipse cx="654.9333333333336" cy="520.2023809523814" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="red" fill="none"/>
+            <path d="M 654.9333333333336 511.9523809523814 L 654.9333333333336 528.4523809523814 M 646.6833333333336 520.2023809523814 L 663.1833333333336 520.2023809523814" stroke-width="1.375" stroke-linecap="butt" stroke="red" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id203650195" fill="black" latexdraw:position="bl">
+            <text x="349.14285714285654" y="511.61904761904754">Apply F( )</text>
+        </g>
+        <g latexdraw:type="text" id="id1409091759" fill="black" latexdraw:position="bl">
+            <text x="328.28571428571263" y="295.8095238095224">Over Construction</text>
+        </g>
+        <g latexdraw:type="drawing" id="id1854566997">
+            <g latexdraw:type="triangle" id="id1797576111" latexdraw:points="12.761904761904702 23.69622834523517 256.7619047619047 23.69622834523517 256.7619047619047 252.89622834523527 12.761904761904702 252.89622834523527">
+                <polygon points="134.7619047619047,24.76035598941452 256.0316112507334,252.39622834523527 13.49219827307596,252.39622834523527" latexdraw:borderPos="outer" stroke="cyan" stroke-width="1.0" fill="url(#linearGradient1797576111)"/>
+            </g>
+            <g latexdraw:type="joinedLines" id="id997883229">
+                <polyline points="135.56190476190488,26.362895011901685 63.42857142857167,251.56289501190207 " stroke="black" stroke-width="2.0" fill="url(#linearGradient997883229)" latexdraw:rotationAngle="0.0"/>
+            </g>
+            <g latexdraw:type="dot" id="id1966477149" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="63.16190476190508 253.21289501190267">
+                <ellipse cx="63.16190476190508" cy="253.21289501190267" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#808000" fill="#808000"/>
+            </g>
+            <g latexdraw:type="dot" id="id492102659" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="63.028571428572036 252.9462283452358">
+                <ellipse cx="63.028571428572036" cy="252.9462283452358" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="black" fill="none"/>
+                <path d="M 63.028571428572036 244.6962283452358 L 63.028571428572036 261.1962283452358 M 54.778571428572036 252.9462283452358 L 71.27857142857204 252.9462283452358" stroke-width="1.375" stroke-linecap="butt" stroke="black" fill="none"/>
+            </g>
+            <g latexdraw:type="text" id="id1590283937" fill="black" latexdraw:position="bl">
+                <text x="74.76190476190476" y="271.0033712023778">Focus</text>
+            </g>
+            <g latexdraw:type="text" id="id256606521" fill="black" latexdraw:position="bl">
+                <text x="97.16190476190434" y="23.612895011901742">Structure</text>
+            </g>
+        </g>
+        <g latexdraw:type="triangle" id="id40944891" latexdraw:points="603.7142857142856 27.212521172014114 839.2148267402694 27.212521172014114 839.2148267402694 248.4286031521586 603.7142857142856 248.4286031521586">
+            <polygon points="721.4645562272774,28.276648816193457 838.4845332290981,247.9286031521586 604.4445792254568,247.9286031521586" latexdraw:borderPos="outer" stroke="red" stroke-width="1.0" fill="url(#linearGradient40944891)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id903600994">
+            <polyline points="722.2366891486741,29.786297576669575 652.6160374027412,247.14171494983083 " stroke="black" stroke-width="2.0" fill="url(#linearGradient903600994)" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="text" id="id1951440299" fill="black" latexdraw:position="bl">
+            <text x="666.6022061701465" y="271.0033559068121">Updated Focus</text>
+        </g>
+        <g latexdraw:type="text" id="id1106627225" fill="black" latexdraw:position="bl">
+            <text x="666.1266898740149" y="27.13209065936855">New Structure</text>
+        </g>
+        <g latexdraw:type="dot" id="id1848226190" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="654.5904761904764 247.68447161175047">
+            <ellipse cx="654.5904761904764" cy="247.68447161175047" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#000080" fill="#000080"/>
+        </g>
+        <g latexdraw:type="dot" id="id497579456" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="654.4571428571433 247.41780494508353">
+            <ellipse cx="654.4571428571433" cy="247.41780494508353" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="red" fill="none"/>
+            <path d="M 654.4571428571433 239.16780494508353 L 654.4571428571433 255.6678049450835 M 646.2071428571433 247.4178049450835 L 662.7071428571433 247.4178049450835" stroke-width="1.375" stroke-linecap="butt" stroke="red" fill="none"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id641540150">
+            <polyline points="230.0,130.95238095238096 630.0,130.95238095238096 " stroke="black" stroke-width="3.0" fill="none" latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-641540150)" marker-end="url(#arrow1-641540150)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id885474563">
+            <polyline points="150.95238095238096,520.0 630.952380952381,520.0 " stroke="black" stroke-width="3.0" fill="none" latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-885474563)" marker-end="url(#arrow1-885474563)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id1750128277">
+            <polyline points="60.952380952380956,280.95238095238096 60.952380952380956,500.95238095238096 " stroke="black" stroke-width="3.0" fill="none" latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-1750128277)" marker-end="url(#arrow1-1750128277)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id1444874285">
+            <polyline points="661.4285714285711,491.9047619047619 661.4285714285711,271.9047619047619 " stroke="black" stroke-width="3.0" fill="none" latexdraw:rotationAngle="3.141592653589793" marker-start="url(#arrow0-1444874285)" marker-end="url(#arrow1-1444874285)"/>
+        </g>
+        <g latexdraw:type="text" id="id318610326" fill="black" latexdraw:position="bl">
+            <text x="80.0" y="380.0">View</text>
+        </g>
+        <g latexdraw:type="text" id="id1378872986" fill="black" latexdraw:position="bl">
+            <text x="679.5238095238095" y="380.0">Set</text>
+        </g>
+        <g latexdraw:type="text" id="id1917323694" fill="black" latexdraw:position="bl">
+            <text x="400.0" y="119.52380952380952">Set</text>
+        </g>
+        <g latexdraw:type="text" id="id413687021" fill="black" latexdraw:position="bl">
+            <text x="251.42857142857144" y="340.95238095238096">Set \bigger(obj, F\big(View(obj)\big)\bigger) = Over(obj, F)</text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="linearGradient1797576111" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="blue"/>
+            <stop offset="0.9" stop-color="cyan"/>
+        </linearGradient>
+        <linearGradient id="linearGradient997883229" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="#001af2"/>
+            <stop offset="0.9" stop-color="cyan"/>
+        </linearGradient>
+        <linearGradient id="linearGradient40944891" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="blue"/>
+            <stop offset="0.9" stop-color="red"/>
+        </linearGradient>
+        <linearGradient id="linearGradient903600994" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="#001af2"/>
+            <stop offset="0.9" stop-color="cyan"/>
+        </linearGradient>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="180" id="arrow0-641540150">
+            <path d="M -4.279166666666667 -7.763888888888889 L 0.0 -7.763888888888889 L 0.0 7.763888888888889 L -4.279166666666667 7.763888888888889" fill="none" stroke="black" stroke-width="3" transform="rotate(180 0 0)" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="auto" id="arrow1-641540150">
+            <path d="M 0.0 0.0 L -12.104166666666666 -4.322916666666667 L -12.104166666666666 0.0 L -12.104166666666666 4.322916666666667 z" fill="black" stroke="black" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="180" id="arrow0-885474563">
+            <path d="M -4.279166666666667 -7.763888888888889 L 0.0 -7.763888888888889 L 0.0 7.763888888888889 L -4.279166666666667 7.763888888888889" fill="none" stroke="black" stroke-width="3" transform="rotate(180 0 0)" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="auto" id="arrow1-885474563">
+            <path d="M 0.0 0.0 L -12.104166666666666 -4.322916666666667 L -12.104166666666666 0.0 L -12.104166666666666 4.322916666666667 z" fill="black" stroke="black" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="270" id="arrow0-1750128277">
+            <path d="M -4.279166666666667 -7.763888888888889 L 0.0 -7.763888888888889 L 0.0 7.763888888888889 L -4.279166666666667 7.763888888888889" fill="none" stroke="black" stroke-width="3" transform="rotate(180 0 0)" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="90" id="arrow1-1750128277">
+            <path d="M 0.0 0.0 L -12.104166666666666 -4.322916666666667 L -12.104166666666666 0.0 L -12.104166666666666 4.322916666666667 z" fill="black" stroke="black" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="90" id="arrow0-1444874285">
+            <path d="M -4.279166666666667 -7.763888888888889 L 0.0 -7.763888888888889 L 0.0 7.763888888888889 L -4.279166666666667 7.763888888888889" fill="none" stroke="black" stroke-width="3" transform="rotate(180 0 0)" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+        <marker overflow="visible" markerUnits="userSpaceOnUse" orient="270" id="arrow1-1444874285">
+            <path d="M 0.0 0.0 L -12.104166666666666 -4.322916666666667 L -12.104166666666666 0.0 L -12.104166666666666 4.322916666666667 z" fill="black" stroke="black" latexdraw:arrSizeNum="2" latexdraw:tbarSizeNum="5"/>
+        </marker>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:centreHoriz>false</latexdraw:centreHoriz>
+            <latexdraw:positionVert/>
+            <latexdraw:zoom>1.0499999999999998</latexdraw:zoom>
+            <latexdraw:vpx>0.496</latexdraw:vpx>
+            <latexdraw:vpy>0.402</latexdraw:vpy>
+        </latexdraw:metadata>
+    </metadata>
+</svg>

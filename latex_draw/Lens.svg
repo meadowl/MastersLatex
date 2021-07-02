@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="358 89.917 284 291.6" xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw" version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="triangle" id="id579846180" latexdraw:points="377.99999999999994 109.99999999999997 621.9999999999999 109.99999999999997 621.9999999999999 339.2 377.99999999999994 339.2">
+            <polygon points="499.9999999999999,111.06412764417932 621.2697064888287,338.7 378.7302935111712,338.7" latexdraw:borderPos="outer" stroke="cyan" stroke-width="1.0" fill="url(#linearGradient579846180)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id761112799">
+            <polyline points="500.80000000000007,112.66666666666652 428.66666666666686,337.8666666666668 " stroke="black" stroke-width="2.0" fill="none" latexdraw:rotationAngle="0.0"/>
+        </g>
+        <g latexdraw:type="dot" id="id1870199805" latexdraw:size="22.0" latexdraw:dotShape="*" latexdraw:position="428.40000000000026 339.51666666666745">
+            <ellipse cx="428.40000000000026" cy="339.51666666666745" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="#808000" fill="#808000"/>
+        </g>
+        <g latexdraw:type="dot" id="id1364273867" latexdraw:size="22.0" latexdraw:dotShape="oplus" latexdraw:position="428.2666666666672 339.25000000000057">
+            <ellipse cx="428.2666666666672" cy="339.25000000000057" rx="10.153846153846153" ry="10.153846153846153" stroke-width="1.375" stroke-linecap="square" stroke="black" fill="none"/>
+            <path d="M 428.2666666666672 331.00000000000057 L 428.2666666666672 347.50000000000057 M 420.0166666666672 339.25000000000057 L 436.5166666666672 339.25000000000057" stroke-width="1.375" stroke-linecap="butt" stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="text" id="id2101693641" fill="black" latexdraw:position="bl">
+            <text x="439.99999999999994" y="353.1166666666665">Focus</text>
+        </g>
+        <g latexdraw:type="text" id="id954285483" fill="black" latexdraw:position="bl">
+            <text x="462.3999999999995" y="109.91666666666656">Structure</text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="linearGradient579846180" gradientTransform="rotate(90.0 0.5 0.5)">
+            <stop offset="0" stop-color="blue"/>
+            <stop offset="0.9" stop-color="cyan"/>
+        </linearGradient>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:centreHoriz>false</latexdraw:centreHoriz>
+            <latexdraw:positionVert/>
+            <latexdraw:zoom>1.8</latexdraw:zoom>
+            <latexdraw:vpx>0.505</latexdraw:vpx>
+            <latexdraw:vpy>0.391</latexdraw:vpy>
+        </latexdraw:metadata>
+    </metadata>
+</svg>
