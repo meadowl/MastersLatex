@@ -360,6 +360,16 @@ filename "HaskellLensChapter/HaskellLens.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
+filename "ExtendingLensesChapter/ExtendingLenses.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
 filename "RemoteMonadChapter/RemoteMonad.lyx"
 
 \end_inset
