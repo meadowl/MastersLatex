@@ -199,6 +199,45 @@ Over
  For all valid objects, applying the desired function to the viewed object
  and then setting that modified object is equivalent to overing the object
  with that same function.
+ That is to say, for any 
+\emph on
+obj 
+\emph default
+with the corresponding application of 
+\emph on
+Set
+\emph default
+, 
+\emph on
+View
+\emph default
+, and 
+\emph on
+F
+\emph default
+ there will be an resulting 
+\emph on
+obj'
+\emph default
+.
+ A modeling of the same result if for the same 
+\emph on
+obj
+\emph default
+ had been exposed to the application of 
+\emph on
+Over
+\emph default
+ and 
+\emph on
+F
+\emph default
+, which would result in the same 
+\emph on
+obj'
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -481,6 +520,9 @@ texttt{applyset}
 
  both use pattern matching to expose the internals of the elementary Haskell
  lens.
+ The exposure of these components can also be accomplished without the use
+ of this helper functions, but for the purposes of completeness with the
+ standard lens methodology this has been provided.
 \end_layout
 
 \begin_layout Standard
@@ -579,6 +621,59 @@ noprefix "false"
 \end_inset
 
 .
+ This is the 
+\emph on
+A-Lens
+\emph default
+, a parameterized structure over the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{view
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ and the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{set
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ from last chapter.
+ Such as it is defined, a lens that successfully encapsulates the full structure
+ of both the ability to view the 
+\emph on
+a-element
+\emph default
+ and to set the 
+\emph on
+a-element
+\emph default
+ with a new value.
+ Whilst the 
+\emph on
+A-Lens
+\emph default
+ maintaining the ability to recover the View and Set that were grouped into
+ it's larger structure.
+ Allowing one to preform both the operations over the a-element without
+ needing to refer to anything but this structure.
 \end_layout
 
 \begin_layout Standard
@@ -601,7 +696,7 @@ noprefix "false"
 ), are considered for the details of the manuscripts later chapters.
  If one has a curiosity if the pseudo-implementations of lenses discussed
  may be represented as standard lenses, then the continued reading is deeply
- recommended.
+ recommended for those interested.
 \end_layout
 
 \end_body

@@ -192,14 +192,7 @@ Over
 Over
 \emph default
  function can be best described as the following composition, 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$Set(Obj F(View(Obj)) = Over(Obj, F)$
-\end_layout
-
+\begin_inset Formula $Set\Big(obj,\:\,F\big(View(obj)\big)\Big)\:\,\models\:\,Over(obj,\:\,F)$
 \end_inset
 
 .
@@ -586,6 +579,17 @@ noprefix "false"
 \end_inset
 
 .
+ This is the 
+\emph on
+A-Lens
+\emph default
+, a parameterized structure over the view_a and the set_a from last chapter.
+ Such as it is defined, a lens that successfully encapsulates the full structure
+ of both the ability to view the a-element and to set the a-element with
+ a new value.
+ Whilst the A-Lens maintaining the ability to recover the View and Set that
+ were grouped into it's larger structure.
+ Allowing one to preform both the operations of t
 \end_layout
 
 \begin_layout Standard
@@ -595,8 +599,20 @@ This leads to the assertion that although defined in heavy detail and with
  to subject themselves to these abstractions.
  In fact, the levels of proofing and rigor abstract away what lenses can
  be defined to do, such as when shoving a lens into a monadic container.
- Which is why only the well-behaved lens laws in Equation (), are considered
- for the details of followi
+ Which is why only the well-behaved lens laws in Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), are considered for the details of the manuscripts later chapters.
+ If one has a curiosity if the pseudo-implementations of lenses discussed
+ may be represented as standard lenses, then the continued reading is deeply
+ recommended.
 \end_layout
 
 \end_body
