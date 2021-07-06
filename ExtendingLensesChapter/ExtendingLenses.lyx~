@@ -648,7 +648,9 @@ status open
 
 
 \backslash
-texttt{set_a}
+texttt{set
+\backslash
+_a}
 \end_layout
 
 \end_inset
@@ -672,6 +674,200 @@ A-Lens
  it's larger structure.
  Allowing one to preform both the operations over the a-element without
  needing to refer to anything but this structure.
+\end_layout
+
+\begin_layout Standard
+It is realized that a much stronger case for this can be made, if it is
+ possible to make the inherent pattern matching explicit and this case is
+ generalized to the abstractions typically provided in the earlier chapter's
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MyLens}
+\end_layout
+
+\end_inset
+
+.
+ This effort does result in the not so surprising result that this is indeed
+ possible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+a_ln :: MyLens (a,b) a 
+\end_layout
+
+\begin_layout Plain Layout
+
+a_ln my_functor (a,b) = (
+\backslash
+a'->  (a',b)) <$> (my_functor a)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a_view :: (a,b) -> a 
+\end_layout
+
+\begin_layout Plain Layout
+
+a_view = view' a_ln
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a_set :: a -> (a,b) -> (a,b) 
+\end_layout
+
+\begin_layout Plain Layout
+
+a_set = set' a_ln
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+In the provided case, an abstraction results in an explicit reference to
+ the 
+\emph on
+a-element
+\emph default
+ and allows for specialization in it's behavior depending on what functor
+ is applied.
+ This code results in leaving for both 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{view
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{set
+\backslash
+_a}
+\end_layout
+
+\end_inset
+
+ to be recreated from earlier in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{a
+\backslash
+_view}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{a
+\backslash
+_set}
+\end_layout
+
+\end_inset
+
+, with no great alterations besides the rearrangement of second function's
+ arguments.
 \end_layout
 
 \begin_layout Standard
