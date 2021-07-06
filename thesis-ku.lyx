@@ -378,6 +378,16 @@ filename "RemoteMonadChapter/RemoteMonad.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "ExtendingRemoteChapter/ExtendingRemote.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\bibname}{References}
 \end_inset
@@ -388,8 +398,9 @@ filename "RemoteMonadChapter/RemoteMonad.lyx"
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "Biblio/allcites"
-options "apalike2"
+options "bibtotoc,apalike2"
 
 \end_inset
 
