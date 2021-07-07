@@ -855,14 +855,105 @@ To a careful reader, there is a stern contrast that likely might have sat
  in the background of the mind for a long while: wondering what is so off
  about the usage of the syntactical sugar, despite how closely it appeared
  to mimic the familiar counterpart.
- That is, in a Local Lens the input object and the output object from the
- definition of 
+ That is, in a 
+\emph on
+Local Lens 
+\emph default
+the input object and the output object from the definition of 
 \emph on
 Set
 \emph default
  is always the same.
  If given a two-tuple, then a two-tuple is what will be returned.
- 
+ Fundamentally what is a mechanical difference between 
+\emph on
+Local Lenses
+\emph default
+ and 
+\emph on
+Remote Lenses
+\emph default
+, results from the fact that in 
+\emph on
+Remote Lenses
+\emph default
+ the returning information from a 
+\emph on
+Set
+\emph default
+ operation is simply an indication of a job done, not the pointer to the
+ changed object.
+ If one was inclined, asserting that they are not lenses would be a fair
+ judgment on the nature of these two creatures.
+ in fact, it wouldn't make sense, the abstraction to begin with is based
+ on the capacity to abstract cleverly with a functor.
+ Here we are dealing with a situation where it isn't abstractable in a sensible
+ way to a functor.
+\end_layout
+
+\begin_layout Standard
+The one thing left that might save this from being merely a design pattern,
+ would be if on the client side an act of lensing was taking place to have
+ it's result retrieved and decoded on the host side.
+ This is in fact the case, as the accessing of the client's objects fields
+ via point-styled references is a synonymous situation with using lens methodolo
+gy.
+ As one might remember, the major motivation for lenses is to provide an
+ abstraction in the 
+\emph on
+bx
+\emph default
+ field.
+ The oldest and least type safe method of handling this in the context of
+ objects, is directly calling on their parameterized accessors.
+ If the client and host are interacting in a method such as in the 
+\emph on
+Remote Monad
+\emph default
+, then it is possible to make the 
+\emph on
+Remote Lens
+\emph default
+ use the 
+\emph on
+Local Lens
+\emph default
+ on the client's side.
+\end_layout
+
+\begin_layout Standard
+Ultimately, while the 
+\emph on
+Remote Lens
+\emph default
+ does not type check as a 
+\emph on
+Local Lens
+\emph default
+, the 
+\emph on
+Remote Lens
+\emph default
+ can promise to the user that it is acting as if it were a 
+\emph on
+Local Lens
+\emph default
+.
+ Which fits squarely in what a DSL provides, abstraction of commands for
+ the sake of usability and convenience.
+ But if forced to pick a binary choice, the 
+\emph on
+Remote Lens
+\emph default
+ is not a 
+\emph on
+Lens
+\emph default
+ — rather it is a means to an end of being able to use a
+\emph on
+ Lens
+\emph default
+.
 \end_layout
 
 \end_body
