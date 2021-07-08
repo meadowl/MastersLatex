@@ -506,13 +506,13 @@ kanywhere=false,breakafter={>}]
 
 \begin_layout Plain Layout
 
-remote_view_name :: FromJSON b => RL_ObjectA -> RemoteValue a -> RemoteMonad
+remote_view :: FromJSON b => RL_ObjectA -> RemoteValue a -> RemoteMonad
  b
 \end_layout
 
 \begin_layout Plain Layout
 
-remote_view_name object newperson = RemoteView (rl_name object) newperson
+remote_view object newperson = RemoteView (rl_name object) newperson
 \end_layout
 
 \begin_layout Plain Layout
@@ -521,14 +521,12 @@ remote_view_name object newperson = RemoteView (rl_name object) newperson
 
 \begin_layout Plain Layout
 
-remote_set_name :: RL_ObjectA -> String -> RemoteValue a -> RemoteMonad
- b
+remote_set :: RL_ObjectA -> String -> RemoteValue a -> RemoteMonad b
 \end_layout
 
 \begin_layout Plain Layout
 
-remote_set_name object item newperson = RemoteView (rl_name object) item
- newperson
+remote_set object item newperson = RemoteView (rl_name object) item newperson
 \end_layout
 
 \begin_layout Plain Layout
@@ -536,6 +534,13 @@ remote_set_name object item newperson = RemoteView (rl_name object) item
 
 \backslash
 end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
 \end_layout
 
 \begin_layout Plain Layout
@@ -671,7 +676,12 @@ applyset (RemoteLens2 remote_view remote_set) = remote_set
 
 \begin_layout Plain Layout
 
-a_Lens :: RemoteLens a b a_Lens = RemoteLens {
+a_Lens :: RemoteLens a b
+\end_layout
+
+\begin_layout Plain Layout
+
+a_Lens = RemoteLens {
 \end_layout
 
 \begin_layout Plain Layout
@@ -855,17 +865,34 @@ To a careful reader, there is a stern contrast that likely might have sat
  in the background of the mind for a long while: wondering what is so off
  about the usage of the syntactical sugar, despite how closely it appeared
  to mimic the familiar counterpart.
- That is, in a Local Lens the input object and the output object from the
- definition of 
+ That is, in a 
+\emph on
+Local Lens 
+\emph default
+the input object and the output object from the definition of 
 \emph on
 Set
 \emph default
  is always the same.
  If given a two-tuple, then a two-tuple is what will be returned.
- Fundamentally what is a mechanical difference between Local Lenses and
- Remote Lenses, results from the fact that in Remote Lenses the returning
- information from a Set operation is simply an indication of a job done,
- not the pointer to the changed object.
+ Fundamentally what is a mechanical difference between 
+\emph on
+Local Lenses
+\emph default
+ and 
+\emph on
+Remote Lenses
+\emph default
+, results from the fact that in 
+\emph on
+Remote Lenses
+\emph default
+ the returning information from a 
+\emph on
+Set
+\emph default
+ operation is simply an indication of a job done, not the pointer to the
+ changed object.
  If one was inclined, asserting that they are not lenses would be a fair
  judgment on the nature of these two creatures.
  in fact, it wouldn't make sense, the abstraction to begin with is based
@@ -889,19 +916,54 @@ bx
  field.
  The oldest and least type safe method of handling this in the context of
  objects, is directly calling on their parameterized accessors.
- If the client and host are interacting in a method such as in the Remote
- Monad, then it is possible to make the Remote Lens use the Local Lens on
- the client's side.
+ If the client and host are interacting in a method such as in the 
+\emph on
+Remote Monad
+\emph default
+, then it is possible to make the 
+\emph on
+Remote Lens
+\emph default
+ use the 
+\emph on
+Local Lens
+\emph default
+ on the client's side.
 \end_layout
 
 \begin_layout Standard
-Ultimately, while the Remote Lens does not type check as a Local Lens, the
- Remote Lens can promise to the user that it is acting as if it were a Local
- Lens.
+Ultimately, while the 
+\emph on
+Remote Lens
+\emph default
+ does not type check as a 
+\emph on
+Local Lens
+\emph default
+, the 
+\emph on
+Remote Lens
+\emph default
+ can promise to the user that it is acting as if it were a 
+\emph on
+Local Lens
+\emph default
+.
  Which fits squarely in what a DSL provides, abstraction of commands for
  the sake of usability and convenience.
- But if forced to pick a binary choice, the Remote Lens is not a Lens —
- rather it is a means to an end of being able to use a Lens.
+ But if forced to pick a binary choice, the 
+\emph on
+Remote Lens
+\emph default
+ is not a 
+\emph on
+Lens
+\emph default
+ — rather it is a means to an end of being able to use a
+\emph on
+ Lens
+\emph default
+.
 \end_layout
 
 \end_body

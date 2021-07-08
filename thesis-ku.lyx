@@ -388,6 +388,16 @@ filename "ExtendingRemoteChapter/ExtendingRemote.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "ConclusionChapter/Conclusion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\bibname}{References}
 \end_inset
