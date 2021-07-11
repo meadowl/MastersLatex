@@ -286,7 +286,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expanded Lens
+Over Construction
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Expanded-Lens"
@@ -695,7 +695,7 @@ texttt{MyLens}
 
 .
  This effort does result in the not so surprising result that this is indeed
- possible.
+ possible, without any loss of type information.
 \end_layout
 
 \begin_layout Standard

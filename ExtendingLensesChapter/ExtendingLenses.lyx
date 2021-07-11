@@ -192,7 +192,7 @@ Over
 Over
 \emph default
  function can be best described as the following composition, 
-\begin_inset Formula $Set\Big(obj,\:\,F\big(View(obj)\big)\Big)\:\,\models\:\,Over(obj,\:\,F)$
+\begin_inset Formula $Set\Big(obj,\:\,F\big(View(obj)\big)\Big)\:\,\eqqcolon\:\,Over(obj,\:\,F)$
 \end_inset
 
 .
@@ -286,7 +286,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Expanded Lens
+Over Construction
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Expanded-Lens"
