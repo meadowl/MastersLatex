@@ -471,7 +471,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "48col%"
+width "49col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -515,7 +515,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "48col%"
+width "49col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -705,6 +705,13 @@ end{code}
 
 
 \backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 end{spacing}
 \end_layout
 
@@ -750,10 +757,7 @@ Remote Monad
  is a an interaction between a host language, client language, and a remote
  structure — that a fully formed method of communicating between the two
  is presentable in this way.
-\end_layout
-
-\begin_layout Standard
-Which can be viewed as the following implementations.
+ Which can be viewed as the following implementations.
 \end_layout
 
 \begin_layout Standard

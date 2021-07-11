@@ -410,6 +410,13 @@ end{code}
 
 
 \backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 end{spacing}
 \end_layout
 
@@ -705,6 +712,13 @@ end{code}
 
 
 \backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 end{spacing}
 \end_layout
 
@@ -750,10 +764,7 @@ Remote Monad
  is a an interaction between a host language, client language, and a remote
  structure — that a fully formed method of communicating between the two
  is presentable in this way.
-\end_layout
-
-\begin_layout Standard
-Which can be viewed as the following implementations.
+ Which can be viewed as the following implementations.
 \end_layout
 
 \begin_layout Standard
