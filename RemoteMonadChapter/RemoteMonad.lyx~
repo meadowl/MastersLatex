@@ -1604,8 +1604,22 @@ end{spacing}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
 From the large set of examples, the necessity of making abstractions is
- made clear and the larger case for why Remote Lenses are useful tools.
+ made clear and the larger case for why Remote Lenses are useful tools,
+ whilst it isn't possible to provide every single amenity that the classical
+ lenses are able to give programmers.
 \end_layout
 
 \end_body
