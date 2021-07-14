@@ -213,19 +213,21 @@ begin{abstractlong}
 \end_layout
 
 \begin_layout Standard
-The contents of this manuscript are intended to show a deeper look at the
- manipulation of information across a remote distance by providing a means
- to safely edit and manipulate data with the type-safety of lensing.
- In standard practice most programmers rely on complex methods to guarantee
- that they are editing without error, or in other cases they omit effort
- and use simple methods without any guarantees on errors.
- Taking the host side to be the strongly-typed language with lensing properties,
+The problem of the manipulation of remote data is typically solved used
+ complex methods to guarantee consistency.
+ This is an instance of the remote bidirectional transformation problem.
+ From the inspiration that several versions of this problem has been addressed
+ using lenses, we now extend this technique of lenses to the Remote Procedure
+ Calls setting, and provide a few simple example implementations.
+\end_layout
+
+\begin_layout Standard
+Taking the host side to be the strongly-typed language with lensing properties,
  and the client side to be a weakly-typed language with minimal lensing
- properties, this work will contribute to the existing body of research
- that has brought lenses from the realm of math to the space of computer
- science.
- And shall give a formal look on remote editing of data in type safety with
- remote monads and their variants.
+ properties, this work contributes to the existing body of research that
+ has brought lenses from the realm of math to the space of computer science.
+ This shall give a formal look on remote editing of data in type safety
+ with Remote Monads and their local variants.
  
 \end_layout
 

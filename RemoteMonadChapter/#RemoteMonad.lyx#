@@ -127,8 +127,8 @@ In this chapter, we detail a novel extension of lenses to remote structures
  intent of these operators over a remote connection between a client and
  a host device, the host running Haskell and the client running some other
  language.
- The variation from standard local lenses is the main subject of study in
- this manuscript and shall be referred to as the 
+ We refer to this variation from standard local lenses and other classical
+ variants as the 
 \emph on
 Remote Lens
 \emph default
@@ -205,9 +205,9 @@ noindent
 
 \end_inset
 
-When a lens interacts with a structure, a Remote Lens interacts with a Remote
- Structure.
- Where 
+Where as a lens interacts with a structure, a Remote Lens interacts with
+ a Remote Structure.
+ The 
 \begin_inset Quotes eld
 \end_inset
 
@@ -219,7 +219,7 @@ When a lens interacts with a structure, a Remote Lens interacts with a Remote
 \begin_inset Quotes erd
 \end_inset
 
- denotes the sequence of operation and 
+ in the equations above denotes the sequence of operation and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -232,130 +232,60 @@ When a lens interacts with a structure, a Remote Lens interacts with a Remote
 \end_inset
 
  denotes congruence but not equality.
+ The fundamental distinction for why classical equality is not used, is
+ that these operations are not the same in all respects and therefore cannot
+ be defined as such.
+ Rather equivalence is narrowly interpreted to abstract away the individual
+ operations that take place between the host and client when executing remote
+ commands.
+ The process of wrapping and sending commands, then receiving and unpacking
+ them is equivalent to the process being carried out locally.
+ So, for the method of interpretation it is correct to understand that every
  
-\strikeout on
-Where 
-\begin_inset Quotes eld
-\end_inset
-
-
 \emph on
-acc
+RemoteView
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is the accessor to the structure, 
-\begin_inset Quotes eld
-\end_inset
-
-
+ translates to a 
 \emph on
-obj
+View
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is the structure, and 
-\begin_inset Quotes eld
-\end_inset
-
-
+ and every 
 \emph on
-item
+RemoteSet
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- is a substructure.
- And where these laws show the View-Set Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), Set-View Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), Set-Set Eq(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
-
-\strikeout default
- (Talk about why equivalence 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\equiv$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- here, but equal 
-\begin_inset Quotes eld
-\end_inset
-
-=
-\begin_inset Quotes erd
-\end_inset
-
-elsewhere) (Reference Equation 2.2).
+ translates to a 
+\emph on
+Set
+\emph default
+.
+ But it would be incorrect as explained in later chapters to view the opposite
+ relationship between Remote Lenses and Local Lenses as holding true.
+ 
 \end_layout
 
 \begin_layout Standard
-The essentials of what is required to construct the 
+The essentials of what is required to construct the Remote Lens Identities
+ inside of Haskell is similar to the construction of definitions seen in
+ the elementary Prelude constructions of Haskell lenses.
+ The first argument typically taken by any lens operator, 
 \emph on
-Remote Lens Identities
+acc
 \emph default
- inside of Haskell is aptly similar to the construction of definitions seen
- in the elementary Prelude constructions of Haskell lenses.
- The first argument typically taken by any lens operator is a function that
- will access a deep-rooted parameter inside of a structure.
+ as shown above,is a function that will access a deep-rooted parameter inside
+ of a structure.
  In the same vein, the
 \emph on
- Remote Lens
+ 
 \emph default
- variant accomplishes this with an abstraction of the 
-\emph on
-Remote Structure's
-\emph default
- nested fields that are to be queried into once the command is sent from
- host to client.
- The primary difference in how this is handled by Haskell.
+Remote Lens accomplishes this with an abstraction of the Remote Structure's
+ nested fields that are to be queried once the command is sent from host
+ to client.
+ The primary difference is in how this is handled by Haskell.
  Rather than simply pattern matching into the already existing structure,
  a completely different approach is needed instead due to to the structure
  being remote.
- To define the individual components of 
-\emph on
-Remote Lenses
-\emph default
- for an arbitrary type system we begin by providing the relevant abstract
- type definitions below.
+ To define the individual components of Remote Lenses for an arbitrary type
+ system we begin by providing the relevant abstract type definitions below.
 \end_layout
 
 \begin_layout Standard
@@ -410,6 +340,13 @@ end{code}
 
 
 \backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 end{spacing}
 \end_layout
 
@@ -424,14 +361,13 @@ end{spacing}
 \end_layout
 
 \begin_layout Standard
-This approach is best summarized as a conflict between the fundamental methods
+This approach is best summarized as a melding between the fundamental methods
  used in typical lens methods that rely strongly on internal pattern matching
  for the composability of lens, and the existence of a remote connection
  that prevents that internal pattern matching to take place.
- This can be essentially thought of any scenario where accessing a structure
- isn't possible inside of the host system, and the necessity to query a
- client system takes place.
- This is further illustrated in Figure 
+ This is relevant to any scenario where accessing a structure isn't possible
+ inside of the host system, and it is necessary to query a client system.
+ This is illustrated in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Remote-Diagrams"
@@ -441,7 +377,7 @@ noprefix "false"
 
 \end_inset
 
- where it might be distinguished from the much similar local implementation
+, where it might be distinguished from the much similar local implementation
  in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -471,7 +407,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "100col%"
+width "49col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -495,6 +431,12 @@ filename "LensingRemotely_Redo.tex"
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+Remote View
+\end_layout
+
 \end_inset
 
 
@@ -502,10 +444,42 @@ filename "LensingRemotely_Redo.tex"
 \end_inset
 
 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "49col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset CommandInset include
 LatexCommand input
 preview true
 filename "LensingRemotely_Redo2.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Remote Set
+\end_layout
 
 \end_inset
 
@@ -578,8 +552,9 @@ Remote Object
 \end_layout
 
 \begin_layout Standard
-The final shared parameter is the return type from the result of applying
- the lens operator to the structure that one is inspecting.
+(Left Off Here Last Time)The final shared parameter is the return type from
+ the result of applying the lens operator to the structure that one is inspectin
+g.
  This is also represented by the 
 \emph on
 Remote Lens's
@@ -667,6 +642,13 @@ end{code}
 
 
 \backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 end{spacing}
 \end_layout
 
@@ -712,10 +694,7 @@ Remote Monad
  is a an interaction between a host language, client language, and a remote
  structure — that a fully formed method of communicating between the two
  is presentable in this way.
-\end_layout
-
-\begin_layout Standard
-Which can be viewed as the following implementations.
+ Which can be viewed as the following implementations.
 \end_layout
 
 \begin_layout Standard
@@ -909,7 +888,7 @@ With basic syntactical sugar, with
 RemoteView
 \emph default
  as ^.
- And composition of remote lens fields as >>> one gets a clear expression
+ and composition of remote lens fields as >>> one gets a clear expression
  that shows to anyone else on ones coding team what one was doing.
  The traditional point-style notations is mostly maintained along with a
  slight alteration to the composability of 
