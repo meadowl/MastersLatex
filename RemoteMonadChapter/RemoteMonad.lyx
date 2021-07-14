@@ -434,6 +434,9 @@ filename "LensingRemotely_Redo.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote View
 \end_layout
 
@@ -478,6 +481,9 @@ filename "LensingRemotely_Redo2.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote Set
 \end_layout
 
@@ -503,6 +509,13 @@ name "fig:Remote-Diagrams"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+Solid lines are local executions, dashed lines are remote transactions,
+ dotted lines are the continuing connection.
 \end_layout
 
 \end_inset
@@ -869,9 +882,9 @@ Now, one more important thing to note, is while in Haskell one normally
 \end_layout
 
 \begin_layout Standard
-A key distinction on the improvements is that this removes any sort of backend
- coding, where the user is directly manipulating the delicate remote monad
- commands.
+(Left Off Here Last Time)A key distinction on the improvements is that this
+ removes any sort of backend coding, where the user is directly manipulating
+ the delicate remote monad commands.
  And instead has a predefined way of accessing, editing, and setting values
  with minimal contact to the ideas and command structure beneath.
  One gets an abstraction and type safety on every component of the command,

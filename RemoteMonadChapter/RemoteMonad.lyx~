@@ -434,6 +434,9 @@ filename "LensingRemotely_Redo.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote View
 \end_layout
 
@@ -478,6 +481,9 @@ filename "LensingRemotely_Redo2.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote Set
 \end_layout
 
@@ -497,7 +503,8 @@ name "fig:Remote-Diagrams"
 
 \end_inset
 
-
+, solid lines are local executions, dashed lines are remote transactions,
+ dotted lines are the continuing connection.
 \end_layout
 
 \end_inset
@@ -537,22 +544,17 @@ noprefix "false"
 
  represents a reference to the location of what is to be accessed upon sending
  the constructed command.
- For these reasons directly accessing the information is not possible, since
- one is manipulating only a reference to the actual object on the client's
- side.
- That is the careful composition method mentioned in the former paragraph
- is needed to focus in on the remote structure.
- Bundling the reference to the 
-\emph on
-Remote Object
-\emph default
- along with the preformed command to operate on the 
-\emph on
-Remote Object
-\emph default
- are absolutely necessary.
- Otherwise none of the methods to view or alter the contents of that structure
- can be accomplished.
+ Since one is manipulating only a reference to the actual object on the
+ client's side, this implies that directly accessing the information is
+ not possible.
+ That is, the conjointment method described in the former paragraph is needed
+ to focus in on the remote structure.
+ Bundling the reference to the Remote Object along with the preformed command
+ to operate on the Remote Object is necessary, otherwise none of the methods
+ to view or alter the contents of that structure can be accomplished.
+ As anytime that one wishes to operate on a Remote Object, the host side
+ needs to know where in the client side it is accessing and what it is going
+ to do once it arrives there.
 \end_layout
 
 \begin_layout Standard
@@ -874,9 +876,9 @@ Now, one more important thing to note, is while in Haskell one normally
 \end_layout
 
 \begin_layout Standard
-A key distinction on the improvements is that this removes any sort of backend
- coding, where the user is directly manipulating the delicate remote monad
- commands.
+(Left Off Here Last Time)A key distinction on the improvements is that this
+ removes any sort of backend coding, where the user is directly manipulating
+ the delicate remote monad commands.
  And instead has a predefined way of accessing, editing, and setting values
  with minimal contact to the ideas and command structure beneath.
  One gets an abstraction and type safety on every component of the command,
