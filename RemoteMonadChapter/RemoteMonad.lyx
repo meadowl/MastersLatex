@@ -239,28 +239,18 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
  operations that take place between the host and client when executing remote
  commands.
  The process of wrapping and sending commands, then receiving and unpacking
- them is equivalent to the process being carried out locally.
- So, for the method of interpretation it is correct to understand that every
- 
+ them is equivalent to the process being carried out by the remote system
+ without interaction from the local system.
+ A correct analogy would be taking the maintained connection to be a pointer,
+ and after dereferencing the pointer and preforming some operation to it
+ that results in no change to the object, it is the same as having never
+ started to dereference in the first place.
+ In summation, these equations are 
 \emph on
-RemoteView
+Observably Equivalent
 \emph default
- translates to a 
-\emph on
-View
-\emph default
- and every 
-\emph on
-RemoteSet
-\emph default
- translates to a 
-\emph on
-Set
-\emph default
-.
- But it would be incorrect as explained in later chapters to view the opposite
- relationship between Remote Lenses and Local Lenses as holding true.
- 
+, so they do not produce a different result from one another given the same
+ input.
 \end_layout
 
 \begin_layout Standard
@@ -319,14 +309,14 @@ RemoteView :: (String -> String) -> (Wrapped a) -> (ReturnType b)
 
 \begin_layout Plain Layout
 
-RemoteSet :: (String -> String) -> String -> (Wrapped a) -> ReturnType (Wrapped
- a)
+RemoteSet :: (String -> String) -> String -> (Wrapped a) ->            
+    ReturnType (Wrapped a)
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteOver :: (String -> String) -> (t -> a) -> (Wrapped a) -> ReturnType
- (Wrapped a)
+RemoteOver :: (String -> String) -> (t -> a) -> (Wrapped a) ->         
+       ReturnType (Wrapped a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -633,8 +623,8 @@ nad b)
 
 \begin_layout Plain Layout
 
-RemoteSet :: (String -> String) -> String -> (RemoteValue a) -> RemoteMonad
- (RemoteValue a)
+RemoteSet :: (String -> String) -> String -> (RemoteValue a) ->        
+         RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -780,12 +770,8 @@ kanywhere=true,breakafter=>]
 
 \begin_layout Plain Layout
 
-RemoteSet accessor new_item object = constructor $ JavaScript $ pack $
-\end_layout
-
-\begin_layout Plain Layout
-
-		(accessor (var_text objectName)) ++ " = " ++ new_item
+RemoteSet accessor new_item object = constructor $ JavaScript $ pack $ 
+                (accessor (var_text objectName)) ++ " = " ++ new_item
 \end_layout
 
 \begin_layout Plain Layout

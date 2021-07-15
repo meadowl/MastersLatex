@@ -239,27 +239,12 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
  operations that take place between the host and client when executing remote
  commands.
  The process of wrapping and sending commands, then receiving and unpacking
- them is equivalent to the process being carried out locally.
- So, for the method of interpretation it is correct to understand that every
- 
-\emph on
-RemoteView
-\emph default
- translates to a 
-\emph on
-View
-\emph default
- and every 
-\emph on
-RemoteSet
-\emph default
- translates to a 
-\emph on
-Set
-\emph default
-.
- But it would be incorrect as explained in later chapters to view the opposite
- relationship between Remote Lenses and Local Lenses as holding true.
+ them is equivalent to the process being carried out by the remote system
+ without interaction from the local system.
+ A correct analogy would be taking the maintained connection to be a pointer,
+ and after dereferencing the pointer and preforming some operation to it
+ that results in no change to the object, it is the same as having never
+ started to dereference in the first place.
  
 \end_layout
 
@@ -377,8 +362,8 @@ noprefix "false"
 
 \end_inset
 
-, where it might be distinguished from the much similar local implementation
- in Figure 
+, which should be distinguished and contrasted with the much similar local
+ implementation in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Diagram of Lens Composition"
@@ -434,6 +419,9 @@ filename "LensingRemotely_Redo.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote View
 \end_layout
 
@@ -478,6 +466,9 @@ filename "LensingRemotely_Redo2.tex"
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset VSpace -12text%*
+\end_inset
+
 Remote Set
 \end_layout
 
@@ -505,50 +496,56 @@ name "fig:Remote-Diagrams"
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+Solid lines are local executions, dashed lines are remote transactions,
+ dotted lines are the continuing connection.
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-This method will involve internally concatenating a conjointment of the
- parameters such that each of the parameters that normally would be accessed
- with a composition of pattern matching functions, must instead be accessed
- with a composition of the 
-\emph on
-Remote Object's
-\emph default
- internal parameters.
- It is equivalent to imagine representing the target object as a remote
- record with the means to access the contents completely dependent on how
- that record was implemented inside of the client's language.
+Remote Lenses will involve internally forming a conjointment of the parameters
+ such that each of the parameters that normally would be accessed with a
+ composition of pattern matching functions, must instead be accessed with
+ a composition of the Remote Object's internal parameters.
+ This is equivalent to representing the target object as a remote record
+ with the means to access the contents completely dependent on how that
+ record is implemented inside of the client's language.
 \end_layout
 
 \begin_layout Standard
-Another shared argument is the structure that will be accessed by the lens
- operator.
- Similarly, what is passed around in the 
+The
 \emph on
-Remote Lens
+ obj
 \emph default
- is a reference to the location of what is to be accessed upon sending the
- constructed command.
- For these reasons directly accessing the information is not possible, since
- one is manipulating only a reference to the actual object on the client's
- side.
- That is the careful composition method mentioned in the former paragraph
- is needed to focus in on the remote structure.
- Bundling the reference to the 
-\emph on
-Remote Object
-\emph default
- along with the preformed command to operate on the 
-\emph on
-Remote Object
-\emph default
- are absolutely necessary.
- Otherwise none of the methods to view or alter the contents of that structure
- can be accomplished.
+ argument in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ represents a reference to the location of what is to be accessed upon sending
+ the constructed command.
+ Since one is manipulating only a reference to the actual object on the
+ client's side, this implies that directly accessing the information is
+ not possible.
+ That is, the conjointment method described in the former paragraph is needed
+ to focus in on the remote structure.
+ Bundling the reference to the Remote Object along with the preformed command
+ to operate on the Remote Object is necessary, otherwise none of the methods
+ to view or alter the contents of that structure can be accomplished.
+ As anytime that one wishes to operate on a Remote Object, the host side
+ needs to know where in the client side it is accessing and what it is going
+ to do once it arrives there.
 \end_layout
 
 \begin_layout Standard
@@ -870,9 +867,9 @@ Now, one more important thing to note, is while in Haskell one normally
 \end_layout
 
 \begin_layout Standard
-A key distinction on the improvements is that this removes any sort of backend
- coding, where the user is directly manipulating the delicate remote monad
- commands.
+(Left Off Here Last Time)A key distinction on the improvements is that this
+ removes any sort of backend coding, where the user is directly manipulating
+ the delicate remote monad commands.
  And instead has a predefined way of accessing, editing, and setting values
  with minimal contact to the ideas and command structure beneath.
  One gets an abstraction and type safety on every component of the command,
