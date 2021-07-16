@@ -421,15 +421,6 @@ filename "LensingRemotely_Redo.tex"
 
 \end_layout
 
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset VSpace -12text%*
-\end_inset
-
-Remote View
-\end_layout
-
 \end_inset
 
 
@@ -468,15 +459,6 @@ filename "LensingRemotely_Redo2.tex"
 
 \end_layout
 
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset VSpace -12text%*
-\end_inset
-
-Remote Set
-\end_layout
-
 \end_inset
 
 
@@ -486,26 +468,22 @@ Remote Set
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Remote Diagrams
+Remote Diagrams.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Remote-Diagrams"
 
 \end_inset
 
-
+ The left diagram illustrates Remote View, while the right illustrates the
+ Remote Set.
+ Solid lines are local executions, dashed lines are remote transactions,
+ dotted lines are the continuing connection.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-Solid lines are local executions, dashed lines are remote transactions,
- dotted lines are the continuing connection.
 \end_layout
 
 \end_inset
@@ -528,7 +506,7 @@ The
 \emph on
  obj
 \emph default
- argument in Equation 
+ argument in Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3"
@@ -538,8 +516,8 @@ noprefix "false"
 
 \end_inset
 
- represents a reference to the location of what is to be accessed upon sending
- the constructed command.
+) represents a reference to the location of what is to be accessed upon
+ sending the constructed command.
  Since one is manipulating only a reference to the actual object on the
  client's side, this implies that directly accessing the information is
  not possible.
@@ -554,23 +532,38 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-(Left Off Here Last Time)The final shared parameter is the return type from
- the result of applying the lens operator to the structure that one is inspectin
-g.
- This is also represented by the 
-\emph on
-Remote Lens's
-\emph default
- return type, where for a 
+The final common parameter of Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is the returned item from the result of applying a lens operator to the
+ structure that is being inspected.
+ Where 
 \emph on
 RemoteView
 \emph default
- the return type will be the desired queried item wrapped in the remote
- operator that allowed for the operation to take place and for
+ returns the queried item wrapped in the remote operator that allowed for
+ the operation to take place and for
 \emph on
  RemoteSet/RemoteOver
 \emph default
- the return type will be the reference to the altered structure wrapped
+ the returned item will be the reference to the altered structure wrapped
  up in the same remote operator.
  The only major consideration when manipulating the returned structure,
  is that one must assign the type of the expected viewed parameter or trust
@@ -579,16 +572,34 @@ RemoteView
 \end_layout
 
 \begin_layout Standard
-Now it becomes possible to introduce the primary example that this manuscript
+Now it is possible to introduce the primary example that this manuscript
  will cover, specifically the 
 \emph on
 Remote Lens
 \emph default
  as it relates to the 
 \emph on
-Remote Monad 
+Remote Monad.
+
 \emph default
-the construction of it's key functions represented by the following types.
+ This has been selected because the Javascript 
+\emph on
+RPCs
+\emph default
+ are representative of a weakly typed client language and Haskell is able
+ to represent a strongly typed host language, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gill2015"
+literal "false"
+
+\end_inset
+
+.
+ Additionally, the Remote Monad provides all of the functionality necessary
+ to implement the desired lens functions.
+ Now given below is the construction of the Remote Lens' key functions by
+ the following types, which have been instantiated with the Remote Monad.
 \end_layout
 
 \begin_layout Standard
