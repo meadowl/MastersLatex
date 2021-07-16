@@ -598,8 +598,7 @@ literal "false"
 .
  Additionally, the Remote Monad provides all of the functionality necessary
  to implement the desired lens functions.
- Now given below is the construction of the Remote Lens' key functions by
- the following types, which have been instantiated with the Remote Monad.
+ Now given below is the construction of the Remote Lens' key functions.
 \end_layout
 
 \begin_layout Standard
@@ -689,25 +688,30 @@ Set
 \emph on
 Over
 \emph default
- that have been instantiated specifically for a 
+ that have been defined specifically for a
 \emph on
-Remote Lens
+ 
 \emph default
- based on using the 
+Remote Lens based on using the Remote Monad.
+ Though they emulate 
 \emph on
-Remote Monad
+View
 \emph default
-.
- Despite that they do not share the same internal structure of their locally
- implemented counterparts, that in their behavior they will accomplish the
- same goal, which is to resolve standard dictionary manipulation.
- This wrapper style may not have been used by others, but it is specifically
- implemented to show that it can be viewed as a universal design pattern.
- Rather an attempt to show that for any client host system in which there
- is a an interaction between a host language, client language, and a remote
- structure — that a fully formed method of communicating between the two
- is presentable in this way.
- Which can be viewed as the following implementations.
+, 
+\emph on
+Set
+\emph default
+, and 
+\emph on
+Over —
+\emph default
+ they do not share the same internal structure.
+ These definitions are specific to the Remote Monad but they demonstrate
+ a universal design pattern.
+ This example shows that for any client-host system in which there is a
+ an interaction between a host language, a client language, and a remote
+ structure, that a fully formed method of communicating between the two
+ is presentable as a Remote Lens in this way, implemented in Haskell below.
 \end_layout
 
 \begin_layout Standard
@@ -860,20 +864,29 @@ end{spacing}
 \end_layout
 
 \begin_layout Standard
-As a reminder, it is worth noting that due to the fact that we are dealing
- with a remote connection that the connection must be passed around — in
- addition to the structure one wants to manipulate, where inside the structure
- one wishes to lens to, and a value if using the Set function.
+It is worth noting that due to the fact that we are dealing with a remote
+ connection, the connection must be passed as a parameter in addition to
+ the structure that one wants to manipulate, the accessor to the individual
+ segment of the structure, and a value if using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{RemoteSet}
 \end_layout
 
-\begin_layout Standard
-Now, one more important thing to note, is while in Haskell one normally
- is manipulating and creating new objects every time one runs a function
- or assign it to a value.
- When manipulating Javascript, one is never creating a new object on the
- other side.
- So, any code one would want to write with these methods on the Haskell-side,
- would need to keep in mind that one is never dealing with a fresh object.
+\end_inset
+
+ function.
+ While in Haskell one normally manipulates and creates new objects every
+ time one runs a function or assigns a value, in Javascript new objects
+ are never created within the Remote Monad implementation.
+ Thus, any code one would want to write with these methods on the Haskell
+ side would need to keep in mind that one is never dealing with a fresh
+ object.
  The connection will always make sure one is pointing to the one and only
  original Javascript object one is trying to manipulate.
 \end_layout
