@@ -35,6 +35,8 @@
 
 \usepackage{nccmath}
 \usepackage{setspace}
+
+%\AtBeginDocument{\renewcommand{\MintedPygmentize}{pygmentize}}
 \end_preamble
 \use_default_options false
 \master ../thesis-ku.lyx
@@ -104,7 +106,6 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\listings_params "frame=none,xleftmargin=2pt,stepnumber=1,numbers=left,numbersep=5pt,numberstyle={\ttfamily\tiny\color[gray]{0.3}},belowcaptionskip={\bigskipamount},captionpos=b,escapeinside={*'}{'*},language=Haskell,tabsize=2,emphstyle={\bf},commentstyle={\it},stringstyle={\mdseries\rmfamily},showspaces=false,keywordstyle={\bfseries\rmfamily},columns=flexible,basicstyle={\small\sffamily},showstringspaces=false,morecomment={[l]\%}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -221,9 +222,9 @@ begin{spacing}{1}
 \noindent
 \begin_inset Formula 
 \begin{flalign}
-Set\big(obj,\;View(obj)\big)\; & =\;obj\nonumber \\
-View\big(Set(obj,\;item)\big)\; & =\;item\label{eq:1}\\
-Set\big(Set(obj,\;item),\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
+Set\big(View(obj),\;obj\big)\; & =\;obj\nonumber \\
+View\big(Set(item,\;obj)\big)\; & =\;item\label{eq:1}\\
+Set\big(item^{\prime},\;Set(item,\;obj)\big)\; & =\;Set(item^{\prime},\;obj)\nonumber 
 \end{flalign}
 
 \end_inset
@@ -302,9 +303,9 @@ begin{spacing}{1}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{flalign}
-Set\big(acc,\;obj,\;View(acc,\;obj)\big)\; & =\;obj\;,\nonumber \\
-View\big(acc,\;Set(acc,\;obj,\;item)\big)\; & =\;item\;,\label{eq:2}\\
-Set\big(acc,\;Set(acc,\;obj,\;item),\;item^{\prime}\big)\; & =\;Set(acc,\;obj,\;item^{\prime})\;.\nonumber 
+Set\big(acc,\;View(acc,\;obj),\;obj\big)\; & =\;obj\;,\nonumber \\
+View\big(acc,\;Set(acc,\;item,\;obj)\big)\; & =\;item\;,\label{eq:2}\\
+Set\big(acc,\;item^{\prime},\;Set(acc,\;item,\;obj)\big)\; & =\;Set(acc,\;item^{\prime},\;obj)\;.\nonumber 
 \end{flalign}
 
 \end_inset
@@ -588,12 +589,12 @@ begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm]
 
 \begin_layout Plain Layout
 
-view :: w -> p
+view :: t -> u
 \end_layout
 
 \begin_layout Plain Layout
 
-set :: w -> p -> w
+set :: u -> t -> t
 \end_layout
 
 \begin_layout Plain Layout
@@ -616,12 +617,12 @@ view_a (x,y) = x
 
 \begin_layout Plain Layout
 
-set_a :: (a,b) -> a -> (a,b)
+set_a :: a -> (a,b) -> (a,b)
 \end_layout
 
 \begin_layout Plain Layout
 
-set_a (x,y) x' = (x',y)
+set_a x' (x,y) = (x',y)
 \end_layout
 
 \begin_layout Plain Layout

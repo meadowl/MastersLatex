@@ -192,7 +192,7 @@ Over
 Over
 \emph default
  function can be best described as the following composition, 
-\begin_inset Formula $Set\Big(obj,\:\,F\big(View(obj)\big)\Big)\:\,\models\:\,Over(obj,\:\,F)$
+\begin_inset Formula $Set\Big(obj,\:\,F\big(View(obj)\big)\Big)\:\,\eqqcolon\:\,Over(obj,\:\,F)$
 \end_inset
 
 .
@@ -447,7 +447,7 @@ applyview (BasicLens viewer setter) s = viewer s
 
 \begin_layout Plain Layout
 
-applyset ::  BasicLens a b -> (a,b) -> a -> (a,b)
+applyset ::  BasicLens a b -> a -> (a,b) -> (a,b)
 \end_layout
 
 \begin_layout Plain Layout
@@ -672,8 +672,11 @@ A-Lens
 \emph default
  maintaining the ability to recover the View and Set that were grouped into
  it's larger structure.
- Allowing one to preform both the operations over the a-element without
- needing to refer to anything but this structure.
+ Allowing one to preform both the operations over the 
+\emph on
+a-element
+\emph default
+ without needing to refer to anything but this structure.
 \end_layout
 
 \begin_layout Standard
