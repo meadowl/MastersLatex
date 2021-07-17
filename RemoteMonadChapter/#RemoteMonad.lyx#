@@ -936,7 +936,7 @@ texttt{RemoteSet}
 \end_layout
 
 \begin_layout Standard
-With basic syntactical sugar, with 
+Basic syntactical sugar, with 
 \begin_inset listings
 lstparams "basicstyle={\ttfamily},showstringspaces=false"
 inline true
@@ -975,10 +975,10 @@ status open
 
 \end_inset
 
- one gets a clear expression that shows to anyone else on ones coding team
- what one was doing.
- The traditional point-style notations is mostly maintained along with a
- slight alteration to the composability of 
+, results in very readable code that is easily understood.
+ The traditional point-style notation of local lenses (See Chapter 3) is
+ mostly maintained along with a slight alteration to the composability of
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1034,7 +1034,7 @@ myobject
 
 \end_inset
 
-, one is accessing two layers into it’s fields to retrieve a 
+, one is accessing two layers into its fields to retrieve a 
 \begin_inset ERT
 status open
 
@@ -1130,8 +1130,8 @@ noindent
 
 \end_inset
 
-The normal syntax for this would be represented as the following nested
- structure.
+The normal unsugared syntax for this would be represented as the following
+ nested structure.
 \end_layout
 
 \begin_layout Standard
@@ -1200,12 +1200,9 @@ noindent
 
 \end_inset
 
-This expands out fully instantiated and unwrapped in the weeds as a slightly
- harder to read structure, requiring more knowledge of the underlying constructi
-on.
- This way of writing code is particularly undesirable, particularly when
- abstractions exist for the purpose of making the legibility easier to the
- trained and untrained reader.
+This expands out fully instantiated and unwrapped as a more obscure structure,
+ requiring more knowledge of the underlying construction.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1279,19 +1276,38 @@ noindent
 
 \end_inset
 
-The code shows the virtualization of machinery from each layer to the next
- in this system, and that whilst the syntactical sugar for 
-\emph on
+This way of writing code is especially undesirable, particularly when abstractio
+ns exist for the purpose of making the legibility easier to the trained
+ and untrained reader.
+ The code above shows the virtualization of machinery from each layer to
+ the next in this system, and that while the syntactical sugar for 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
 RemoteSet
-\emph default
+\end_layout
+
+\end_inset
+
  and 
-\emph on
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
 RemoteOver
-\emph default
+\end_layout
+
+\end_inset
+
  has not been shown, these share the same levels of abstractions.
- For completeness, examples of their basic calling is provided now so that
- one isn't left curious to the reasonable invocations to their Haskell counterpa
-rts.
+ For completeness we now give examples of their basic calling is provided.
 \end_layout
 
 \begin_layout Standard
@@ -1402,7 +1418,23 @@ texttt{blah}
 
 \begin_layout Standard
 There is a particularly complete example from the first exercise of Haskell
- lensing from 
+ lensing from FP Complete, 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "SkillsMatter"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Milewski"
+literal "false"
+
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "FpComplete"
@@ -1410,7 +1442,7 @@ literal "false"
 
 \end_inset
 
-, that was subsequently adapted to 
+Lenses (n.d.), that was subsequently adapted to 
 \emph on
 RemoteMonad
 \emph default
@@ -1420,7 +1452,7 @@ Remote Lens
 \emph default
 so that it could be clearly illustrated in long form what some of the major
  similarities and differences might be between remote and local implementations.
- Starting off the simple construction of the 
+ Starting off, the simple construction of the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1428,8 +1460,8 @@ lens
 \begin_inset Quotes erd
 \end_inset
 
- arguments is provided, in the case of the Javascript back-end this can
- be viewed as using the point-styled object-oriented accessor methods, common
+ arguments is provided, in the case of the Javascript backend this can be
+ viewed as using the point-styled object-oriented accessor methods, common
  in non-functional programming languages.
 \end_layout
 
