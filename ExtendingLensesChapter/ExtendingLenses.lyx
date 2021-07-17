@@ -896,5 +896,99 @@ noprefix "false"
  recommended for those interested.
 \end_layout
 
+\begin_layout Standard
+In practice, a certain amount of syntactical sugar is commonly used to make
+ lens operations more natural.
+ This is referred to as 
+\begin_inset Quotes eld
+\end_inset
+
+point-style
+\begin_inset Quotes erd
+\end_inset
+
+ as a homage to the natural way of accessing a object-oriented structure's
+ fields, such as in C.
+ The primary parts are (
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+^.
+\end_layout
+
+\end_inset
+
+) for the necessity of abstracting away the 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+viewer
+\end_layout
+
+\end_inset
+
+ function and (
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\end_inset
+
+) for the composability between lenses.
+ Despite the best intentions, this does not perfectly mirror object-oriented
+ styles since only the singular 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ is needed for all accesses into the structure, since there is no 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+viewer
+\end_layout
+
+\end_inset
+
+ or other functions to abstract away.
+ This way of adding sugar still provides for many programmers a degree of
+ comfort to the lens methods, hence the continued popularity with its imperfecti
+ons.
+\end_layout
+
 \end_body
 \end_document

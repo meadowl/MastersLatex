@@ -224,7 +224,7 @@ begin{spacing}{1}
 \begin{flalign}
 Set\big(View(obj),\;obj\big)\; & =\;obj\nonumber \\
 View\big(Set(item,\;obj)\big)\; & =\;item\label{eq:1}\\
-Set\big(Set(obj,\;item),\;item^{\prime}\big)\; & =\;Set(obj,\;item^{\prime})\nonumber 
+Set\big(item^{\prime},\;Set(item,\;obj)\big)\; & =\;Set(item^{\prime},\;obj)\nonumber 
 \end{flalign}
 
 \end_inset

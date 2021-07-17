@@ -171,6 +171,18 @@ bx
 
 \begin_layout Standard
 \noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+indent 
+\end_layout
+
+\end_inset
+
 Lenses are characterized by the satisfaction of abstract laws and rules,
  established fully in 
 \begin_inset CommandInset citation

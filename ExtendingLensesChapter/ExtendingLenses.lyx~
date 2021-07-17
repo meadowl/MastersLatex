@@ -361,7 +361,7 @@ data BasicLens a b = BasicLens {
 
 \begin_layout Plain Layout
 
-    , setter :: (a,b) -> a -> (a,b)}
+    , setter :: a -> (a,b) -> (a,b)}
 \end_layout
 
 \begin_layout Plain Layout
@@ -894,6 +894,98 @@ noprefix "false"
  If one has a curiosity if the pseudo-implementations of lenses discussed
  may be represented as standard lenses, then the continued reading is deeply
  recommended for those interested.
+\end_layout
+
+\begin_layout Standard
+In practice, a certain amount of syntactical sugar is commonly used to make
+ lens operations more natural.
+ This is referred to as 
+\begin_inset Quotes eld
+\end_inset
+
+point-style
+\begin_inset Quotes erd
+\end_inset
+
+ as a homage to the natural way of accessing a object-oriented structure's
+ fields, such as in C.
+ The primary parts are (
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+^.
+\end_layout
+
+\end_inset
+
+) for the necessity of abstracting away the 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+viewer
+\end_layout
+
+\end_inset
+
+ function and (
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\end_inset
+
+) for the composability between lenses.
+ Despite the best intentions, this does not perfectly mirror object-oriented
+ styles since only the singular 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ is needed for all accesses into the structure, since there is no 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+viewer
+\end_layout
+
+\end_inset
+
+ or other functions to abstract away.
+ 
 \end_layout
 
 \end_body
