@@ -205,7 +205,7 @@ noindent
 
 \end_inset
 
-Where as a lens interacts with a structure, a Remote Lens interacts with
+Whereas a lens interacts with a structure, a Remote Lens interacts with
  a Remote Structure.
  The 
 \begin_inset Quotes eld
@@ -219,7 +219,7 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
 \begin_inset Quotes erd
 \end_inset
 
- in the equations above denotes the sequence of operation and 
+ in the equations above denotes the sequence of operations and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -231,26 +231,48 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
 \begin_inset Quotes erd
 \end_inset
 
- denotes congruence but not equality.
- The fundamental distinction for why classical equality is not used, is
- that these operations are not the same in all respects and therefore cannot
- be defined as such.
- Rather equivalence is narrowly interpreted to abstract away the individual
- operations that take place between the host and client when executing remote
- commands.
- The process of wrapping and sending commands, then receiving and unpacking
+ denotes equivalence but not equality.
+ The fundamental distinction for why classical equality is not used is that
+ operations on either side of the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ are not identical in all respects.
+ Equivalence is narrowly interpreted to abstract away the individual operations
+ that take place between the host and client when executing remote commands.
+ The process of wrapping and sending commands then receiving and unpacking
  them is equivalent to the process being carried out by the remote system
  without interaction from the local system.
- A correct analogy would be taking the maintained connection to be a pointer,
- and after dereferencing the pointer and preforming some operation to it
- that results in no change to the object, it is the same as having never
- started to dereference in the first place.
- In summation, these equations are 
+ A correct analogy would be taking the maintained connection to be a pointer
+ to an object, then dereferencing the pointer and preforming some operations
+ to the object which ultimately results in no change to the object.
+ This procedure it is the same as having never started the pointer dereference
+ in the first place.
+ Precisely, the left and right sides of Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) are 
 \emph on
 Observably Equivalent
 \emph default
 , so they do not produce a different result from one another given the same
- input.
+ input, though they are not formally identical.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -261,8 +283,8 @@ The essentials of what is required to construct the Remote Lens Identities
 \emph on
 acc
 \emph default
- as shown above,is a function that will access a deep-rooted parameter inside
- of a structure.
+ as shown above, is a function that will access a deep-rooted parameter
+ inside of a structure.
  In the same vein, the
 \emph on
  
@@ -586,8 +608,19 @@ Remote Monad.
 \emph on
 RPCs
 \emph default
- are representative of a weakly typed client language and Haskell is  The
- construction of it's key functions represented by the following types.
+ are representative of a weakly typed client language and Haskell is able
+ to represent a strongly typed host language, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Gill2015"
+literal "false"
+
+\end_inset
+
+.
+ Additionally, the Remote Monad provides all of the functionality necessary
+ to implement the desired lens functions.
+ Now given below is the construction of the Remote Lens' key functions.
 \end_layout
 
 \begin_layout Standard
@@ -677,25 +710,30 @@ Set
 \emph on
 Over
 \emph default
- that have been instantiated specifically for a 
+ that have been defined specifically for a
 \emph on
-Remote Lens
+ 
 \emph default
- based on using the 
+Remote Lens based on using the Remote Monad.
+ Though they emulate 
 \emph on
-Remote Monad
+View
 \emph default
-.
- Despite that they do not share the same internal structure of their locally
- implemented counterparts, that in their behavior they will accomplish the
- same goal, which is to resolve standard dictionary manipulation.
- This wrapper style may not have been used by others, but it is specifically
- implemented to show that it can be viewed as a universal design pattern.
- Rather an attempt to show that for any client host system in which there
- is a an interaction between a host language, client language, and a remote
- structure — that a fully formed method of communicating between the two
- is presentable in this way.
- Which can be viewed as the following implementations.
+, 
+\emph on
+Set
+\emph default
+, and 
+\emph on
+Over —
+\emph default
+ they do not share the same internal structure.
+ These definitions are specific to the Remote Monad but they demonstrate
+ a universal design pattern.
+ This example shows that for any client-host system in which there is a
+ an interaction between a host language, a client language, and a remote
+ structure, that a fully formed method of communicating between the two
+ is presentable as a Remote Lens in this way, implemented in Haskell below.
 \end_layout
 
 \begin_layout Standard
@@ -848,20 +886,29 @@ end{spacing}
 \end_layout
 
 \begin_layout Standard
-As a reminder, it is worth noting that due to the fact that we are dealing
- with a remote connection that the connection must be passed around — in
- addition to the structure one wants to manipulate, where inside the structure
- one wishes to lens to, and a value if using the Set function.
+It is worth noting that due to the fact that we are dealing with a remote
+ connection, the connection must be passed as a parameter in addition to
+ the structure that one wants to manipulate, the accessor to the individual
+ segment of the structure, and a value if using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{RemoteSet}
 \end_layout
 
-\begin_layout Standard
-Now, one more important thing to note, is while in Haskell one normally
- is manipulating and creating new objects every time one runs a function
- or assign it to a value.
- When manipulating Javascript, one is never creating a new object on the
- other side.
- So, any code one would want to write with these methods on the Haskell-side,
- would need to keep in mind that one is never dealing with a fresh object.
+\end_inset
+
+ function.
+ While in Haskell one normally manipulates and creates new objects every
+ time one runs a function or assigns a value, in Javascript new objects
+ are never created within the Remote Monad implementation.
+ Thus, any code one would want to write with these methods on the Haskell
+ side would need to keep in mind that one is never dealing with a fresh
+ object.
  The connection will always make sure one is pointing to the one and only
  original Javascript object one is trying to manipulate.
 \end_layout

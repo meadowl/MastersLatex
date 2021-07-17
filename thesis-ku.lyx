@@ -73,6 +73,8 @@
 \usepackage{setspace}
 
 \usepackage{indentfirst}
+
+%\AtBeginDocument{\renewcommand{\MintedPygmentize}{pygmentize}}
 \end_preamble
 \options letterpaper
 \use_default_options true
@@ -413,17 +415,6 @@ LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "Biblio/allcites"
 options "bibtotoc,apalike2"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\start_of_appendix
-\begin_inset CommandInset include
-LatexCommand include
-filename "Appendix1/Appendix1.lyx"
 
 \end_inset
 

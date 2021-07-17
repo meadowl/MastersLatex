@@ -228,4 +228,25 @@
   url       = {http://eudml.org/doc/109584},
 }
 
+@Book{Beck1967,
+  author    = {Beck, Jonathan Mock},
+  publisher = {Columbia University},
+  title     = {Triples, algebras and cohomology},
+  year      = {1967},
+}
+
+@Article{Milner1984,
+  author    = {Milner, Robin},
+  journal   = {Journal of Computer and System Sciences},
+  title     = {A complete inference system for a class of regular behaviours},
+  year      = {1984},
+  issn      = {0022-0000},
+  month     = {jun},
+  number    = {3},
+  pages     = {439--466},
+  volume    = {28},
+  doi       = {10.1016/0022-0000(84)90023-0},
+  publisher = {Academic Press},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

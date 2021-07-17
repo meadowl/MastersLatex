@@ -205,7 +205,7 @@ noindent
 
 \end_inset
 
-Where as a lens interacts with a structure, a Remote Lens interacts with
+Whereas a lens interacts with a structure, a Remote Lens interacts with
  a Remote Structure.
  The 
 \begin_inset Quotes eld
@@ -219,7 +219,7 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
 \begin_inset Quotes erd
 \end_inset
 
- in the equations above denotes the sequence of operation and 
+ in the equations above denotes the sequence of operations and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -231,26 +231,56 @@ Where as a lens interacts with a structure, a Remote Lens interacts with
 \begin_inset Quotes erd
 \end_inset
 
- denotes congruence but not equality.
- The fundamental distinction for why classical equality is not used, is
- that these operations are not the same in all respects and therefore cannot
- be defined as such.
- Rather equivalence is narrowly interpreted to abstract away the individual
- operations that take place between the host and client when executing remote
- commands.
- The process of wrapping and sending commands, then receiving and unpacking
+ denotes equivalence but not equality.
+ The fundamental distinction for why classical equality is not used is that
+ operations on either side of the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ are not identical in all respects.
+ Equivalence is narrowly interpreted to abstract away the individual operations
+ that take place between the host and client when executing remote commands.
+ The process of wrapping and sending commands then receiving and unpacking
  them is equivalent to the process being carried out by the remote system
  without interaction from the local system.
- A correct analogy would be taking the maintained connection to be a pointer,
- and after dereferencing the pointer and preforming some operation to it
- that results in no change to the object, it is the same as having never
- started to dereference in the first place.
- In summation, these equations are 
+ A correct analogy would be taking the maintained connection to be a pointer
+ to an object, then dereferencing the pointer and preforming some operations
+ to the object which ultimately results in no change to the object.
+ This procedure it is the same as having never started the pointer dereference
+ in the first place.
+ Precisely, the left and right sides of Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) are 
 \emph on
 Observably Equivalent
 \emph default
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Milner1984"
+literal "false"
+
+\end_inset
+
 , so they do not produce a different result from one another given the same
- input.
+ input, though they are not formally identical.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -261,8 +291,8 @@ The essentials of what is required to construct the Remote Lens Identities
 \emph on
 acc
 \emph default
- as shown above,is a function that will access a deep-rooted parameter inside
- of a structure.
+ as shown above, is a function that will access a deep-rooted parameter
+ inside of a structure.
  In the same vein, the
 \emph on
  
@@ -884,8 +914,9 @@ texttt{RemoteSet}
  While in Haskell one normally manipulates and creates new objects every
  time one runs a function or assigns a value, in Javascript new objects
  are never created within the Remote Monad implementation.
- Thus, any code one would want to write with these methods on the Haskell-side,
- would need to keep in mind that one is never dealing with a fresh object.
+ Thus, any code one would want to write with these methods on the Haskell
+ side would need to keep in mind that one is never dealing with a fresh
+ object.
  The connection will always make sure one is pointing to the one and only
  original Javascript object one is trying to manipulate.
 \end_layout
