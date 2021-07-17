@@ -120,9 +120,20 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-Something goes here.
- A brief aside to the Python and SQL? A series of remarks that bring together
- the contents together again in some way?
+Given the material proceeding this, how to structure a conclusion?
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+^.
+\end_layout
+
+\end_inset
+
+This A brief aside to the Python and SQL? A series of remarks that bring
+ together the contents together again in some way?
 \end_layout
 
 \end_body

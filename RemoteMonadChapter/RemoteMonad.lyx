@@ -1035,14 +1035,14 @@ myobject
 \end_inset
 
 , one is accessing two layers into it’s fields to retrieve a 
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},showstringspaces=false"
-inline true
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-Double
+
+\backslash
+texttt{Double}
 \end_layout
 
 \end_inset
@@ -1402,7 +1402,15 @@ texttt{blah}
 
 \begin_layout Standard
 There is a particularly complete example from the first exercise of Haskell
- lensing from FP Complete, that was subsequently adapted to 
+ lensing from FP Complete, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "FpComplete"
+literal "true"
+
+\end_inset
+
+, that was subsequently adapted to 
 \emph on
 RemoteMonad
 \emph default

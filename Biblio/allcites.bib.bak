@@ -246,7 +246,14 @@
   pages     = {439--466},
   volume    = {28},
   doi       = {10.1016/0022-0000(84)90023-0},
+  file      = {:Milner1984 - A Complete Inference System for a Class of Regular Behaviours.pdf:PDF},
   publisher = {Academic Press},
+}
+
+@misc{fpcomplete,
+ title={Lenses},
+ url={https://www.fpcomplete.com/haskell/tutorial/lens/},
+ journal={FP Complete},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
