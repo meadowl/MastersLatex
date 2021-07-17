@@ -285,8 +285,8 @@ literal "false"
 
 \begin_layout Standard
 The essentials of what is required to construct the Remote Lens Identities
- inside of Haskell is similar to the construction of definitions seen in
- the elementary Prelude constructions of Haskell lenses.
+ inside of Haskell is similar to the Haskell lenses given in the elementary
+ Prelude constructions of Chapters 2 and 3.
  The first argument typically taken by any lens operator, 
 \emph on
 acc
@@ -922,32 +922,81 @@ texttt{RemoteSet}
 \end_layout
 
 \begin_layout Standard
-(Left Off Here Last Time)A key distinction on the improvements is that this
- removes any sort of backend coding, where the user is directly manipulating
- the delicate remote monad commands.
- And instead has a predefined way of accessing, editing, and setting values
- with minimal contact to the ideas and command structure beneath.
- One gets an abstraction and type safety on every component of the command,
- and modularity that clearly expresses your intent to the reader of your
- code.
- In the following examples, similarities and contrasts between Remote Lenses
- and Local Lenses will be made clear to the reader.
+(Left Off Here Last Time)We consider this Remote Lens implementation to
+ be an improvement on the typical ad-hoc methods involving backend coding,
+ where the programmer is directly manipulating the delicate remote monad
+ commands.
+ In this version of structuring modifications to remote objects, the programmer
+ instead has a predefined way of accessing, editing, and setting values
+ with minimal contact to the command structure beneath.
+ One gets abstraction and type safety on every component of the command,
+ and modularity that clearly expresses intent to anyone reviewing the code.
+ The following examples, highlight similarities and contrasts between Remote
+ Lenses and Local Lenses.
 \end_layout
 
 \begin_layout Standard
 With basic syntactical sugar, with 
-\emph on
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
 RemoteView
-\emph default
- as ^.
- and composition of remote lens fields as >>> one gets a clear expression
- that shows to anyone else on ones coding team what one was doing.
+\end_layout
+
+\end_inset
+
+ as 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+^.
+\end_layout
+
+\end_inset
+
+ ^.
+ and composition of remote lens fields as 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+>>>
+\end_layout
+
+\end_inset
+
+ one gets a clear expression that shows to anyone else on ones coding team
+ what one was doing.
  The traditional point-style notations is mostly maintained along with a
  slight alteration to the composability of 
 \begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
 .
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -955,13 +1004,64 @@ RemoteView
 \begin_inset Quotes eld
 \end_inset
 
+
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
 >>>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
 .
- The case usage below showing for the remote-object of person, one is accessing
- two layers into it’s fields to retrieve a double value from extra2.
+ The case usage below showing for the remote-object of 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+myobject
+\end_layout
+
+\end_inset
+
+, one is accessing two layers into it’s fields to retrieve a 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Double
+\end_layout
+
+\end_inset
+
+ value from 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+num3
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -990,8 +1090,8 @@ kanywhere=true,breakafter=>]
 
 \begin_layout Plain Layout
 
-f :: Double <- person ^.
- nest >>> nest2 >> extra2
+f :: Double <- myobject ^.
+ nest >>> nest2 >> num3
 \end_layout
 
 \begin_layout Plain Layout
@@ -1061,7 +1161,7 @@ kanywhere=true,breakafter=>]
 
 \begin_layout Plain Layout
 
-RemoteView (extra3(nest2(nest))) person
+RemoteView (num3(nest2(nest))) myobject
 \end_layout
 
 \begin_layout Plain Layout
@@ -1135,7 +1235,7 @@ kanywhere=true,breakafter=>]
 
 \begin_layout Plain Layout
 
-g <- constructor $ JavaScript $ pack $ (extra3(nest2(nest))) (var_text person)
+g <- constructor $ JavaScript $ pack $ (num3(nest2(nest))) (var_text myobject)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1221,7 +1321,7 @@ kanywhere=true,breakafter=>]
 
 \begin_layout Plain Layout
 
-RemoteSet (extra3(nest2(nest))) 
+RemoteSet (num3(nest2(nest))) 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1229,7 +1329,7 @@ RemoteSet (extra3(nest2(nest)))
 \begin_inset Quotes erd
 \end_inset
 
- person
+ myobject
 \end_layout
 
 \begin_layout Plain Layout
@@ -1238,9 +1338,9 @@ RemoteSet (extra3(nest2(nest)))
 
 \begin_layout Plain Layout
 
-RemoteOver (extra3(nest2(nest))) (
+RemoteOver (num3(nest2(nest))) (
 \backslash
- x -> (x + 1::Double)) person
+ x -> (x + 1::Double)) myobject
 \end_layout
 
 \begin_layout Plain Layout
@@ -1412,9 +1512,9 @@ noindent
 
 \end_inset
 
-There is now provided a series of example constructions for normal lens-like
- syntax, particularly constructed calls to view the age of a person as well
- as the street they live on.
+(Left Off Here Last Time)There is now provided a series of example constructions
+ for normal lens-like syntax, particularly constructed calls to view the
+ age of a person as well as the street they live on.
  Additionally, a function to modify the street name via a set and a function
  to over the age with an age incrementing argument — are both provided.
 \end_layout
