@@ -218,7 +218,7 @@ begin{abstractlong}
 The problem of the manipulation of remote data is typically solved used
  complex methods to guarantee consistency.
  This is an instance of the remote bidirectional transformation problem.
- From the inspiration that several versions of this problem has been addressed
+ From the inspiration that several versions of this problem have been addressed
  using lenses, we now extend this technique of lenses to the Remote Procedure
  Calls setting, and provide a few simple example implementations.
 \end_layout

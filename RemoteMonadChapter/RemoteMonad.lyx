@@ -1420,22 +1420,6 @@ There is a particularly complete example from the first exercise of Haskell
  lensing from FP Complete, 
 \begin_inset CommandInset citation
 LatexCommand nocite
-key "SkillsMatter"
-literal "false"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Milewski"
-literal "false"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand nocite
 key "FpComplete"
 literal "false"
 

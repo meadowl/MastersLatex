@@ -924,7 +924,7 @@ texttt{RemoteSet}
 \begin_layout Standard
 We consider this Remote Lens implementation to be an improvement on the
  typical ad-hoc methods involving backend coding, where the programmer is
- directly manipulating the delicate remote monad commands.
+ directly manipulating the delicate Remote Monad commands.
  In this version of structuring modifications to Remote Objects, the programmer
  instead has a predefined way of accessing, editing, and setting values
  with minimal contact to the command structure beneath.
@@ -1441,13 +1441,9 @@ literal "false"
 
 \end_inset
 
-Lenses (n.d.), that was subsequently adapted to 
+Lenses (n.d.), that was subsequently adapted to Remote Monad and Remote Lens
 \emph on
-RemoteMonad
-\emph default
- and 
-\emph on
-Remote Lens 
+ 
 \emph default
 so that it could be clearly illustrated in long form what some of the major
  similarities and differences might be between remote and local implementations.

@@ -120,20 +120,47 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-Given the material proceeding this, how to structure a conclusion?
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-^.
+This manuscript has explored Lenses in multiple ways from the elementary
+ mathematical definitions to the Haskell representations.
+ The topic of extending this concept to Remote Procedure Calls was established
+ both in theory and in implementation, with respect to the Remote Monad.
+ This resulted in the contribution of a method of designing the Remote Lens
+ DSL and an evaluation if Remote Lenses are indeed actually Lenses.
+ The method of design did remain entirely focused on bringing rigidity from
+ the host language of Haskell to the client language of Javascript, giving
+ a successful means to lens into Remote Objects.
+ While the Remote Lens was implemented without issue as a DSL, it was not
+ able to hold up under scrutiny.
+ This DSL is a convenient method but it is not a implementation of a generically
+ formed Lens as was hoped.
 \end_layout
 
-\end_inset
+\begin_layout Standard
+In future works, exploration of the difference between Remote Procedure
+ Calls and database systems such as mySQL would be highlighted, as known
+ from personal work done in scaffolding this Remote Lens DSL over mySQL,
+ this was ultimately a far worse implementation of the great work already
+ done in the field.
+ Highlights from RPCs in a simpler bridge environment with Python was surprising
+ly not a strong case for the guarantees of this Remote Lens interface.
+ 
+\end_layout
 
-This A brief aside to the Python and SQL? A series of remarks that bring
- together the contents together again in some way?
+\begin_layout Standard
+There is the potential for more hopeful work, given the ability to implement
+ 
+\emph on
+Traversals
+\emph default
+ with the Remote Monad for the Remote Lens DSL.
+ Since potential exists for some finer subset of APIs such that a full implement
+ation of richer libraries of lensing becomes possible.
+ However, the behavior of Remote Lenses are only Observably Equivalent and
+ are heavily dependent on trusting the programmer of the DSL to ensure proper
+ results.
+ Which leads to additional future work, in proving Behavior Equivalence
+ from the verification of the suspicion that a properly defined RemoteView
+ and RemoteSet can model View and Set.
 \end_layout
 
 \end_body
