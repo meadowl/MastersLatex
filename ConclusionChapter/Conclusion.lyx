@@ -155,7 +155,65 @@ Traversals
  with the Remote Monad for the Remote Lens DSL.
  Since potential exists for some finer subset of APIs such that a full implement
 ation of richer libraries of lensing becomes possible.
- However, the behavior of Remote Lenses are only Observably Equivalent and
+ The existence of a popular command in the 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Control.Lens
+\end_layout
+
+\end_inset
+
+ API called 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+makeLenses
+\end_layout
+
+\end_inset
+
+ has also been explored for convenience of abstracting over Remote Object
+ automatically, and there is little doubt that on a per Remote Lens implementati
+ons, that the ability to 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+makeRemoteLenses
+\end_layout
+
+\end_inset
+
+ would be constructible within Haskell's 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+TemplateHaskell
+\end_layout
+
+\end_inset
+
+ library.
+\end_layout
+
+\begin_layout Standard
+However, the behavior of Remote Lenses are only Observably Equivalent and
  are heavily dependent on trusting the programmer of the DSL to ensure proper
  results.
  Which leads to additional future work, in proving Behavior Equivalence
