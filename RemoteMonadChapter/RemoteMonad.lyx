@@ -1416,8 +1416,8 @@ texttt{blah}
 \end_layout
 
 \begin_layout Standard
-There is a particularly complete example from the first exercise of Haskell
- lensing from FP Complete, 
+There is a particularly complete example from the first exercise on Haskell
+ lensing from the webiste FP Complete, 
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "FpComplete"
@@ -1425,12 +1425,13 @@ literal "false"
 
 \end_inset
 
-Lenses (n.d.), that was subsequently adapted to Remote Monad and Remote Lens
+Lenses (n.d.), that we will subsequently adapt to the Remote Monad and Remote
+ Lens
 \emph on
  
 \emph default
-so that it could be clearly illustrated in long form what some of the major
- similarities and differences might be between remote and local implementations.
+in order to clearly illustrate some of the major similarities and differences
+ between remote and local implementations.
  Starting off, the simple construction of the 
 \begin_inset Quotes eld
 \end_inset
@@ -1440,8 +1441,8 @@ lens
 \end_inset
 
  arguments is provided, in the case of the Javascript backend this can be
- viewed as using the point-styled object-oriented accessor methods, common
- in non-functional programming languages.
+ viewed as using the point-styled object-oriented accessor methods, see
+ the end of Chapter 3, common in non-functional programming languages.
 \end_layout
 
 \begin_layout Standard
@@ -1530,11 +1531,36 @@ noindent
 
 \end_inset
 
-(Left Off Here Last Time)There is now provided a series of example constructions
- for normal lens-like syntax, particularly constructed calls to view the
- age of a person as well as the street they live on.
- Additionally, a function to modify the street name via a set and a function
- to over the age with an age incrementing argument — are both provided.
+We now provide a series of example constructions for normal lens-like syntax,
+ in particular calls to view the age of a person as well as the street they
+ live on.
+ Additionally, a function to modify the street name via 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+RemoteSet
+\end_layout
+
+\end_inset
+
+ and a function to modify the age via 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+RemoteOver
+\end_layout
+
+\end_inset
+
+ are both provided.
 \end_layout
 
 \begin_layout Standard
@@ -1670,9 +1696,9 @@ noindent
 
 \end_inset
 
-The last piece is provided now to show the effective usage of the lens-like
- functions and how they provide a clear flow, with each action they take
- on the client side once the host has sent them over as packets.
+We now give the last component to show the effective usage of the lens-like
+ functions and how they provide a clear flow with each action they take
+ on the client side once the host has sent them.
 \end_layout
 
 \begin_layout Standard
@@ -1791,10 +1817,11 @@ noindent
 
 \end_inset
 
-From the large set of examples, the necessity of making abstractions is
- made clear and the larger case for why Remote Lenses are useful tools,
- whilst it isn't possible to provide every single amenity that the classical
- lenses are able to give programmers.
+These examples demonstrate the neccessity of using abstractions as well
+ as make the case for why Remote Lenses are useful tools.
+ While it isn't possible to provide every single amenity that the classical
+ lenses are able to give programmers, many can be offered with the right
+ levels of abstraction.
 \end_layout
 
 \end_body
