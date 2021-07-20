@@ -164,6 +164,48 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "OpticsHierarchy.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optics Hierarchy
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Optics-Hierarchy"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 There are several types of lenses that bridge the gap between remote and
  local interactions already in existence, with varying degrees of depth
  of implementation.

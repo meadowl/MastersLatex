@@ -158,9 +158,61 @@ literal "false"
  elements: the functions that wrap data into structures are able to be acted
  on by functions that unwrap or re-wrap data in a convenient way.
  There are extensional ideas that relate to this such as Traversable Structures,
- but that is not the primary focus of this research, although in the case
+ see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Optics-Hierarchy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, but that is not the primary focus of this research, although in the case
  of Remote Monad, the Traversable is very much implementable — albeit with
  some extra efforts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "OpticsHierarchy.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optics Hierarchy
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Optics-Hierarchy"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
