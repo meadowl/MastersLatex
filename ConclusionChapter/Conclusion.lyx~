@@ -120,41 +120,251 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-This manuscript has explored Lenses in multiple ways from the elementary
- mathematical definitions to the Haskell representations.
- The topic of extending this concept to Remote Procedure Calls was established
- both in theory and in implementation, with respect to the Remote Monad.
- This resulted in the contribution of a method of designing the Remote Lens
- DSL and an evaluation if Remote Lenses are indeed actually Lenses.
- The method of design did remain entirely focused on bringing rigidity from
- the host language of Haskell to the client language of Javascript, giving
- a successful means to lens into Remote Objects.
- While the Remote Lens was implemented without issue as a DSL, it was not
- able to hold up under scrutiny.
- This DSL is a convenient method but it is not a implementation of a generically
- formed Lens as was hoped.
+We have examined Lenses in multiple ways from the elementary mathematical
+ definition to the Haskell representation.
+ Extending this concept to Remote Procedure Calls was established both in
+ theory and in implementation with respect to the Remote Monad, cumulative
+ with the Remote Lens DSL in a novel contribution.
+ The method of design remained focused on bringing some of the functional
+ niceties from the host language of Haskell to the client language of Javascript
+, giving a successful means to lens into Remote Objects.
+ While the Remote Lens was implemented without issue as a DSL, we saw from
+ Chapter 5 that it was not formally a lens.
+ This DSL is quite a convenient construction but it is not a implementation
+ of a generically formed Lens as was initially hoped.
 \end_layout
 
 \begin_layout Standard
-In future works, exploration of the difference between Remote Procedure
- Calls and database systems such as mySQL would be highlighted, as known
- from personal work done in scaffolding this Remote Lens DSL over mySQL,
- this was ultimately a far worse implementation of the great work already
- done in the field.
- Highlights from RPCs in a simpler bridge environment with Python was surprising
-ly not a strong case for the guarantees of this Remote Lens interface.
+In future work, exploration of the difference between Remote Procedure Calls
+ and database systems such as MySQL will be explored, unpublished work done
+ by the author extending the Remote Lens DSL to MySQL was ultimately a far
+ worse implementation of the pre-existing work in the field.
+ Similarly, extending RPCs and the Remote Lenses in a simpler bridge environment
+ with Python was also not a strong case for the guarantees of this Remote
+ Lens interface.
  
 \end_layout
 
 \begin_layout Standard
 There is the potential for more hopeful work, given the ability to implement
- 
+ a generalization of lenses called 
 \emph on
 Traversals
 \emph default
- with the Remote Monad for the Remote Lens DSL.
- Since potential exists for some finer subset of APIs such that a full implement
-ation of richer libraries of lensing becomes possible.
+ with the Remote Monad for the Remote Lens DSL, as shown below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_view :: (FromJSON b) => [(String -> String)] -> RemoteValue a -> RemoteMona
+d [RemoteMonad b]
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_view list obj = case list of
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:[] -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        pure [view2 x obj]
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:xs -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        y <- trav_view xs obj
+\end_layout
+
+\begin_layout Plain Layout
+
+        pure $ [view2 x obj] ++ y
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_set :: [(String -> String)] -> String -> (RemoteValue a) -> RemoteMonad
+ (RemoteValue a)
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_set list item obj = case list of
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:[] -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        set2 x item obj
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:xs -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        trav_set xs item obj
+\end_layout
+
+\begin_layout Plain Layout
+
+        set2 x item obj
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_over:: (FromJSON t, Show a) =>
+\end_layout
+
+\begin_layout Plain Layout
+
+    [(String -> String)] -> (t -> a) -> (RemoteValue a) -> RemoteMonad (RemoteVa
+lue a)
+\end_layout
+
+\begin_layout Plain Layout
+
+trav_over list my_function obj = case list of
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:[] -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        item <- view2 x obj
+\end_layout
+
+\begin_layout Plain Layout
+
+        let new_item = show $ my_function item
+\end_layout
+
+\begin_layout Plain Layout
+
+        set2 x new_item obj
+\end_layout
+
+\begin_layout Plain Layout
+
+    x:xs -> do
+\end_layout
+
+\begin_layout Plain Layout
+
+        trav_over xs my_function obj
+\end_layout
+
+\begin_layout Plain Layout
+
+        item <- view2 x obj
+\end_layout
+
+\begin_layout Plain Layout
+
+        let new_item = show $ my_function item
+\end_layout
+
+\begin_layout Plain Layout
+
+        set2 x new_item obj
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+ As the Remote Monad demonstrates, there is potential it and for similarly
+ structured APIs to allow for implementing richer Remote Lenses.
  The existence of a popular command in the 
 \begin_inset listings
 lstparams "basicstyle={\ttfamily},showstringspaces=false"
@@ -196,7 +406,7 @@ makeRemoteLenses
 
 \end_inset
 
- would be constructable within Haskell's 
+ would be constructible within Haskell's 
 \begin_inset listings
 lstparams "basicstyle={\ttfamily},showstringspaces=false"
 inline true
@@ -213,13 +423,26 @@ TemplateHaskell
 \end_layout
 
 \begin_layout Standard
-However, the behavior of Remote Lenses are only Observably Equivalent and
- are heavily dependent on trusting the programmer of the DSL to ensure proper
- results.
- Which leads to additional future work, in proving Behavior Equivalence
- from the verification of the suspicion that a properly defined RemoteView
- and RemoteSet can model View and Set.
- There are many paths to be taken forward, that will hopefully be explored
+However, the Remote Lens Identities, Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), are only Observably Equivalent and are heavily dependent on trusting
+ the programmer of the DSL to ensure proper results.
+ Future work in proving Behavioral Equivalence from the verification of
+ the suspicion that a properly defined RemoteView and RemoteSet can model
+ View and Set.
+ 
+\end_layout
+
+\begin_layout Standard
+There are many paths to be taken forward, that will hopefully be explored
  to enrich the literature on this newly defined topic of Remote Lenses.
 \end_layout
 
