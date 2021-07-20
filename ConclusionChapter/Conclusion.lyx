@@ -220,8 +220,8 @@ trav_view list obj = case list of
 
 \begin_layout Plain Layout
 
-trav_set :: [(String -> String)] -> String -> (RemoteValue a) -> RemoteMonad
- (RemoteValue a)
+trav_set :: [(String -> String)] -> String -> (RemoteValue a) ->       
+          RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout
@@ -265,8 +265,8 @@ trav_over:: (FromJSON t, Show a) =>
 
 \begin_layout Plain Layout
 
-    [(String -> String)] -> (t -> a) -> (RemoteValue a) -> RemoteMonad (RemoteVa
-lue a)
+    [(String -> String)] -> (t -> a) -> (RemoteValue a) ->             
+    RemoteMonad (RemoteValue a)
 \end_layout
 
 \begin_layout Plain Layout

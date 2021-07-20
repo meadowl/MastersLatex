@@ -435,15 +435,11 @@ noprefix "false"
 
 ), are only Observably Equivalent and are heavily dependent on trusting
  the programmer of the DSL to ensure proper results.
- Future work in proving Behavioral Equivalence from the verification of
- the suspicion that a properly defined RemoteView and RemoteSet can model
- View and Set.
- 
-\end_layout
-
-\begin_layout Standard
-There are many paths to be taken forward, that will hopefully be explored
- to enrich the literature on this newly defined topic of Remote Lenses.
+ It is an open question whether a properly defined Remote View and Remote
+ Set can closely model View and Set, allowing for us replace Observational
+ Equivalence with Behavioral Equivalence.
+ All told, there are many future avenues of research to pursue on this newly
+ defined topic of Remote Lenses.
 \end_layout
 
 \end_body
