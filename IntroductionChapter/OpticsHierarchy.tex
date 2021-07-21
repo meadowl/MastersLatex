@@ -10,13 +10,17 @@
 % \makeatother
 % 
 %\resizebox{.2\textwidth}{!}{%
+
+\definecolor{myOrange}{rgb}{.46, .30, .47}
+%https://december.com/html/spec/colorcodes.html
+
 \psscalebox{1.0 1.0}{%
 \begin{pspicture}(0,-3.7705173)(3.95,3.3505173)
 \rput[bl](0.904,3.0005174){Isomorphism}
 \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(1.4,2.9605172)(0.6,1.7605172)
 \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(2.6,2.9605172)(3.4,1.7605172)
 \rput[bl](0.0,1.3605173){Prism}
-\rput[bl](3.2,1.3605173){Lens}
+\rput[bl](3.2,1.3605173){\textcolor{myOrange}{Lens}}
 \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(3.4,1.1605172)(2.6,-0.039482728)
 \psline[linecolor=black, linewidth=0.04, arrowsize=0.05291667cm 2.0,arrowlength=1.4,arrowinset=0.0]{->}(0.6,1.1605172)(1.4,-0.039482728)
 \rput[bl](0.70,-0.43948272){Affine Traversal}
