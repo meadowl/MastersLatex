@@ -2,3 +2,4 @@ https://app.diagrams.net/
 200% at 300 dpi is export as PNG, for most used diagrams
 https://www.youtube.com/watch?v=vtU5xejQsHQ
 https://julesh.com/2018/08/16/lenses-for-philosophers/
+https://mmhaskell.com/blog/2017/6/12/taking-a-close-look-at-lenses
