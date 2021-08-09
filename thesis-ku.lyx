@@ -286,10 +286,17 @@ A thanks to Dr.
  Dr.
  Man Kong for believing that I could turn out to be a decent GTA, resulting
  in the funding for this paper.
- And a thanks to Dr.
+ Thank you to Dr.
  Gary Minden and Dr.
  Perry Alexander for teaching the more formative classes in my decision
  to attend graduate school.
+\end_layout
+
+\begin_layout Standard
+In addition, I'd like to thank my parents, Phil and Vicki, for their support
+ over the years and encouragements that have led me to this point in life.
+ And to my grandmother, Sondra, who generously helped make living expenses
+ a much lesser burden.
 \end_layout
 
 \begin_layout Standard
@@ -414,7 +421,7 @@ filename "ConclusionChapter/Conclusion.lyx"
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "Biblio/allcites"
-options "bibtotoc,apalike2"
+options "apalike2"
 
 \end_inset
 

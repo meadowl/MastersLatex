@@ -120,26 +120,27 @@ Extending Remote Lenses
 \end_layout
 
 \begin_layout Standard
-This chapter explicitly will deal with a compare and contrast to the Extended
- Lenses chapter, along with any additional information that was out of place
- in the Remote Monad Chapter.
+This chapter deals with a compare and contrast to the earlier Extended Lenses
+ chapter, along with any additional information that was out of place in
+ the Remote Monad Chapter.
  The end goal is a reasonable intuition if Remote Lenses are indeed Lenses.
- And if they aren't/are, what that means for the body of work that was done
- to come to this conclusion.
- Along with brief asides to the Simple Python Bridge and the Special SQL
- variations that were attempted.
-\end_layout
-
-\begin_layout Standard
-One having paid careful mind in the detailing of implementation and theory
- discussed about the Remote Lenses, should have come to a question about
- the exact degree of resemblance that these structures have to their locally
- designed counterparts.
- In fact, keeping the methods of creating a total lens structure, a way
- to show the closeness between Local Lenses and Remote Lenses would be to
- attempt expressing their remote nature in the style of the local abstractions.
- Now we will start with attempting to shape the structure of RemoteView
- and RemoteSet into a data structure.
+ One having paid careful attention in the detailing of implementation and
+ theory discussed about the Remote Lenses, should have come to a question
+ about the exact degree of resemblance that these structures have to their
+ locally designed counterparts.
+ In fact, keeping in mind the methods of creating a total lens structure,
+ a way to show the closeness between Local Lenses and Remote Lenses would
+ be to attempt expressing their remote nature in the style of the local
+ abstractions.
+ Now we will start with attempting to shape the structure of 
+\emph on
+RemoteView
+\emph default
+ and 
+\emph on
+RemoteSet
+\emph default
+ into a data structure.
 \end_layout
 
 \begin_layout Standard
@@ -263,12 +264,30 @@ end{spacing}
 
 \begin_layout Standard
 Whilst the nature of being able to neatly wrap the generalized Remote Lens
- commands together is easily implemented, this immediately approach doesn't
+ commands together is easily implemented, this immediate approach doesn't
  come close to the meaning held in the local variation in Chapter 3.
- The meaning of wrapping the View and Set together in a Local Lens, is to
- wrap together the means of accessing a specific focus.
- In this case, we have wrapped together a general RemoteView and RemoteSet,
- that can be specialized to access anywhere in the larger Remote Structure.
+ The meaning of wrapping the 
+\emph on
+View
+\emph default
+ and 
+\emph on
+Set
+\emph default
+ together in a
+\emph on
+ 
+\emph default
+Local Lens, is to wrap together the means of accessing a specific focus.
+ In this case, we have wrapped together a general 
+\emph on
+RemoteView
+\emph default
+ and 
+\emph on
+RemoteSet
+\emph default
+, that can be specialized to access anywhere in the larger Remote Structure.
  Essentially this form of abstraction only complicates the use of the original
  commands, while pointlessly obfuscating the underlying ease of use that
  the composability of the pseudo-accessor functions were supposed to provide.
@@ -276,8 +295,572 @@ Whilst the nature of being able to neatly wrap the generalized Remote Lens
 
 \begin_layout Standard
 Not to easily give up hope just yet that an equivalent method exists, the
- next significant attempt is to instantiate a far less general RemoteLens
- data type and the 
+ next significant attempt is to instantiate a far less general Remote Lens
+ data type and the way to do this is to start talking about the primary
+ example from Chapter 4.
+ The abstraction will be directly over the accessor methods, similar to
+ the abstractions that are attempted on a per element basis in the normal,
+ automatic generation of Local Lens constructions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+data RL_ObjectA  = RL_ObjectA {
+\end_layout
+
+\begin_layout Plain Layout
+
+    rl_address :: String -> String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_street :: String -> String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_city :: String -> String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_name :: String -> String
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_age :: String -> String}
+\end_layout
+
+\begin_layout Plain Layout
+
+    deriving (Show)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a_Object :: RL_ObjectA a_Object = RL_ObjectA {
+\end_layout
+
+\begin_layout Plain Layout
+
+    rl_address = address
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_street = street
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_city = city
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_name = name
+\end_layout
+
+\begin_layout Plain Layout
+
+    , rl_age = age}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+This does not provide anything but a formalization of the ways that Remote
+ Lenses were already being handled.
+ Which surprisingly, only adds unnecessary bulk to the already clear methods
+ of invoking the remote calls.
+ The following code shows how this specialization maintains the ability
+ to write generalized accessors, that would act on any properly instantiated
+ Remote Lens Object.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+remote_view :: FromJSON b => RL_ObjectA -> RemoteValue a -> RemoteMonad
+ b
+\end_layout
+
+\begin_layout Plain Layout
+
+remote_view object newperson = RemoteView (rl_name object) newperson
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+remote_set :: RL_ObjectA -> String -> RemoteValue a -> RemoteMonad b
+\end_layout
+
+\begin_layout Plain Layout
+
+remote_set object item newperson = RemoteView (rl_name object) item newperson
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another perspective would be to take the valid alternative construction
+ approach from Chapter 3 to it's full conclusion with this specific case
+ in 
+\emph on
+Remote Lenses
+\emph default
+.
+ Rather than one specializing the accessors, providing them bundled together
+ just like 
+\emph on
+A-lens
+\emph default
+ will allow for a safer and clear means of using these commands.
+ In the provided implementation below, the first introduced method is now
+ having it's 
+\emph on
+RemoteView
+\emph default
+ and 
+\emph on
+RemoteSet
+\emph default
+ instantiated with the focus of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{name}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+data RemoteLens a b = RemoteLens {
+\end_layout
+
+\begin_layout Plain Layout
+
+    remote_view :: FromJSON b => (RemoteValue a) -> (RemoteMonad b)
+\end_layout
+
+\begin_layout Plain Layout
+
+    , remote_set :: String -> (RemoteValue a) -> RemoteMonad (RemoteValue
+ a)}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+applyview :: FromJSON b => RemoteLens a b -> RemoteValue a -> RemoteMonad
+ b
+\end_layout
+
+\begin_layout Plain Layout
+
+applyview (RemoteLens2 remote_view remote_set) = remote_view
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+applyset :: RemoteLens a b -> String -> RemoteValue a -> RemoteMonad (RemoteValu
+e a)
+\end_layout
+
+\begin_layout Plain Layout
+
+applyset (RemoteLens2 remote_view remote_set) = remote_set
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a_Lens :: RemoteLens a b
+\end_layout
+
+\begin_layout Plain Layout
+
+a_Lens = RemoteLens {
+\end_layout
+
+\begin_layout Plain Layout
+
+    remote_view = RemoteView name
+\end_layout
+
+\begin_layout Plain Layout
+
+    , remote_set = RemoteSet name}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+The full exposure provided in this method resembles the closest to the nature
+ of the two-tuple example provided in the previous chapters, but it lacks
+ certain properties that one would define in a classically constructed lens.
+\end_layout
+
+\begin_layout Standard
+Now, it is finally time to deal with the largest question posed in this
+ manuscript, are Remote Lenses truly Lenses? An assessment that will be
+ argued over in multiple parts, starting with the meaning of the generalized
+ lens type signature and its relationship to the Remote Lens and ending
+ with an exploration of the mechanical work being accomplished irregardless
+ of the type signature.
+\end_layout
+
+\begin_layout Standard
+Starting off with the first part, it is now time to look at broad difference
+ between the type signature of anything that is remotely similar to a lens
+ and the type signature of the Remote Lens itself.
+ Abstracting away the finer details, if this were to be valid code shown
+ below, one might imagine the following generalizations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{spacing}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{code}[baselinestretch = 1,xleftmargin=5mm,xrightmargin=5mm,breaklines,brea
+kanywhere=false,breakafter={>}]
+\end_layout
+
+\begin_layout Plain Layout
+
+LocalLensView :: MyObject -> MyItem
+\end_layout
+
+\begin_layout Plain Layout
+
+LocalLensSet :: MyItem -> MyObject -> MyObject
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteLensView :: PointerToObject -> ReturningData
+\end_layout
+
+\begin_layout Plain Layout
+
+RemoteLensSet :: ValueToBeSent -> PointerToObject -> ReturningData
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{code}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{spacing}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+To a careful reader, there is a stern contrast that likely might have sat
+ in the background of the mind for a long while: wondering what is so off
+ about the usage of the syntactical sugar, despite how closely it appeared
+ to mimic the familiar counterpart.
+ That is, in a
+\emph on
+ 
+\emph default
+Local Lens
+\emph on
+ 
+\emph default
+the input object and the output object from the definition of 
+\emph on
+Set
+\emph default
+ is always the same.
+ If given a two-tuple, then a two-tuple is what will be returned.
+ Fundamentally, a mechanical difference between Local Lenses and Remote
+ Lenses, results from the fact that in Remote Lenses the returning information
+ from a 
+\emph on
+Set
+\emph default
+ operation is simply an indication of a job done, not the pointer to the
+ changed object.
+ If one was inclined, asserting that they are not lenses would be a fair
+ judgment on the nature of these two distinct structures.
+ In fact, it wouldn't make sense, the Local Lens abstraction to begin with
+ is based on the capacity to abstract cleverly with a functor.
+ Here we are dealing with a situation where it isn't abstractable in a sensible
+ way to a functor.
+\end_layout
+
+\begin_layout Standard
+The one thing left that might save this from being merely a design pattern
+ would be if on the client side an act of lensing was taking place to have
+ it's result retrieved and decoded on the host side.
+ This is in fact the case, as the accessing of the client's objects fields
+ via point-styled references is a synonymous to using lens methodology.
+ As one might remember, the major motivation for lenses is to provide an
+ abstraction in the 
+\emph on
+bx
+\emph default
+ field.
+ The oldest and least type-safe method of handling this in the context of
+ objects, is directly calling on their parameterized accessors.
+ If the client and host are interacting in a method such as in the Remote
+ Monad, then it is possible to make the Remote Lens use the Local Lens on
+ the client's side.
+\end_layout
+
+\begin_layout Standard
+Ultimately, while the Remote Lens does not type check as a Local Lens, the
+ Remote Lens can promise to the user that it is acting as if it were a Local
+ Lens.
+ This fits squarely in what a DSL provides, i.e.
+ abstraction of commands for the sake of usability and convenience.
+ But if forced to pick a binary choice, the Remote Lens is not a Lens —
+ rather it is a means to an end of being able to use a Lens.
 \end_layout
 
 \end_body

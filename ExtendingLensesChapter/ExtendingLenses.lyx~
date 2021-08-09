@@ -120,7 +120,8 @@ Extending Lenses
 \end_layout
 
 \begin_layout Standard
-As described, the two primary components of lenses are the 
+As described in the previous chapter, the two primary components of lenses
+ are the 
 \emph on
 Set
 \emph default
@@ -128,16 +129,16 @@ Set
 \emph on
 View 
 \emph default
-functions
+functions.
+
 \emph on
  
 \emph default
-which produce as a result of applying them both at the same time a command
- referenced as 
+That we will now discuss, produce a command referenced as 
 \emph on
 Over
 \emph default
-.
+ as a result of applying them both in sequence.
  When one applies
 \emph on
  View 
@@ -159,8 +160,8 @@ noprefix "false"
 Set
 \emph default
  to that very same structure.
- This results in a new structure which accomplishes the same as having applied
- 
+ This results in a new structure which accomplishes the same result as having
+ applied 
 \emph on
 Over
 \emph default
@@ -307,7 +308,7 @@ name "fig:Expanded-Lens"
 \end_layout
 
 \begin_layout Standard
-There exist many degrees of abstracting over elementary lenses like those
+There exist many degrees of abstracting over elementary lenses such as those
  provided in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -319,10 +320,10 @@ noprefix "false"
 \end_inset
 
 .
- The documentation is not focused on the fuller expanses of the system of
- abstractions for lensing mechanisms inside of mathematics and programming,
- but instead finds relevance in the most simple formation of lenses which
- is now provided.
+ It is outside the scope of this manuscript to focus on the fuller expanses
+ of lensing mechanisms inside of mathematics and programming, but it instead
+ finds relevance in the most simple formation of lenses which is now provided
+ below.
 \end_layout
 
 \begin_layout Standard
@@ -521,8 +522,8 @@ texttt{applyset}
  both use pattern matching to expose the internals of the elementary Haskell
  lens.
  The exposure of these components can also be accomplished without the use
- of this helper functions, but for the purposes of completeness with the
- standard lens methodology this has been provided.
+ of helper functions, but for the purposes of completeness with the standard
+ lens methodology this has been provided.
 \end_layout
 
 \begin_layout Standard
@@ -551,7 +552,12 @@ kanywhere=false,breakafter={>}]
 
 \begin_layout Plain Layout
 
-a_Lens :: BasicLens a b a_Lens = BasicLens {
+a_Lens :: BasicLens a b
+\end_layout
+
+\begin_layout Plain Layout
+
+a_Lens = BasicLens {
 \end_layout
 
 \begin_layout Plain Layout
@@ -601,8 +607,8 @@ noindent
 
 \end_inset
 
-The initialized version of this simplistic lens structure, preforms it's
- role for the 
+The initialized version of this simplistic lens structure as shown above,
+ performs its role for the 
 \emph on
 Set
 \emph default
@@ -656,8 +662,8 @@ _a}
 \end_inset
 
  from last chapter.
- Such as it is defined, a lens that successfully encapsulates the full structure
- of both the ability to view the 
+ Such a lens successfully encapsulates the full structure of both the ability
+ to view the 
 \emph on
 a-element
 \emph default
@@ -680,10 +686,9 @@ a-element
 \end_layout
 
 \begin_layout Standard
-It is realized that a much stronger case for this can be made, if it is
- possible to make the inherent pattern matching explicit and this case is
- generalized to the abstractions typically provided in the earlier chapter's
- 
+We realized that a much stronger case for this can be made, if it is possible
+ to make the inherent pattern matching explicit such that this case may
+ be generalized to the abstractions provided in the previous chapter's 
 \begin_inset ERT
 status open
 
@@ -697,8 +702,8 @@ texttt{MyLens}
 \end_inset
 
 .
- This effort does result in the not so surprising result that this is indeed
- possible, without any loss of type information.
+ The effort does not surprise, as the result below shows that it is possible
+ without any loss of type information.
 \end_layout
 
 \begin_layout Standard
@@ -802,8 +807,20 @@ noindent
 
 \end_inset
 
-In the provided case, an abstraction results in an explicit reference to
- the 
+In the provided case, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MyLens}
+\end_layout
+
+\end_inset
+
+ abstraction results in an explicit reference to the 
 \emph on
 a-element
 \emph default
@@ -869,15 +886,14 @@ _set}
 
 \end_inset
 
-, with no great alterations besides the rearrangement of second function's
- arguments.
+, with no great alterations.
 \end_layout
 
 \begin_layout Standard
 This leads to the assertion that although defined in heavy detail and with
  great investment in the proofing of algebraic geometry, category theory,
  and homotopy type theory — the hard coded versions of lenses do not need
- to subject themselves to these abstractions.
+ to subject themselves to these rigorous abstractions.
  In fact, the levels of proofing and rigor abstract away what lenses can
  be defined to do, such as when shoving a lens into a monadic container.
  Which is why only the well-behaved lens laws in Equation (
@@ -985,7 +1001,9 @@ viewer
 \end_inset
 
  or other functions to abstract away.
- 
+ This way of adding sugar still provides for many programmers a degree of
+ comfort to the lens methods, hence the continued popularity with its imperfecti
+ons.
 \end_layout
 
 \end_body

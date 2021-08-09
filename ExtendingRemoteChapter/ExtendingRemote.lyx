@@ -120,17 +120,18 @@ Extending Remote Lenses
 \end_layout
 
 \begin_layout Standard
-This chapter explicitly will deal with a compare and contrast to the Extended
- Lenses chapter, along with any additional information that was out of place
- in the Remote Monad Chapter.
+This chapter deals with a compare and contrast to the earlier Extended Lenses
+ chapter, along with any additional information that was out of place in
+ the Remote Monad Chapter.
  The end goal is a reasonable intuition if Remote Lenses are indeed Lenses.
- One having paid careful mind in the detailing of implementation and theory
- discussed about the Remote Lenses, should have come to a question about
- the exact degree of resemblance that these structures have to their locally
- designed counterparts.
- In fact, keeping the methods of creating a total lens structure, a way
- to show the closeness between Local Lenses and Remote Lenses would be to
- attempt expressing their remote nature in the style of the local abstractions.
+ One having paid careful attention in the detailing of implementation and
+ theory discussed about the Remote Lenses, should have come to a question
+ about the exact degree of resemblance that these structures have to their
+ locally designed counterparts.
+ In fact, keeping in mind the methods of creating a total lens structure,
+ a way to show the closeness between Local Lenses and Remote Lenses would
+ be to attempt expressing their remote nature in the style of the local
+ abstractions.
  Now we will start with attempting to shape the structure of 
 \emph on
 RemoteView
@@ -263,7 +264,7 @@ end{spacing}
 
 \begin_layout Standard
 Whilst the nature of being able to neatly wrap the generalized Remote Lens
- commands together is easily implemented, this immediately approach doesn't
+ commands together is easily implemented, this immediate approach doesn't
  come close to the meaning held in the local variation in Chapter 3.
  The meaning of wrapping the 
 \emph on
@@ -275,9 +276,9 @@ Set
 \emph default
  together in a
 \emph on
- Local Lens
+ 
 \emph default
-, is to wrap together the means of accessing a specific focus.
+Local Lens, is to wrap together the means of accessing a specific focus.
  In this case, we have wrapped together a general 
 \emph on
 RemoteView
@@ -286,11 +287,7 @@ RemoteView
 \emph on
 RemoteSet
 \emph default
-, that can be specialized to access anywhere in the larger 
-\emph on
-Remote Structure
-\emph default
-.
+, that can be specialized to access anywhere in the larger Remote Structure.
  Essentially this form of abstraction only complicates the use of the original
  commands, while pointlessly obfuscating the underlying ease of use that
  the composability of the pseudo-accessor functions were supposed to provide.
@@ -301,9 +298,9 @@ Not to easily give up hope just yet that an equivalent method exists, the
  next significant attempt is to instantiate a far less general Remote Lens
  data type and the way to do this is to start talking about the primary
  example from Chapter 4.
- The abstraction will be directly over the accessor methods, much in the
- similar way that the abstractions are attempted on a per element basis
- in normal automatic generation of Local Lens constructions.
+ The abstraction will be directly over the accessor methods, similar to
+ the abstractions that are attempted on a per element basis in the normal,
+ automatic generation of Local Lens constructions.
 \end_layout
 
 \begin_layout Standard
@@ -436,13 +433,13 @@ noindent
 
 \end_inset
 
-This doesn't provide anything but a formalization of the ways that Remote
+This does not provide anything but a formalization of the ways that Remote
  Lenses were already being handled.
  Which surprisingly, only adds unnecessary bulk to the already clear methods
  of invoking the remote calls.
- The following code shows this specialization does maintain the ability
- to write generalized accessors, that would act on any Remote Lens Object
- that was properly instantiated.
+ The following code shows how this specialization maintains the ability
+ to write generalized accessors, that would act on any properly instantiated
+ Remote Lens Object.
 \end_layout
 
 \begin_layout Standard
@@ -526,9 +523,9 @@ end{spacing}
 \end_layout
 
 \begin_layout Standard
-If keeping this line of attempts to specialize, then another perspective
- would be to take the valid alternative construction approach from Chapter
- 3 to it's full conclusion with this specific case in 
+Another perspective would be to take the valid alternative construction
+ approach from Chapter 3 to it's full conclusion with this specific case
+ in 
 \emph on
 Remote Lenses
 \emph default
@@ -538,7 +535,7 @@ Remote Lenses
 \emph on
 A-lens
 \emph default
- will allow for a more safe and clear means of using these commands.
+ will allow for a safer and clear means of using these commands.
  In the provided implementation below, the first introduced method is now
  having it's 
 \emph on
@@ -702,11 +699,12 @@ The full exposure provided in this method resembles the closest to the nature
 \end_layout
 
 \begin_layout Standard
-It is finally time to deal with the largest question posed in this manuscript,
- are Remote Lenses truly Lenses? An assessment that will be argued over
- in multiple parts, starting with the meaning of the generalized lens type
- signature and its relationship to the Remote Lens and ending with an exploratio
-n of the mechanical work being accomplished irregardless of the type signature.
+Now, it is finally time to deal with the largest question posed in this
+ manuscript, are Remote Lenses truly Lenses? An assessment that will be
+ argued over in multiple parts, starting with the meaning of the generalized
+ lens type signature and its relationship to the Remote Lens and ending
+ with an exploration of the mechanical work being accomplished irregardless
+ of the type signature.
 \end_layout
 
 \begin_layout Standard
@@ -757,12 +755,12 @@ LocalLensSet :: MyItem -> MyObject -> MyObject
 
 \begin_layout Plain Layout
 
-RemoteLensView :: PointertoObject -> ReturningData
+RemoteLensView :: PointerToObject -> ReturningData
 \end_layout
 
 \begin_layout Plain Layout
 
-RemoteLensSet :: ValueToBeSent -> PointertoObject -> ReturningData
+RemoteLensSet :: ValueToBeSent -> PointerToObject -> ReturningData
 \end_layout
 
 \begin_layout Plain Layout
@@ -820,36 +818,35 @@ Set
 \emph default
  is always the same.
  If given a two-tuple, then a two-tuple is what will be returned.
- Fundamentally what is a mechanical difference between Local Lenses and
- Remote Lenses, results from the fact that in Remote Lenses the returning
- information from a 
+ Fundamentally, a mechanical difference between Local Lenses and Remote
+ Lenses, results from the fact that in Remote Lenses the returning information
+ from a 
 \emph on
 Set
 \emph default
  operation is simply an indication of a job done, not the pointer to the
  changed object.
  If one was inclined, asserting that they are not lenses would be a fair
- judgment on the nature of these two creatures.
- in fact, it wouldn't make sense, the abstraction to begin with is based
- on the capacity to abstract cleverly with a functor.
+ judgment on the nature of these two distinct structures.
+ In fact, it wouldn't make sense, the Local Lens abstraction to begin with
+ is based on the capacity to abstract cleverly with a functor.
  Here we are dealing with a situation where it isn't abstractable in a sensible
  way to a functor.
 \end_layout
 
 \begin_layout Standard
-The one thing left that might save this from being merely a design pattern,
+The one thing left that might save this from being merely a design pattern
  would be if on the client side an act of lensing was taking place to have
  it's result retrieved and decoded on the host side.
  This is in fact the case, as the accessing of the client's objects fields
- via point-styled references is a synonymous situation with using lens methodolo
-gy.
+ via point-styled references is a synonymous to using lens methodology.
  As one might remember, the major motivation for lenses is to provide an
  abstraction in the 
 \emph on
 bx
 \emph default
  field.
- The oldest and least type safe method of handling this in the context of
+ The oldest and least type-safe method of handling this in the context of
  objects, is directly calling on their parameterized accessors.
  If the client and host are interacting in a method such as in the Remote
  Monad, then it is possible to make the Remote Lens use the Local Lens on
@@ -860,10 +857,14 @@ bx
 Ultimately, while the Remote Lens does not type check as a Local Lens, the
  Remote Lens can promise to the user that it is acting as if it were a Local
  Lens.
- Which fits squarely in what a DSL provides, abstraction of commands for
- the sake of usability and convenience.
- But if forced to pick a binary choice, the Remote Lens is not a Lens —
- rather it is a means to an end of being able to use a Lens.
+ This fits squarely in what a DSL provides, 
+\emph on
+i.e.
+
+\emph default
+ abstraction of commands for the sake of usability and convenience.
+ If forced to pick a binary choice, the Remote Lens is not a Lens — rather
+ it is a means to an end of being able to use a Lens.
 \end_layout
 
 \end_body
