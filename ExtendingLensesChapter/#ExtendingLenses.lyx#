@@ -287,7 +287,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\emph on
 Over Construction
+\emph default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Expanded-Lens"
@@ -807,8 +811,20 @@ noindent
 
 \end_inset
 
-In the provided case, an abstraction results in an explicit reference to
- the 
+In the provided case, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{MyLens}
+\end_layout
+
+\end_inset
+
+ abstraction results in an explicit reference to the 
 \emph on
 a-element
 \emph default
@@ -874,17 +890,16 @@ _set}
 
 \end_inset
 
-, with no great alterations besides the rearrangement of second function's
- arguments.
+, with no great alterations.
 \end_layout
 
 \begin_layout Standard
 This leads to the assertion that although defined in heavy detail and with
  great investment in the proofing of algebraic geometry, category theory,
  and homotopy type theory — the hard coded versions of lenses do not need
- to subject themselves to these abstractions.
- In fact, the levels of proofing and rigor abstract away what lenses can
- be defined to do, such as when shoving a lens into a monadic container.
+ to subject themselves to these rigorous abstractions.
+ In fact, the levels of proofing abstract away what lenses can be defined
+ to do, such as when shoving a lens into a monadic container.
  Which is why only the well-behaved lens laws in Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -895,15 +910,15 @@ noprefix "false"
 
 \end_inset
 
-), are considered for the details of the manuscripts later chapters.
- If one has a curiosity if the pseudo-implementations of lenses discussed
+), are considered for the details of the manuscript's later chapters.
+ Those who have a curiosity if the pseudo-implementations of lenses discussed
  may be represented as standard lenses, then the continued reading is deeply
  recommended for those interested.
 \end_layout
 
 \begin_layout Standard
-In practice, a certain amount of syntactical sugar is commonly used to make
- lens operations more natural.
+Additionally, in practice a certain amount of syntactical sugar is commonly
+ used to make lens operations more natural.
  This is referred to as 
 \begin_inset Quotes eld
 \end_inset

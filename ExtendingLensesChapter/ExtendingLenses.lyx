@@ -287,7 +287,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\emph on
 Over Construction
+\emph default
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Expanded-Lens"
